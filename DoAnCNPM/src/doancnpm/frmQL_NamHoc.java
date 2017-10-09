@@ -5,19 +5,77 @@
  */
 package doancnpm;
 
+import static doancnpm.frmTiepNhanHS.convertUtilDateToSqlDate;
+import java.sql.DriverManager;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Elitebook
  */
 public class frmQL_NamHoc extends javax.swing.JInternalFrame {
-
+    ConnectDB DB=new ConnectDB();
+    private String header[] = {"MaNH","TenNH","YNGHIA"};
+    private DefaultTableModel tblModel = new DefaultTableModel(header,0);
     /**
      * Creates new form frmQL_NamHoc
      */
     public frmQL_NamHoc() {
         initComponents();
+        loadNHFillTB();
     }
+     private void loadNHFillTB(){
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
 
+            
+            // Câu lệnh xem dữ liệu
+            String sql = "select * from NAMHOC ";
+            
+
+            // Tạo đối tượng thực thi câu lệnh Select
+            DB.st = DB.conn.createStatement();
+
+            // Thực thi 
+            DB.rs = DB.st.executeQuery(sql);
+            Vector data = null;
+
+            tblModel.setRowCount(0);
+        
+
+            // Trong khi chưa hết dữ liệu
+            while (DB.rs.next()) {
+                data = new Vector();
+                data.add(DB.rs.getString("MANH"));
+                data.add(DB.rs.getString("TENNH"));
+                data.add(DB.rs.getString("YNGHIA"));
+                // Thêm một dòng vào table model
+                 tblModel.addRow(data);
+            }
+            jTable1.setModel(tblModel);
+            // Thêm dữ liệu vào table
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +121,11 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setText("Thay Đổi");
@@ -82,6 +145,11 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
         jButtonThem.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
         jButtonThem.setText("THÊM");
+        jButtonThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThemActionPerformed(evt);
+            }
+        });
 
         jButtonSua.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
@@ -242,15 +310,141 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
 
     private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
+           int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel(); 
+        String key=model.getValueAt(index,0).toString();
+        String delete="DELETE FROM NAMHOC  WHERE MANH='"+key+"'";
+
+       try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           
+           DB.ps = DB.conn.prepareStatement(delete);
+ 
+           
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Delete successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadNHFillTB();
     }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            int index=jTable1.getSelectedRow();
+            String value = jTable1.getModel().getValueAt(index, 0).toString();
+            String update2 = "UPDATE NAMHOC SET MANH=?,TENNH=?,YNGHIA=? where MANH='"+value+"'";
+
+  
+             DB.ps = DB.conn.prepareStatement(update2);
+            
+           DB.ps.setString(1,jTextField1.getText());
+           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setString(3,jTextField3.getText());
+            
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Update successed");
+            }
+          
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        loadNHFillTB();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
+        // TODO add your handling code here:
+          loadNHFillTB();
+        String insert = "INSERT INTO NAMHOC (MANH,TENNH,YNGHIA) VALUES(?,?,?)";//fix
+
+        try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           DB.ps = DB.conn.prepareStatement(insert);
+
+           DB.ps.setString(1,jTextField1.getText());
+           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setString(3,jTextField3.getText());
+         
+            
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Insert successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadNHFillTB();
+    }//GEN-LAST:event_jButtonThemActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel();
+        
+        
+        jTextField1.setText (model.getValueAt(index,0).toString());
+        jTextField2.setText (model.getValueAt(index,1).toString());
+        jTextField3.setText (model.getValueAt(index,2).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

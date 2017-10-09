@@ -18,6 +18,7 @@ public class frmmain extends javax.swing.JFrame {
      */
     public frmmain() {
         initComponents();
+       
     }
 
     /**
@@ -76,6 +77,7 @@ public class frmmain extends javax.swing.JFrame {
         jMenuItemQL_HocKy = new javax.swing.JMenuItem();
         mnlds = new javax.swing.JMenuItem();
         QL_NamHoc = new javax.swing.JMenuItem();
+        jMenuItem5QL_LoaiKT = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         mnths = new javax.swing.JMenuItem();
         mntc = new javax.swing.JMenuItem();
@@ -121,13 +123,9 @@ public class frmmain extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\Cong_Nghe_Pham_Mem\\Do_An\\Photo for Design Form\\Lock.png")); // NOI18N
         jLabel3.setText("UserName");
 
-        jTextField1.setText(" ");
-
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\Cong_Nghe_Pham_Mem\\Do_An\\Photo for Design Form\\Key.png")); // NOI18N
         jLabel4.setText("PassWord");
 
         jButton1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
@@ -137,8 +135,6 @@ public class frmmain extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jPasswordField1.setText("jPasswordField1");
 
         jToggleButton1.setText("Cancel");
 
@@ -173,7 +169,7 @@ public class frmmain extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -337,12 +333,18 @@ public class frmmain extends javax.swing.JFrame {
         });
         jMenu3.add(QL_NamHoc);
 
+        jMenuItem5QL_LoaiKT.setText("QL_Kiểm Tra");
+        jMenuItem5QL_LoaiKT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5QL_LoaiKTActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem5QL_LoaiKT);
+
         jMenuBar1.add(jMenu3);
 
-        jMenu12.setIcon(new javax.swing.ImageIcon("D:\\Cong_Nghe_Pham_Mem\\Do_An\\Photo for Design Form\\Person.png")); // NOI18N
         jMenu12.setText("Quản Lý Học Sinh");
 
-        mnths.setIcon(new javax.swing.ImageIcon("D:\\Cong_Nghe_Pham_Mem\\Do_An\\Photo for Design Form\\Create.png")); // NOI18N
         mnths.setText("Tiếp Nhận Học Sinh");
         mnths.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,7 +353,6 @@ public class frmmain extends javax.swing.JFrame {
         });
         jMenu12.add(mnths);
 
-        mntc.setIcon(new javax.swing.ImageIcon("D:\\Cong_Nghe_Pham_Mem\\Do_An\\Photo for Design Form\\View.png")); // NOI18N
         mntc.setText("Tra Cứu Hồ Sơ HS ");
         mntc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -612,11 +613,19 @@ public class frmmain extends javax.swing.JFrame {
         hocky.setVisible(true);
     }//GEN-LAST:event_jMenuItemQL_HocKyActionPerformed
 
+    private void jMenuItem5QL_LoaiKTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5QL_LoaiKTActionPerformed
+        // TODO add your handling code here:
+        frmQL_LoaiKT KT  = new frmQL_LoaiKT();
+        jDesktopPane1.add(KT);
+        KT.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5QL_LoaiKTActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -690,6 +699,7 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5QL_LoaiKT;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItemQL_HocKy;
