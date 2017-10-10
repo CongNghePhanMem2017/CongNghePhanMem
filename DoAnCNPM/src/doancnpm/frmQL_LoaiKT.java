@@ -4,18 +4,78 @@
  * and open the template in the editor.
  */
 package doancnpm;
+import java.sql.DriverManager;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 
 /**
  *
  * @author manng
  */
 public class frmQL_LoaiKT extends javax.swing.JInternalFrame {
-
+ConnectDB DB=new ConnectDB();
+    private String header[] = {"MaLoaiKT","TenLoaiKT"};
+    private DefaultTableModel tblModel = new DefaultTableModel(header,0);
     /**
      * Creates new form frmLoaiKT
      */
     public frmQL_LoaiKT() {
         initComponents();
+        loadMHFillTB();
+    }
+    private void loadMHFillTB(){
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+           
+            // Câu lệnh xem dữ liệu
+            String sql = "select * from LoaiKT ";
+            
+
+            // Tạo đối tượng thực thi câu lệnh Select
+            DB.st = DB.conn.createStatement();
+
+            // Thực thi 
+            DB.rs = DB.st.executeQuery(sql);
+            Vector data = null;
+
+            tblModel.setRowCount(0);
+        
+
+            // Trong khi chưa hết dữ liệu
+            while (DB.rs.next()) {
+                data = new Vector();
+                data.add(DB.rs.getString("MaLoaiKT"));
+                data.add(DB.rs.getString("TenLoaiKT"));
+                // Thêm một dòng vào table model
+                 tblModel.addRow(data);
+            }
+            jTable2.setModel(tblModel);
+            // Thêm dữ liệu vào table
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -173,12 +233,53 @@ public class frmQL_LoaiKT extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            int index=jTable1.getSelectedRow();
+            String value = jTable1.getModel().getValueAt(index, 0).toString();
+            String update2 = "UPDATE LoaiKT SET MaLoaiKT=?,TenLoaiKT=? where MaLoaiKT='"+value+"'";
+
+  
+             DB.ps = DB.conn.prepareStatement(update2);
+            
+           DB.ps.setString(1,jTextField1.getText());
+           DB.ps.setString(2,jTextField2.getText());
+            
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Update successed");
+            }
+          
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        loadMHFillTB();
+    } 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+          dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -186,7 +287,44 @@ public class frmQL_LoaiKT extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here: private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
+           int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel(); 
+        String key=model.getValueAt(index,0).toString();
+        String delete="DELETE FROM LoaiKT  WHERE MaLoaiKT='"+key+"'";
+
+       try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           
+           DB.ps = DB.conn.prepareStatement(delete);
+ 
+           
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Delete successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadMHFillTB();                                
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
