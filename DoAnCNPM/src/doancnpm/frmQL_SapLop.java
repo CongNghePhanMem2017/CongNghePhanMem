@@ -33,7 +33,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
     public frmQL_SapLop() {
         initComponents();
         LoadKhoiAndFillToCBBox();
-        LoadMaLop();
+      
         LoadBangDiem_hs();
         
     }
@@ -101,15 +101,6 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 " ", " ", " ", "", "", "", " ", " ", " "
             }
         ));
-        jTableDSHS.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jTableDSHSAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
         jTableDSHS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableDSHSMouseClicked(evt);
@@ -118,18 +109,15 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTableDSHS);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Mã Học Sinh");
 
         txtMaHocSinh.setEditable(false);
         txtMaHocSinh.setText(" ");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Mã  Khối");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Họ Và Tên ");
 
         txtHoTen.setText(" ");
@@ -142,13 +130,11 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Danh Sách Học Sinh Nhập Học - Theo Khối");
 
         jLabel11.setText("Giới Tính");
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Địa Chỉ");
 
         txtDiaChi.setText(" ");
@@ -160,11 +146,6 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jLabel14.setText("Ngày Sinh");
 
         txtNgaySinh.setText(" ");
-        txtNgaySinh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNgaySinhActionPerformed(evt);
-            }
-        });
 
         txtGioiTinh.setText(" ");
 
@@ -173,18 +154,10 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         txtMaNamHoc.setText(" ");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Mã Lớp");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Danh Sách Học Sinh Đã Có Lớp");
-
-        jComboBoxMaLop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxMaLopActionPerformed(evt);
-            }
-        });
 
         jButtonVaoLop.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonVaoLop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Forward.png"))); // NOI18N
@@ -338,7 +311,6 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBoxKhoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,9 +340,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel13)
                                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(12, 12, 12))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
@@ -418,6 +388,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
     
     // _____________Load KHỐI dữ liệu  từ table ___________________//
     private void LoadKhoiAndFillToCBBox() {
+     
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dữ liệu 
@@ -457,16 +428,23 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 ex.printStackTrace();
             }
         }
+        
     }
     
     
      // ***********_______Load lỚP dữ liệu  từ table LỚP _______*********____________//
     private void LoadMaLop(){
- 
+         int index = jComboBoxKhoi.getSelectedIndex();
+        if (index < 0) {
+            return;
+        }
+         Vector item = (Vector) jComboBoxKhoi.getSelectedItem();
+         int MaKhoi = Integer.parseInt(item.get(0).toString());
+        int k = 0;
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dữ liệu 
-            String sql = "select * from LOP";
+            String sql = "select * from LOP where MaKhoi="+MaKhoi;
             //Tạo đối tượng thực thi câu lệnh
             DB.st = DB.conn.createStatement();
             // thực thi
@@ -483,7 +461,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                // data = new Vector();
                 //data.add(DB.rs.getString("MaLop"));
                 //cmbModel.addElement(data);
-                String MaLop = DB.rs.getString("MaLop");
+                String MaLop = DB.rs.getString("TenLop");
                 jComboBoxMaLop.addItem(MaLop);
             }
             
@@ -505,6 +483,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 ex.printStackTrace();
             }
         }
+        
     }
     
     // ***********_______lọc ds học sinh tư table TIẾP NHẬN HS theo khối _______*********____________//
@@ -662,11 +641,21 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         String insert = "INSERT INTO BANG_DIEM_HS (MaHocSinh,MaLop) VALUES(?,?) ";
         try {
             //Kết nói
+            String malop=null;
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(insert);
-            
+            String sql="select * from LOP where TenLop='"+ jComboBoxMaLop.getSelectedItem().toString()+"'";
+            DB.st = DB.conn.createStatement();
+            DB.rs = DB.st.executeQuery(sql);
+            while (DB.rs.next()) {
+//                data = new Vector();
+//                data.add(DB.rs.getString("MANH"));
+//                cmbModel.addElement(data);
+                    malop=DB.rs.getString("MaLop");
+                    
+            }
             DB.ps.setString(1,txtMaHocSinh.getText());
-            DB.ps.setString(2, jComboBoxMaLop.getSelectedItem().toString());
+            DB.ps.setString(2, malop);
             int ret = DB.ps.executeUpdate();
            // if (ret != -1) {
           //      JOptionPane.showMessageDialog(this, "The BANG_DIEM_HS    has been insertet"); 
@@ -764,7 +753,9 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
 
     private void jComboBoxKhoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxKhoiActionPerformed
         // TODO add your handling code here:
+        jComboBoxMaLop.removeAllItems();
         loadHVbyKhoi();
+        LoadMaLop();
     }//GEN-LAST:event_jComboBoxKhoiActionPerformed
     //Sau khi săp lớp thành công thì sẽ tự động delete dự liệu bên bảng table 
      private void DELETE_TABLE_TIEPNHAN_HS(){
@@ -844,18 +835,6 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
        
         
     }//GEN-LAST:event_jTableDSHSMouseClicked
-
-    private void jComboBoxMaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMaLopActionPerformed
-           // InsertDBAddDS_HS();
-    }//GEN-LAST:event_jComboBoxMaLopActionPerformed
-
-    private void jTableDSHSAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTableDSHSAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableDSHSAncestorAdded
-
-    private void txtNgaySinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgaySinhActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgaySinhActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

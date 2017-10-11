@@ -28,14 +28,14 @@ ConnectDB DB=new ConnectDB();
      */
     public frmQL_LoaiKT() {
         initComponents();
-        loadMHFillTB();
+        loadLKTFillTB();
     }
-    private void loadMHFillTB(){
+    private void loadLKTFillTB(){
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
            
             // Câu lệnh xem dữ liệu
-            String sql = "select * from LoaiKT ";
+            String sql = "select * from LOAIKIEMTRA ";
             
 
             // Tạo đối tượng thực thi câu lệnh Select
@@ -51,12 +51,12 @@ ConnectDB DB=new ConnectDB();
             // Trong khi chưa hết dữ liệu
             while (DB.rs.next()) {
                 data = new Vector();
-                data.add(DB.rs.getString("MaLoaiKT"));
-                data.add(DB.rs.getString("TenLoaiKT"));
+                data.add(DB.rs.getString("MaLoaiKiemTra"));
+                data.add(DB.rs.getString("TenLoaiKiemTra"));
                 // Thêm một dòng vào table model
                  tblModel.addRow(data);
             }
-            jTable2.setModel(tblModel);
+            jTable1.setModel(tblModel);
             // Thêm dữ liệu vào table
             
         } catch (Exception e) {
@@ -117,18 +117,6 @@ ConnectDB DB=new ConnectDB();
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Thông tin loại kiểm tra");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
         jTable1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,15 +129,30 @@ ConnectDB DB=new ConnectDB();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
         jButton1.setText("Thêm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
         jButton2.setText("Sửa");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Cancel.png"))); // NOI18N
@@ -211,9 +214,9 @@ ConnectDB DB=new ConnectDB();
                         .addGap(32, 32, 32)
                         .addComponent(jLabel4)
                         .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,19 +230,106 @@ ConnectDB DB=new ConnectDB();
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+     
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+          dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here: private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+           int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel(); 
+        String key=model.getValueAt(index,0).toString();
+        String delete="DELETE FROM LOAIKIEMTRA  WHERE MaLoaiKiemTra='"+key+"'";
+
+       try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           
+           DB.ps = DB.conn.prepareStatement(delete);
+ 
+           
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Delete successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadLKTFillTB();                                
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         loadLKTFillTB();
+        String insert = "INSERT INTO LOAIKIEMTRA (MaLoaiKiemTra,TenLoaiKiemTra) VALUES(?,?)";//fix
+
+        try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           DB.ps = DB.conn.prepareStatement(insert);
+
+           DB.ps.setString(1,jTextField1.getText());
+           DB.ps.setString(2,jTextField2.getText());
+         
+            
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Insert successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadLKTFillTB();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index=jTable1.getSelectedRow();
             String value = jTable1.getModel().getValueAt(index, 0).toString();
-            String update2 = "UPDATE LoaiKT SET MaLoaiKT=?,TenLoaiKT=? where MaLoaiKT='"+value+"'";
+            String update2 = "UPDATE LOAIKIEMTRA SET MaLoaiKiemTra=?,TenLoaiKiemTra=? where MaLoaiKiemTra='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
@@ -271,61 +361,18 @@ ConnectDB DB=new ConnectDB();
                 ex.printStackTrace();
             }
         }
-        loadMHFillTB();
-    } 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        loadLKTFillTB();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-          dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here: private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-           int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel(); 
-        String key=model.getValueAt(index,0).toString();
-        String delete="DELETE FROM LoaiKT  WHERE MaLoaiKT='"+key+"'";
-
-       try {
-           DB.conn = DriverManager.getConnection(DB.dbURL);
-           
-           DB.ps = DB.conn.prepareStatement(delete);
- 
-           
-            int ret = DB.ps.executeUpdate();
-            if (ret != -1) {
-                JOptionPane.showMessageDialog(null, "Delete successed");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (DB.conn != null) {
-                    DB.conn.close();
-                }
-
-                if (DB.rs != null) {
-                    DB.rs.close();
-                }
-
-                if (DB.ps != null) {
-                    DB.ps.close();
-                }
-            } catch (Exception ex2) {
-                ex2.printStackTrace();
-            }
-        }
-        loadMHFillTB();                                
-
-    }//GEN-LAST:event_jButton3ActionPerformed
+        int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel();
+        
+        
+        jTextField1.setText (model.getValueAt(index,0).toString());
+        jTextField2.setText (model.getValueAt(index,1).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

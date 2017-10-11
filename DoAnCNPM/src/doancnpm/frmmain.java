@@ -6,19 +6,33 @@
 package doancnpm;
 import java.awt.Image;
 import java.awt.Graphics;
+import java.sql.DriverManager;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
  * @author manng
  */
 public class frmmain extends javax.swing.JFrame {
-
+    ConnectDB DB = new ConnectDB();
     /**
      * Creates new form frmmain
      */
     public frmmain() {
         initComponents();
-       
+//       jMenu4.setVisible(false);
+//        jMenu3.setVisible(false);
+//        jMenu12.setVisible(false);
+//        jMenu11.setVisible(false);
+//        jMenu5.setVisible(false);
+//        jMenu1.setVisible(false);
+//        jMenu13.setVisible(false);
+//        btnThemHS.setVisible(false);
+//        BtnNhapDiem3.setVisible(false);
+//        BtnNhapDiem2.setVisible(false);
+//        BtnNhapDiem.setVisible(false);
+//        BtnNhapDiem1.setVisible(false);
     }
 
     /**
@@ -52,8 +66,9 @@ public class frmmain extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton2 = new javax.swing.JButton();
+        jPasswordField2 = new javax.swing.JPasswordField();
+        jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -136,7 +151,14 @@ public class frmmain extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("Cancel");
+        jButton2.setText("Logout");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Status:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -145,17 +167,23 @@ public class frmmain extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jToggleButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField1)
-                    .addComponent(jPasswordField1))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPasswordField2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton2)))
+                                .addGap(0, 23, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -168,16 +196,18 @@ public class frmmain extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jDesktopPane1.add(jPanel2);
-        jPanel2.setBounds(820, 30, 270, 120);
+        jPanel2.setBounds(820, 30, 270, 160);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
@@ -570,8 +600,80 @@ public class frmmain extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         
+         if (jTextField1.getText().equals("") || (jPasswordField2.getPassword()).equals("")) {
+                    JOptionPane.showMessageDialog(this, "Username and password must not empty.", "Invalid", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+         System.out.println(jPasswordField2.getPassword());
+          try{
+              DB.conn = DriverManager.getConnection(DB.dbURL);
+              String sql = "select * from AccountManage where username='"+jTextField1.getText()+"'";
+              DB.st = DB.conn.createStatement();
+              DB.rs = DB.st.executeQuery(sql);
+              if (DB.rs != null) {
+                        if (DB.rs.next()) {
+                            if (DB.rs.getString("Password").equals(new String(jPasswordField2.getPassword()))) {
+                                JOptionPane.showMessageDialog(this, "You has been login successful.", "login successfuly", JOptionPane.INFORMATION_MESSAGE);
+                                    if(DB.rs.getString("privilege").equals("admin")){
+                                         jLabel12.setText("Status: Log in as admin");
+                                        jMenu4.setVisible(true);
+                                           jMenu3.setVisible(true);
+                                            jMenu12.setVisible(true);
+                                            jMenu11.setVisible(true);
+                                           jMenu5.setVisible(true);
+                                               jMenu1.setVisible(true);
+                                           jMenu13.setVisible(true);
+                                           btnThemHS.setVisible(true);
+                                          BtnNhapDiem3.setVisible(true);
+                                              BtnNhapDiem2.setVisible(true);
+                                          BtnNhapDiem.setVisible(true);
+                                          BtnNhapDiem1.setVisible(true);
+                                    }
+                                    else
+                                    {
+                                        jLabel12.setText("Status: Log in as user");
+                                        jMenu4.setVisible(true);
+                                           jMenu3.setVisible(true);
+                                            jMenu12.setVisible(true);
+                                            jMenu11.setVisible(true);
+                                           jMenu5.setVisible(false);
+                                               jMenu1.setVisible(false);
+                                           jMenu13.setVisible(false);
+                                           btnThemHS.setVisible(false);
+                                          BtnNhapDiem3.setVisible(false);
+                                              BtnNhapDiem2.setVisible(false);
+                                          BtnNhapDiem.setVisible(false);
+                                          BtnNhapDiem1.setVisible(false);
+                                    }
+                                
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Password is match case.", "Login failed", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Wrong username or password.", "Login failed", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
+             
+          }catch(Exception e){
+              e.printStackTrace();
+          }
+          finally{
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
     private void QL_NamHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QL_NamHocActionPerformed
         // TODO add your handling code here:
         frmQL_NamHoc namhoc = new frmQL_NamHoc();
@@ -620,6 +722,23 @@ public class frmmain extends javax.swing.JFrame {
         KT.setVisible(true);
     }//GEN-LAST:event_jMenuItem5QL_LoaiKTActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        jMenu4.setVisible(false);
+        jMenu3.setVisible(false);
+        jMenu12.setVisible(false);
+        jMenu11.setVisible(false);
+        jMenu5.setVisible(false);
+        jMenu1.setVisible(false);
+        jMenu13.setVisible(false);
+        btnThemHS.setVisible(false);
+        BtnNhapDiem3.setVisible(false);
+        BtnNhapDiem2.setVisible(false);
+        BtnNhapDiem.setVisible(false);
+        BtnNhapDiem1.setVisible(false);
+        jLabel12.setText("Status:Log out");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -665,10 +784,12 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JMenuItem QL_NamHoc;
     private javax.swing.JButton btnThemHS;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -707,9 +828,8 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSapXepLop;
     private javax.swing.JMenuItem jMenuItemThayDoiQuyDinh;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JMenuItem mnlds;
     private javax.swing.JMenuItem mnqd;
     private javax.swing.JMenuItem mntc;

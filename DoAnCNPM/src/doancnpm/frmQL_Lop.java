@@ -5,19 +5,78 @@
  */
 package doancnpm;
 
+import java.sql.DriverManager;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Elitebook
  */
 public class frmQL_Lop extends javax.swing.JInternalFrame {
 
+    ConnectDB DB=new ConnectDB();
+    private String header[] = {"MaMH","TenMH"};
+    private DefaultTableModel tblModel = new DefaultTableModel(header,0);
     /**
      * Creates new form frmQL_Lop
      */
     public frmQL_Lop() {
         initComponents();
+        loadLopFillTB();
     }
 
+    private void loadLopFillTB(){
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+
+            
+            // Câu lệnh xem dữ liệu
+            String sql = "select * from LOP ";
+            
+
+            // Tạo đối tượng thực thi câu lệnh Select
+            DB.st = DB.conn.createStatement();
+
+            // Thực thi 
+            DB.rs = DB.st.executeQuery(sql);
+            Vector data = null;
+
+            tblModel.setRowCount(0);
+        
+
+            // Trong khi chưa hết dữ liệu
+            while (DB.rs.next()) {
+                data = new Vector();
+                data.add(DB.rs.getString("MaLop"));
+                data.add(DB.rs.getString("MaKhoi"));
+                data.add(DB.rs.getString("TenLop"));
+                // Thêm một dòng vào table model
+                 tblModel.addRow(data);
+            }
+            jTable1.setModel(tblModel);
+            // Thêm dữ liệu vào table
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +103,8 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
         jButtonSua2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -63,6 +124,11 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
@@ -101,16 +167,17 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Si Số");
 
-        jTextField1.setText(" ");
-
-        jTextField2.setText(" ");
-
         jTextField3.setEditable(false);
         jTextField3.setText(" ");
 
         jButtonThem2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonThem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
         jButtonThem2.setText("THÊM");
+        jButtonThem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThem2ActionPerformed(evt);
+            }
+        });
 
         jButtonSua2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSua2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
@@ -167,6 +234,8 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        jLabel6.setText("Mã Khối");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -174,21 +243,25 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                            .addComponent(jTextField2))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                    .addComponent(jTextField2)
+                                    .addComponent(jTextField4))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -206,9 +279,13 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -223,8 +300,9 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(38, 38, 38))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,7 +317,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -247,41 +325,163 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
 
     private void jButtonSua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSua2ActionPerformed
         // TODO add your handling code here:
+               int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel(); 
+        String key=model.getValueAt(index,0).toString();
+        String delete="DELETE FROM LOP  WHERE MaLop='"+key+"'";
+
+       try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           
+           DB.ps = DB.conn.prepareStatement(delete);
+ 
+           
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Delete successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadLopFillTB();
     }//GEN-LAST:event_jButtonSua2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            int index=jTable1.getSelectedRow();
+            String value = jTable1.getModel().getValueAt(index, 0).toString();
+            String update2 = "UPDATE LOP SET MaLop=?,MaKhoi=?,TenLop=? where MaLop='"+value+"'";
+
+  
+             DB.ps = DB.conn.prepareStatement(update2);
+            
+           DB.ps.setString(1,jTextField1.getText());
+           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setString(3,jTextField4.getText());
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Update successed");
+            }
+          
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        loadLopFillTB();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonThem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThem2ActionPerformed
+        // TODO add your handling code here:
+          loadLopFillTB();
+        String insert = "INSERT INTO LOP (MaLop,MaKhoi,TenLop) VALUES(?,?,?)";//fix
+
+        try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           DB.ps = DB.conn.prepareStatement(insert);
+
+           DB.ps.setString(1,jTextField1.getText());
+            DB.ps.setString(2,jTextField4.getText());
+           DB.ps.setString(3,jTextField2.getText());
+          
+         
+            
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Insert successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+       loadLopFillTB();
+    }//GEN-LAST:event_jButtonThem2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel();
+        
+        
+        jTextField1.setText (model.getValueAt(index,0).toString());
+        jTextField2.setText (model.getValueAt(index,1).toString());
+        jTextField4.setText (model.getValueAt(index,3).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButtonSua;
-    private javax.swing.JButton jButtonSua1;
     private javax.swing.JButton jButtonSua2;
-    private javax.swing.JButton jButtonThem;
-    private javax.swing.JButton jButtonThem1;
     private javax.swing.JButton jButtonThem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

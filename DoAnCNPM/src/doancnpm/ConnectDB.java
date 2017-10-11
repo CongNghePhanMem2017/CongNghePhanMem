@@ -22,7 +22,7 @@ public class ConnectDB {
     ResultSet rs = null;
     Vector data = null;
 
-    String dbURL = "jdbc:sqlserver://localhost\\MSSQLSEVER:1433;databaseName=DB_DO_AN_QLHS;user=sa;password=sa";
+    String dbURL = "jdbc:sqlserver://localhost\\MSSQLSERVER:1433;databaseName=DB_DOAN_QLHS;user=sa;password=sa";
 
             
 }
