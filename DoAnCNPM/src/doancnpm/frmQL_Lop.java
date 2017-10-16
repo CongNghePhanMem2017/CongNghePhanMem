@@ -18,7 +18,7 @@ import javax.swing.table.TableModel;
 public class frmQL_Lop extends javax.swing.JInternalFrame {
 
     ConnectDB DB=new ConnectDB();
-    private String header[] = {"MaMH","TenMH"};
+    private String header[] = {"MaLop","TenLop","MaKhoi"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
     /**
      * Creates new form frmQL_Lop
@@ -51,8 +51,9 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             while (DB.rs.next()) {
                 data = new Vector();
                 data.add(DB.rs.getString("MaLop"));
-                data.add(DB.rs.getString("MaKhoi"));
+               
                 data.add(DB.rs.getString("TenLop"));
+                data.add(DB.rs.getString("MaKhoi"));
                 // Thêm một dòng vào table model
                  tblModel.addRow(data);
             }
@@ -373,7 +374,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index=jTable1.getSelectedRow();
             String value = jTable1.getModel().getValueAt(index, 0).toString();
-            String update2 = "UPDATE LOP SET MaLop=?,MaKhoi=?,TenLop=? where MaLop='"+value+"'";
+            String update2 = "UPDATE LOP SET MaLop=?,TenLop=?,MaKhoi=? where MaLop='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
@@ -458,7 +459,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
         
         jTextField1.setText (model.getValueAt(index,0).toString());
         jTextField2.setText (model.getValueAt(index,1).toString());
-        jTextField4.setText (model.getValueAt(index,3).toString());
+        jTextField4.setText (model.getValueAt(index,2).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
 

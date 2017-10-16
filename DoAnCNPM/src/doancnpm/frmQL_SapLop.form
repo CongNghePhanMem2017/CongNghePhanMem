@@ -350,9 +350,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtHoTen">
-          <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxKhoi">
           <Properties>
@@ -394,9 +391,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDiaChi">
-          <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
@@ -404,9 +398,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmail">
-          <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
@@ -414,13 +405,10 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNgaySinh">
-          <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGioiTinh">
           <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
@@ -430,7 +418,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtMaNamHoc">
           <Properties>
-            <Property name="text" type="java.lang.String" value=" "/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">

@@ -568,9 +568,9 @@ public class frmmain extends javax.swing.JFrame {
 
     private void mnqdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnqdActionPerformed
         // TODO add your handling code here:
-        frmQuyDinh qd = new frmQuyDinh();
-        jDesktopPane1.add(qd);
-        qd.setVisible(true);
+        TacVu_NhapDiem diem = new TacVu_NhapDiem();
+        jDesktopPane1.add(diem);
+        diem.setVisible(true);
     }//GEN-LAST:event_mnqdActionPerformed
 
     private void mnttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnttActionPerformed
@@ -605,7 +605,7 @@ public class frmmain extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Username and password must not empty.", "Invalid", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-         System.out.println(jPasswordField2.getPassword());
+        
           try{
               DB.conn = DriverManager.getConnection(DB.dbURL);
               String sql = "select * from AccountManage where username='"+jTextField1.getText()+"'";

@@ -57,8 +57,8 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
 
             // Thực thi 
             DB.rs = DB.st.executeQuery(sql);
-//            Vector data = null;
-//            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
+            Vector data = null;
+            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
 
             // Nếu sách không tồn tại
             if (DB.rs.isBeforeFirst() == false) {
@@ -71,11 +71,11 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
 //                data = new Vector();
 //                data.add(DB.rs.getString("MANH"));
 //                cmbModel.addElement(data);
-                    String manh=DB.rs.getString("MANH");
-                    jComboBoxNamHoc.addItem(manh);
+                    String namhoc=DB.rs.getString("MANH");
+                    jComboBoxNamHoc.addItem(namhoc);
             }
 
-             //jComboBoxNamHoc.setModel(cmbModel);
+           //  jComboBoxNamHoc.setModel(cmbModel);
 
             
         } catch (Exception e) {
@@ -109,8 +109,8 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
 
             // Thực thi 
             DB.rs = DB.st.executeQuery(sql);
-//            Vector data = null;
-//            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
+            Vector data = null;
+            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
 
             // Nếu sách không tồn tại
             if (DB.rs.isBeforeFirst() == false) {
@@ -130,7 +130,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                     jComboBoxKhoi.addItem(makhoi);
             }
 
-           //  jComboBoxKhoi.setModel(cmbModel);
+//             jComboBoxKhoi.setModel(cmbModel);
 
             
         } catch (Exception e) {
@@ -275,6 +275,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel2.setText("Họ và tên:");
 
+        txtMaHS.setEditable(false);
         txtMaHS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaHSActionPerformed(evt);
@@ -526,18 +527,18 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index=jTable2.getSelectedRow();
             String value = jTable2.getModel().getValueAt(index, 0).toString();
-            String update = "UPDATE TIEPNHAN_HS SET MaHocSinh=?,MANH=?,MaKhoi=?,HoTen=?,GioiTinh=?,NgaySinh=?,DiaChi=?,Email=? where MaHocSinh="+value;
+            String update = "UPDATE TIEPNHAN_HS SET MANH=?,MaKhoi=?,HoTen=?,GioiTinh=?,NgaySinh=?,DiaChi=?,Email=? where MaHocSinh="+value;
             
              DB.ps = DB.conn.prepareStatement(update);
             
-           DB.ps.setString(1,txtMaHS.getText());
-           DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
-           DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
-           DB.ps.setString(4, txtHoTen.getText());
-           DB.ps.setString(5, (String)cbbGioiTinh.getSelectedItem());
-           DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooser1.getDate()));
-           DB.ps.setString(7, txtDiaChi.getText());
-           DB.ps.setString(8, txtEmail.getText());
+           //DB.ps.setString(1,txtMaHS.getText());
+           DB.ps.setString(1, (jComboBoxNamHoc.getSelectedItem().toString()));
+           DB.ps.setString(2, (jComboBoxKhoi.getSelectedItem().toString()));
+           DB.ps.setString(3, txtHoTen.getText());
+           DB.ps.setString(4, (String)cbbGioiTinh.getSelectedItem());
+           DB.ps.setDate(5, convertUtilDateToSqlDate(jDateChooser1.getDate()));
+           DB.ps.setString(6, txtDiaChi.getText());
+           DB.ps.setString(7, txtEmail.getText());
           // DB.ps.setString(9, txtGhiChu.getText());
             
             
@@ -617,7 +618,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
         loadHSFillTB();
-        String insert = "INSERT INTO TIEPNHAN_HS (MaHocSinh,MANH,MaKhoi,HoTen,GioiTinh,NgaySinh,DiaChi,Email) VALUES(?,?,?,?,?,?,?,?)";//fix
+        String insert = "INSERT INTO TIEPNHAN_HS (MANH,MaKhoi,HoTen,GioiTinh,NgaySinh,DiaChi,Email) VALUES(?,?,?,?,?,?,?)";//fix
         int index = jComboBoxNamHoc.getSelectedIndex();
         int index1 = jComboBoxKhoi.getSelectedIndex();
         
@@ -629,14 +630,14 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           DB.ps.setString(1,txtMaHS.getText());
-           DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
-           DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
-           DB.ps.setString(4, txtHoTen.getText());
-           DB.ps.setString(5, (String)cbbGioiTinh.getSelectedItem());
-           DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooser1.getDate()));
-           DB.ps.setString(7, txtDiaChi.getText());
-           DB.ps.setString(8, txtEmail.getText());
+           //DB.ps.setString(1,txtMaHS.getText());
+           DB.ps.setString(1, (jComboBoxNamHoc.getSelectedItem().toString()));
+           DB.ps.setString(2, (jComboBoxKhoi.getSelectedItem().toString()));
+           DB.ps.setString(3, txtHoTen.getText());
+           DB.ps.setString(4, (String)cbbGioiTinh.getSelectedItem());
+           DB.ps.setDate(5, convertUtilDateToSqlDate(jDateChooser1.getDate()));
+           DB.ps.setString(6, txtDiaChi.getText());
+           DB.ps.setString(7, txtEmail.getText());
           // DB.ps.setString(9, txtGhiChu.getText());
             
 

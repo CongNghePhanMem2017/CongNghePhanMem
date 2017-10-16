@@ -120,8 +120,6 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Họ Và Tên ");
 
-        txtHoTen.setText(" ");
-
         jComboBoxKhoi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxKhoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,21 +135,15 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel12.setText("Địa Chỉ");
 
-        txtDiaChi.setText(" ");
-
         jLabel13.setText("Email");
-
-        txtEmail.setText(" ");
 
         jLabel14.setText("Ngày Sinh");
 
-        txtNgaySinh.setText(" ");
-
-        txtGioiTinh.setText(" ");
+        txtGioiTinh.setToolTipText("");
 
         jLabel15.setText("Năm Học");
 
-        txtMaNamHoc.setText(" ");
+        txtMaNamHoc.setToolTipText("");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setText("Mã Lớp");
@@ -517,7 +509,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 data.add(DB.rs.getString("MaHocSinh"));
                // data.add(rs.getString("MaKhoi"));
                 data.add(DB.rs.getString("MANH"));
-                data.add(DB.rs.getString("MaKhoi"));
+               // data.add(DB.rs.getString("MaKhoi"));
                 data.add(DB.rs.getString("HoTen"));
                 data.add(DB.rs.getString("GioiTinh"));
                 data.add(DB.rs.getString("NgaySinh"));
