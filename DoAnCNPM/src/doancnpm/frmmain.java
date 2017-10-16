@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Graphics;
 import java.sql.DriverManager;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /**
@@ -77,6 +79,7 @@ public class frmmain extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        Jbt_TinhDiem = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnThemHS = new javax.swing.JButton();
         BtnNhapDiem3 = new javax.swing.JButton();
@@ -104,7 +107,7 @@ public class frmmain extends javax.swing.JFrame {
         mnqd = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        mntkm = new javax.swing.JMenuItem();
+        jMenuItemBaoCaoTongKetMon = new javax.swing.JMenuItem();
         mntkhk = new javax.swing.JMenuItem();
         jMenu13 = new javax.swing.JMenu();
         jMenuItemThayDoiQuyDinh = new javax.swing.JMenuItem();
@@ -251,6 +254,15 @@ public class frmmain extends javax.swing.JFrame {
         jLabel11.setText("-Trương Thành Phát");
         jDesktopPane1.add(jLabel11);
         jLabel11.setBounds(290, 240, 162, 22);
+
+        Jbt_TinhDiem.setText("Tinh Điểm");
+        Jbt_TinhDiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Jbt_TinhDiemActionPerformed(evt);
+            }
+        });
+        jDesktopPane1.add(Jbt_TinhDiem);
+        Jbt_TinhDiem.setBounds(320, 300, 110, 50);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
@@ -428,13 +440,13 @@ public class frmmain extends javax.swing.JFrame {
 
         jMenu1.setText("Lập Báo Cáo");
 
-        mntkm.setText("Tổng kết môn");
-        mntkm.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemBaoCaoTongKetMon.setText("Tổng kết môn");
+        jMenuItemBaoCaoTongKetMon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mntkmActionPerformed(evt);
+                jMenuItemBaoCaoTongKetMonActionPerformed(evt);
             }
         });
-        jMenu1.add(mntkm);
+        jMenu1.add(jMenuItemBaoCaoTongKetMon);
 
         mntkhk.setText("Tổng kết học kỳ");
         mntkhk.addActionListener(new java.awt.event.ActionListener() {
@@ -533,9 +545,7 @@ public class frmmain extends javax.swing.JFrame {
 
     private void mntcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mntcActionPerformed
         // TODO add your handling code here:
-        frmDanhSachHS dshs = new frmDanhSachHS();
-        jDesktopPane1.add(dshs);
-        dshs.setVisible(true);
+     
     }//GEN-LAST:event_mntcActionPerformed
 
     private void QL_LopHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QL_LopHocActionPerformed
@@ -552,25 +562,25 @@ public class frmmain extends javax.swing.JFrame {
         khoi.setVisible(true);
     }//GEN-LAST:event_mnldsActionPerformed
 
-    private void mntkmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mntkmActionPerformed
+    private void jMenuItemBaoCaoTongKetMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBaoCaoTongKetMonActionPerformed
         // TODO add your handling code here:
-        frmBaoCaoMon bcm = new frmBaoCaoMon();
+        BaoCao_TongKet_Mon bcm = new BaoCao_TongKet_Mon();
         jDesktopPane1.add(bcm);
         bcm.setVisible(true);
-    }//GEN-LAST:event_mntkmActionPerformed
+    }//GEN-LAST:event_jMenuItemBaoCaoTongKetMonActionPerformed
 
     private void mntkhkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mntkhkActionPerformed
         // TODO add your handling code here:
-        frmBaoCaoHK bchk = new frmBaoCaoHK();
+        BaoCao_TongKet_HocKy bchk = new BaoCao_TongKet_HocKy();
         jDesktopPane1.add(bchk);
         bchk.setVisible(true);
     }//GEN-LAST:event_mntkhkActionPerformed
 
     private void mnqdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnqdActionPerformed
         // TODO add your handling code here:
-        TacVu_NhapDiem diem = new TacVu_NhapDiem();
-        jDesktopPane1.add(diem);
-        diem.setVisible(true);
+        TacVu_NhapDiem nhapdiem= new TacVu_NhapDiem();
+        jDesktopPane1.add(nhapdiem);
+        nhapdiem.setVisible(true);
     }//GEN-LAST:event_mnqdActionPerformed
 
     private void mnttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnttActionPerformed
@@ -605,7 +615,7 @@ public class frmmain extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Username and password must not empty.", "Invalid", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-        
+         System.out.println(jPasswordField2.getPassword());
           try{
               DB.conn = DriverManager.getConnection(DB.dbURL);
               String sql = "select * from AccountManage where username='"+jTextField1.getText()+"'";
@@ -739,6 +749,17 @@ public class frmmain extends javax.swing.JFrame {
         jLabel12.setText("Status:Log out");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void Jbt_TinhDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jbt_TinhDiemActionPerformed
+        test_Tinh_Diem diem = null;
+        try {
+            diem = new test_Tinh_Diem();
+        } catch (Exception ex) {
+            Logger.getLogger(frmmain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jDesktopPane1.add(diem);
+        diem.setVisible(true);
+    }//GEN-LAST:event_Jbt_TinhDiemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -780,6 +801,7 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JButton BtnNhapDiem1;
     private javax.swing.JButton BtnNhapDiem2;
     private javax.swing.JButton BtnNhapDiem3;
+    private javax.swing.JButton Jbt_TinhDiem;
     private javax.swing.JMenuItem QL_LopHoc;
     private javax.swing.JMenuItem QL_NamHoc;
     private javax.swing.JButton btnThemHS;
@@ -823,6 +845,7 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5QL_LoaiKT;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemBaoCaoTongKetMon;
     private javax.swing.JMenuItem jMenuItemQL_HocKy;
     private javax.swing.JMenuItem jMenuItemQl_MonHoc;
     private javax.swing.JMenuItem jMenuItemSapXepLop;
@@ -835,7 +858,6 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JMenuItem mntc;
     private javax.swing.JMenuItem mnths;
     private javax.swing.JMenuItem mntkhk;
-    private javax.swing.JMenuItem mntkm;
     private javax.swing.JMenuItem mntt;
     // End of variables declaration//GEN-END:variables
 }

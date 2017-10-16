@@ -5,6 +5,7 @@
  */
 package doancnpm;
 
+import static doancnpm.frmTiepNhanHS.convertUtilDateToSqlDate;
 import java.sql.DriverManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
     ConnectDB DB=new ConnectDB();
     private String header[] = {"MHS","Năm Học", "Họ Tên","GT", "Ngày Sinh", "Địa Chỉ", "Email","MaBangDiem","MaLop"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
+    private String header1[] = {"MaBangDiem","MaMon","MaNH","HocKy","LoaiKT","Diem"};
+    private DefaultTableModel tblModel1 = new DefaultTableModel(header1,0);
     /**
      * Creates new form TacVu_NhapDiem2
      */
@@ -36,6 +39,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         loadMHAndFillToCBBox();
         loadKTAndFillToCBBox();
         loadHKAndFillToCBBox();
+        loadBD();;
     }
 
     private void loadNamHocAndFillToCBBox(){
@@ -51,8 +55,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             // Thực thi 
             DB.rs = DB.st.executeQuery(sql);
-            Vector data = null;
-            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
+          //  Vector data = null;
+          //  DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
 
             // Nếu sách không tồn tại
             if (DB.rs.isBeforeFirst() == false) {
@@ -62,13 +66,12 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             // Trong khi chưa hết dữ liệu
             while (DB.rs.next()) {
-                data = new Vector();
-                data.add(DB.rs.getString("MANH"));
-                cmbModel.addElement(data);
+                String MonHoc = DB.rs.getString("MANH");
+                jComboBoxNamHoc.addItem(MonHoc);
 
             }
 
-             jComboBoxNamHoc.setModel(cmbModel);
+        //     jComboBoxNamHoc.setModel(cmbModel);
 
             
         } catch (Exception e) {
@@ -102,8 +105,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             // Thực thi 
             DB.rs = DB.st.executeQuery(sql);
-            Vector data = null;
-            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
+         //   Vector data = null;
+          //  DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
 
             // Nếu sách không tồn tại
             if (DB.rs.isBeforeFirst() == false) {
@@ -113,13 +116,12 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             // Trong khi chưa hết dữ liệu
             while (DB.rs.next()) {
-                data = new Vector();
-                data.add(DB.rs.getString("MaHocKy"));
-                cmbModel.addElement(data);
+                String MaLop = DB.rs.getString("MaHocKy");
+                jComboBoxHocKy.addItem(MaLop);
 
             }
 
-             jComboBoxHocKy.setModel(cmbModel);
+            // jComboBoxHocKy.setModel(cmbModel);
 
             
         } catch (Exception e) {
@@ -153,8 +155,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             // Thực thi 
             DB.rs = DB.st.executeQuery(sql);
-            Vector data = null;
-            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
+          //  Vector data = null;
+          //  DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
 
             // Nếu sách không tồn tại
             if (DB.rs.isBeforeFirst() == false) {
@@ -164,13 +166,11 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             // Trong khi chưa hết dữ liệu
             while (DB.rs.next()) {
-                data = new Vector();
-                data.add(DB.rs.getString("TenMonHoc"));
-                cmbModel.addElement(data);
-
+                String MonHoc = DB.rs.getString("MaMonHoc");
+                jComboBoxMonHoc.addItem(MonHoc);
             }
 
-             jComboBoxMonHoc.setModel(cmbModel);
+           //  jComboBoxMonHoc.setModel(cmbModel);
 
             
         } catch (Exception e) {
@@ -204,8 +204,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             // Thực thi 
             DB.rs = DB.st.executeQuery(sql);
-            Vector data = null;
-            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
+          //  Vector data = null;
+          //  DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
 
             // Nếu sách không tồn tại
             if (DB.rs.isBeforeFirst() == false) {
@@ -215,13 +215,12 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             // Trong khi chưa hết dữ liệu
             while (DB.rs.next()) {
-                data = new Vector();
-                data.add(DB.rs.getString("MaLoaiKiemTra"));
-                cmbModel.addElement(data);
+                String kt = DB.rs.getString("MaLoaiKiemTra");
+                jComboBoxLoaiKiemTra.addItem(kt);
 
             }
 
-             jComboBoxLoaiKiemTra.setModel(cmbModel);
+            //jComboBoxLoaiKiemTra.setModel(cmbModel);
 
             
         } catch (Exception e) {
@@ -397,6 +396,59 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         }
 
     }
+       private void loadBD() {
+        
+        //System.out.println(MaLop);
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            // câu lệnh xem dư liệu
+            String sql = "select * from CT_BANGDIEM";
+            // tạo đối tượng thực thi câu lênh select
+           DB.st = DB.conn.createStatement();
+            // Thực thi
+            DB.rs = DB.st.executeQuery(sql);
+            Vector data = null;
+            tblModel1.setRowCount(0);
+             // Nếu sách không tồn tại
+            if (DB.rs.isBeforeFirst() == false) {
+                JOptionPane.showMessageDialog(this, "Bang Diem is not available!");
+                return;
+            }
+            //Trong khi chưa hết dữ liệu
+            while(DB.rs.next()){
+                data = new Vector();
+                data.add(DB.rs.getInt("MaBangDiem"));
+
+                data.add(DB.rs.getString("MaMonHoc"));
+
+                data.add(DB.rs.getString("MANH"));
+                data.add(DB.rs.getString("MaHocKy"));
+                data.add(DB.rs.getString("MaLoaiKiemTra"));
+                data.add(DB.rs.getFloat("Diem"));
+
+                tblModel1.addRow(data);
+            }
+            jTableNhapDiem.setModel(tblModel1); // thêm dữ liệu vào table
+             
+        } catch (Exception e) {
+             e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -451,7 +503,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jComboBoxMonHoc = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTableNhapDiem = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDSHS = new javax.swing.JTable();
@@ -602,14 +654,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        txtMaHocSinh.setText(" ");
-
-        txtTenHocSinh.setText(" ");
-
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel14.setText("Mã Học Sinh ");
-
-        txtMaBangDiem.setText(" ");
 
         jTextField7.setText("jTextField7");
 
@@ -619,17 +665,11 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jLabel18.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel18.setText("Học Kỳ");
 
-        jComboBoxLoaiKiemTra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel19.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel19.setText("Loại Kiểm Tra");
 
-        jComboBoxHocKy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel20.setText("Điểm");
-
-        txtDiem.setText(" ");
 
         jLabel16.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel16.setText("Mã Bảng Điểm");
@@ -638,12 +678,32 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jLabel21.setText("Mã Môn Học");
 
         jButton3.setText("Clean");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("THOÁT");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("NHẬP ");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("SỬA");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -671,10 +731,6 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-
-        txtLop.setText(" ");
-
-        jComboBoxMonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -787,7 +843,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("DANH HS VỪA NHẬP ĐIỂM"));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNhapDiem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -798,7 +854,12 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jTableNhapDiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableNhapDiemMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTableNhapDiem);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -917,6 +978,175 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jTableDSHSMouseClicked
 
+    private void jTableNhapDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNhapDiemMouseClicked
+        // TODO add your handling code here:
+        String MaHS=null;
+        String Ten=null;
+        String Lop=null;
+       
+        int index = jTableNhapDiem.getSelectedRow();
+        TableModel model=jTableNhapDiem.getModel();
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            
+
+            // Câu lệnh xem dữ liệu
+            String sql = "exec fillNhapDiem "+model.getValueAt(index,0);
+
+            // Tạo đối tượng thực thi câu lệnh Select
+            DB.st = DB.conn.createStatement();
+
+            // Thực thi 
+            DB.rs = DB.st.executeQuery(sql);
+         
+            // Nếu sách không tồn tại
+            if (DB.rs.isBeforeFirst() == false) {
+                return;
+            }
+
+            // Trong khi chưa hết dữ liệu
+            while (DB.rs.next()) {
+                MaHS=DB.rs.getString("MaHocSinh").toString();
+                Ten=DB.rs.getString("HoTen");
+                Lop=DB.rs.getString("MaLop");
+                
+            }
+
+//             jComboBoxKhoi.setModel(cmbModel);
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        
+        txtMaHocSinh.setText(MaHS);
+        jComboBoxNamHoc.setSelectedItem(model.getValueAt(index,2).toString());
+        txtTenHocSinh.setText(Ten);
+        txtMaBangDiem.setText (model.getValueAt(index,0).toString());
+        jComboBoxLoaiKiemTra.setSelectedItem(model.getValueAt(index,4).toString());
+        txtDiem.setText(model.getValueAt(index,5).toString());
+        txtLop.setText (Lop);
+        jComboBoxMonHoc.setSelectedItem(model.getValueAt(index,1).toString());
+        jComboBoxHocKy.setSelectedItem(model.getValueAt(index,3).toString());  
+    }//GEN-LAST:event_jTableNhapDiemMouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        String insert = "INSERT INTO CT_BANGDIEM (MaBangDiem,MaMonHoc,MANH,MaHocKy,MaLoaiKiemTra,Diem) VALUES(?,?,?,?,?,?)";//fix        
+
+        try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           DB.ps = DB.conn.prepareStatement(insert);
+
+           //DB.ps.setString(1,txtMaHS.getText());
+           DB.ps.setInt(1, Integer.parseInt(txtMaBangDiem.getText()));
+           DB.ps.setString(2, (jComboBoxMonHoc.getSelectedItem().toString()));
+           DB.ps.setString(3, (jComboBoxNamHoc.getSelectedItem().toString()));
+           DB.ps.setString(4, (jComboBoxHocKy.getSelectedItem().toString()));
+           System.out.println(jComboBoxHocKy.getSelectedItem().toString());
+           DB.ps.setString(5,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
+           DB.ps.setFloat(6, Integer.parseInt(txtDiem.getText()));
+          // DB.ps.setString(9, txtGhiChu.getText());
+            
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Insert successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadBD();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        String insert = "update CT_BANGDIEM set MaMonHoc=?,MANH=?,MaHocKy=?,MaLoaiKiemTra=?,Diem=? where MaBangDiem=?";//fix        
+
+        try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           DB.ps = DB.conn.prepareStatement(insert);
+
+           //DB.ps.setString(1,txtMaHS.getText());
+           DB.ps.setInt(6, Integer.parseInt(txtMaBangDiem.getText()));
+           DB.ps.setString(1, (jComboBoxMonHoc.getSelectedItem().toString()));
+           DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
+           DB.ps.setString(3, (jComboBoxHocKy.getSelectedItem().toString()));
+           DB.ps.setString(4,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
+           DB.ps.setFloat(5, Integer.parseInt(txtDiem.getText()));
+          // DB.ps.setString(9, txtGhiChu.getText());
+            
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Update successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadBD();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        txtMaBangDiem.setText("");
+        txtLop.setText("");
+        txtDiem.setText("");
+        txtMaHocSinh.setText("");
+        txtTenHocSinh.setText("");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -958,8 +1188,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTableDSHS;
+    private javax.swing.JTable jTableNhapDiem;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField7;

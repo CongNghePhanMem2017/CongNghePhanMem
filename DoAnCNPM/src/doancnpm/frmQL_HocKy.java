@@ -374,7 +374,7 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
               DB.st = DB.conn.createStatement();
               
                 DB.rs = DB.st.executeQuery(sql);
-                 DB.rs = DB.st.executeQuery(sql);
+                // DB.rs = DB.st.executeQuery(sql);
                  
                  Vector data = null;
                      model.setRowCount(0);

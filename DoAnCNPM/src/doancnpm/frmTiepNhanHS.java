@@ -619,11 +619,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         loadHSFillTB();
         String insert = "INSERT INTO TIEPNHAN_HS (MANH,MaKhoi,HoTen,GioiTinh,NgaySinh,DiaChi,Email) VALUES(?,?,?,?,?,?,?)";//fix
-        int index = jComboBoxNamHoc.getSelectedIndex();
-        int index1 = jComboBoxKhoi.getSelectedIndex();
-        
-//        Vector item = (Vector)jComboBoxNamHoc.getSelectedItem();
-//        Vector item1 = (Vector)jComboBoxKhoi.getSelectedItem();
+
        
         
         try {
