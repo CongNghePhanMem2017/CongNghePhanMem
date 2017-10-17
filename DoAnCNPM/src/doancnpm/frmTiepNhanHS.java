@@ -40,7 +40,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         initComponents();
         loadNamHocAndFillToCBBox();
         loadKhoiAndFillToCBBox();
-        jTable2.setModel(tblModel);
+        jtbTiepNhanHS.setModel(tblModel);
         loadHSFillTB();
     }
 
@@ -258,7 +258,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jtbTiepNhanHS = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("Quản Lý Học Sinh thpt Giồng Giềng");
@@ -463,7 +463,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel7.setText("DANH SÁCH HS NHẬP HỌC");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jtbTiepNhanHS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -474,12 +474,12 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtbTiepNhanHS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
+                jtbTiepNhanHSMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jtbTiepNhanHS);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -525,8 +525,8 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
-            int index=jTable2.getSelectedRow();
-            String value = jTable2.getModel().getValueAt(index, 0).toString();
+            int index=jtbTiepNhanHS.getSelectedRow();
+            String value = jtbTiepNhanHS.getModel().getValueAt(index, 0).toString();
             String update = "UPDATE TIEPNHAN_HS SET MANH=?,MaKhoi=?,HoTen=?,GioiTinh=?,NgaySinh=?,DiaChi=?,Email=? where MaHocSinh="+value;
             
              DB.ps = DB.conn.prepareStatement(update);
@@ -580,8 +580,8 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
 
     private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
         // TODO add your handling code here:
-        int index = jTable2.getSelectedRow();
-        TableModel model=jTable2.getModel(); 
+        int index = jtbTiepNhanHS.getSelectedRow();
+        TableModel model=jtbTiepNhanHS.getModel(); 
         String key=model.getValueAt(index,0).toString();
         String delete="DELETE FROM TIEPNHAN_HS WHERE MaHocSinh="+key;
        try {
@@ -663,10 +663,10 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         loadHSFillTB();
     }//GEN-LAST:event_jButtonThemActionPerformed
 
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+    private void jtbTiepNhanHSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbTiepNhanHSMouseClicked
         // TODO add your handling code here:
-        int index = jTable2.getSelectedRow();
-        TableModel model=jTable2.getModel();
+        int index = jtbTiepNhanHS.getSelectedRow();
+        TableModel model=jtbTiepNhanHS.getModel();
         
         
         txtMaHS.setText (model.getValueAt(index,0).toString());
@@ -683,7 +683,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         txtDiaChi.setText (model.getValueAt(index,6).toString());
         txtEmail.setText (model.getValueAt(index,7).toString());
         
-    }//GEN-LAST:event_jTable2MouseClicked
+    }//GEN-LAST:event_jtbTiepNhanHSMouseClicked
 
     private void CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanActionPerformed
         // TODO add your handling code here:
@@ -718,7 +718,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jtbTiepNhanHS;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoTen;
