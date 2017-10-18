@@ -342,8 +342,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         }
          Vector item = (Vector) jComboBoxMaLop.getSelectedItem();
          String MaLop = (item.get(0).toString());
-        int k = 0;
-        //System.out.println(MaLop);
+
+
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dư liệu
@@ -394,12 +394,17 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
     }
        private void loadBD() {
-        
-        //System.out.println(MaLop);
+        int index = jComboBoxMaLop.getSelectedIndex();
+        if (index < 0) {
+            return;
+        }
+         Vector item = (Vector) jComboBoxMaLop.getSelectedItem();
+         String MaLop = (item.get(0).toString());
+
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dư liệu
-            String sql = "select * from CT_BANGDIEM";
+            String sql = "exec FillBDFromLop '"+MaLop+"'";
             // tạo đối tượng thực thi câu lênh select
            DB.st = DB.conn.createStatement();
             // Thực thi
@@ -493,7 +498,6 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -652,8 +656,14 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        txtMaHocSinh.setEditable(false);
+
+        txtTenHocSinh.setEditable(false);
+
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel14.setText("Mã Học Sinh ");
+
+        txtMaBangDiem.setEditable(false);
 
         jTextField7.setText("jTextField7");
 
@@ -674,13 +684,6 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel21.setText("Mã Môn Học");
-
-        jButton3.setText("Clean");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jButton5.setText("THOÁT");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -712,23 +715,22 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        txtLop.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -917,28 +919,30 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -962,6 +966,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
     private void jComboBoxMaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMaLopActionPerformed
         // TODO add your handling code here:
         loadHSbyLop();
+        loadBD();
     }//GEN-LAST:event_jComboBoxMaLopActionPerformed
 
     private void jTableDSHSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDSHSMouseClicked
@@ -1045,20 +1050,19 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jTableNhapDiemMouseClicked
 
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        String insert = "INSERT INTO CT_BANGDIEM (MaBangDiem,MaMonHoc,MaHocKy,MaLoaiKiemTra,Diem) VALUES(?,?,?,?,?)";//fix        
+        
+        String insert = "INSERT INTO CT_BANGDIEM (MaBangDiem,MaMonHoc,MaHocKy,MaLoaiKiemTra,Diem) VALUES(?,?,?,?,?)";    
 
         try {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           //DB.ps.setString(1,txtMaHS.getText());
-           DB.ps.setInt(1, Integer.parseInt(txtMaBangDiem.getText()));
+           DB.ps.setString(1, txtMaBangDiem.getText());
            DB.ps.setString(2, (jComboBoxMonHoc.getSelectedItem().toString()));
-          // DB.ps.setString(3, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxHocKy.getSelectedItem().toString()));
-           System.out.println(jComboBoxHocKy.getSelectedItem().toString());
            DB.ps.setString(4,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
            DB.ps.setFloat(5, Integer.parseInt(txtDiem.getText()));
             
@@ -1087,6 +1091,11 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             }
         }
         loadBD();
+        txtMaBangDiem.setText("");
+        txtLop.setText("");
+        txtDiem.setText("");
+        txtMaHocSinh.setText("");
+        txtTenHocSinh.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1133,15 +1142,6 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         loadBD();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        txtMaBangDiem.setText("");
-        txtLop.setText("");
-        txtDiem.setText("");
-        txtMaHocSinh.setText("");
-        txtTenHocSinh.setText("");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -1151,7 +1151,6 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
