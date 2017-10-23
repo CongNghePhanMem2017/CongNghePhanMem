@@ -5,19 +5,81 @@
  */
 package doancnpm;
 
+import static doancnpm.frmTiepNhanHS.convertUtilDateToSqlDate;
+import java.sql.DriverManager;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Elitebook
  */
 public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
 
+    ConnectDB DB=new ConnectDB();
+    private String header[] = {"Mã Năm Học","Tiêu Chí","Thông Số"};
+    private DefaultTableModel tblModel = new DefaultTableModel(header,0);
     /**
      * Creates new form ThayDoiQuyDinh
      */
     public ThayDoiQuyDinh() {
         initComponents();
+        loadQDFillTB();
     }
+  private void loadQDFillTB(){
 
+      
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+
+            
+            // Câu lệnh xem dữ liệu
+            String sql = "select * from QUYDINH ";
+            
+
+            // Tạo đối tượng thực thi câu lệnh Select
+            DB.st = DB.conn.createStatement();
+
+            // Thực thi 
+            DB.rs = DB.st.executeQuery(sql);
+            Vector data = null;
+
+            tblModel.setRowCount(0);
+        
+
+            // Trong khi chưa hết dữ liệu
+            while (DB.rs.next()) {
+                data = new Vector();
+                data.add(DB.rs.getString("MaQuyDinh"));
+                data.add(DB.rs.getString("TenQuyDinh"));
+                data.add(DB.rs.getString("ThongSo"));
+                // Thêm một dòng vào table model
+                 tblModel.addRow(data);
+            }
+
+            // Thêm dữ liệu vào table
+            jTable1.setModel(tblModel);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,15 +102,16 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jThem = new javax.swing.JButton();
+        jXoa = new javax.swing.JButton();
+        jSua = new javax.swing.JButton();
+        jthoat = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setClosable(true);
         setTitle("Thay Đổi Quy Đinh");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -74,8 +137,6 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
         jLabel4.setText("THAY ĐỔI");
 
         jLabel5.setText("Mã Năm Học");
-
-        jTextField1.setText(" ");
 
         jLabel6.setText("Tên Tiêu Chí");
 
@@ -120,18 +181,33 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Thêm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jThem.setText("Thêm");
+        jThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jThemActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Xóa");
+        jXoa.setText("Xóa");
+        jXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXoaActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Sửa");
+        jSua.setText("Sửa");
+        jSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSuaActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Thoát");
+        jthoat.setText("Thoát");
+        jthoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jthoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -140,23 +216,23 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jthoat, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                    .addComponent(jSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jthoat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -204,6 +280,11 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                 "Mã Năm Học", "Tên Tiêu Chí", "Thông Số"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -265,16 +346,144 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jThemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+          loadQDFillTB();
+        String insert = "INSERT INTO QUYDINH (MaQuyDinh,TenQuyDinh,ThongSo) VALUES(?,?,?)";//fix
+        try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           DB.ps = DB.conn.prepareStatement(insert);
+
+           DB.ps.setString(1,jTextField1.getText());
+           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setInt(3,Integer.parseInt(jTextField3.getText()));
+            
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Insert successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadQDFillTB();
+    }//GEN-LAST:event_jThemActionPerformed
+
+    private void jSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSuaActionPerformed
+        // TODO add your handling code here:
+            try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            int index=jTable1.getSelectedRow();
+            String value = jTable1.getModel().getValueAt(index, 0).toString();
+            String update2 = "UPDATE QUYDINH SET MaQuyDinh=?,TenQuyDinh=?,ThongSo=? where MaQuyDinh='"+value+"'";
+
+  
+             DB.ps = DB.conn.prepareStatement(update2);
+            
+           DB.ps.setString(1,jTextField1.getText());
+           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setInt(3,Integer.parseInt(jTextField3.getText()));
+
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Update successed");
+            }
+          
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        loadQDFillTB();
+    }//GEN-LAST:event_jSuaActionPerformed
+
+    private void jXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXoaActionPerformed
+
+      // TODO add your handling code here:
+            int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel(); 
+        String key=model.getValueAt(index,0).toString();
+        String delete="DELETE FROM QUYDINH  WHERE MaQuyDinh='"+key+"'";
+
+       try {
+           DB.conn = DriverManager.getConnection(DB.dbURL);
+           
+           DB.ps = DB.conn.prepareStatement(delete);
+ 
+           
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(null, "Delete successed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+
+                if (DB.ps != null) {
+                    DB.ps.close();
+                }
+            } catch (Exception ex2) {
+                ex2.printStackTrace();
+            }
+        }
+        loadQDFillTB();
+    }//GEN-LAST:event_jXoaActionPerformed
+
+    private void jthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jthoatActionPerformed
+        // TODO add your handling code here:
+          dispose();
+    }//GEN-LAST:event_jthoatActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int index = jTable1.getSelectedRow();
+        TableModel model=jTable1.getModel();
+        
+        
+        jTextField1.setText (model.getValueAt(index,0).toString());
+        jTextField2.setText (model.getValueAt(index,1).toString());
+        jTextField3.setText (model.getValueAt(index,2).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -288,9 +497,13 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jSua;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton jThem;
+    private javax.swing.JButton jXoa;
+    private javax.swing.JButton jthoat;
     // End of variables declaration//GEN-END:variables
 }

@@ -527,7 +527,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index=jtbTiepNhanHS.getSelectedRow();
             String value = jtbTiepNhanHS.getModel().getValueAt(index, 0).toString();
-            String update = "UPDATE TIEPNHAN_HS SET MANH=?,MaKhoi=?,HoTen=?,GioiTinh=?,NgaySinh=?,DiaChi=?,Email=? where MaHocSinh="+value;
+            String update = "UPDATE TIEPNHAN_HS SET MANH=?,MaKhoi=?,HoTen=?,GioiTinh=?,NgaySinh=?,DiaChi=?,Email=? where MaHocSinh='"+value+"'";
             
              DB.ps = DB.conn.prepareStatement(update);
             
@@ -583,7 +583,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         int index = jtbTiepNhanHS.getSelectedRow();
         TableModel model=jtbTiepNhanHS.getModel(); 
         String key=model.getValueAt(index,0).toString();
-        String delete="DELETE FROM TIEPNHAN_HS WHERE MaHocSinh="+key;
+        String delete="DELETE FROM TIEPNHAN_HS WHERE MaHocSinh='"+key+"'";
        try {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(delete);
@@ -618,7 +618,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
         loadHSFillTB();
-        String insert = "INSERT INTO TIEPNHAN_HS (MANH,MaKhoi,HoTen,GioiTinh,NgaySinh,DiaChi,Email) VALUES(?,?,?,?,?,?,?)";//fix
+        String insert = "INSERT INTO TIEPNHAN_HS (MaHocSinh,MANH,MaKhoi,HoTen,GioiTinh,NgaySinh,DiaChi,Email) VALUES(?,?,?,?,?,?,?,?)";//fix
 
        
         
@@ -627,13 +627,14 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            DB.ps = DB.conn.prepareStatement(insert);
 
            //DB.ps.setString(1,txtMaHS.getText());
-           DB.ps.setString(1, (jComboBoxNamHoc.getSelectedItem().toString()));
-           DB.ps.setString(2, (jComboBoxKhoi.getSelectedItem().toString()));
-           DB.ps.setString(3, txtHoTen.getText());
-           DB.ps.setString(4, (String)cbbGioiTinh.getSelectedItem());
-           DB.ps.setDate(5, convertUtilDateToSqlDate(jDateChooser1.getDate()));
-           DB.ps.setString(6, txtDiaChi.getText());
-           DB.ps.setString(7, txtEmail.getText());
+           DB.ps.setString(1,"");
+           DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
+           DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
+           DB.ps.setString(4, txtHoTen.getText());
+           DB.ps.setString(5, (String)cbbGioiTinh.getSelectedItem());
+           DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooser1.getDate()));
+           DB.ps.setString(7, txtDiaChi.getText());
+           DB.ps.setString(8, txtEmail.getText());
           // DB.ps.setString(9, txtGhiChu.getText());
             
 

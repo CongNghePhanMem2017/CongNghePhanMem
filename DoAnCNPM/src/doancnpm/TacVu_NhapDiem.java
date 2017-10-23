@@ -1064,7 +1064,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
            DB.ps.setString(2, (jComboBoxMonHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxHocKy.getSelectedItem().toString()));
            DB.ps.setString(4,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
-           DB.ps.setFloat(5, Integer.parseInt(txtDiem.getText()));
+           DB.ps.setFloat(5, Float.parseFloat(txtDiem.getText()));
             
 
             int ret = DB.ps.executeUpdate();
