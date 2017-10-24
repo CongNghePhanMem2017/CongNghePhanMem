@@ -71,7 +71,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu4ActionPerformed"/>
           </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAdmin">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Admin"/>
               </Properties>
@@ -97,12 +97,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemQl_MonHocActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="QL_LopHoc">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemQl_LopHoc">
               <Properties>
                 <Property name="text" type="java.lang.String" value="QL_L&#x1edb;p"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="QL_LopHocActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemQl_LopHocActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemQL_HocKy">
@@ -113,28 +113,28 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemQL_HocKyActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnlds">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemQl_Khoi">
               <Properties>
                 <Property name="text" type="java.lang.String" value="QL_ Kh&#x1ed1;i "/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnldsActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemQl_KhoiActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="QL_NamHoc">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemQL_NamHoc">
               <Properties>
                 <Property name="text" type="java.lang.String" value="QL_N&#x103;m H&#x1ecd;c"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="QL_NamHocActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemQL_NamHocActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5QL_LoaiKT">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemQL_LoaiKT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="QL_Ki&#x1ec3;m Tra"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5QL_LoaiKTActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemQL_LoaiKTActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -144,20 +144,20 @@
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; H&#x1ecd;c Sinh"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnths">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTNHS">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ti&#x1ebf;p Nh&#x1ead;n H&#x1ecd;c Sinh"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnthsActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTNHSActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mntc">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTCHS">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tra C&#x1ee9;u H&#x1ed3; S&#x1a1; HS "/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mntcActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTCHSActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -175,12 +175,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSapXepLopActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemLenLop">
               <Properties>
                 <Property name="text" type="java.lang.String" value="L&#xea;n L&#x1edb;p"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemChuyenLop">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Chuy&#x1ec3;n L&#x1edb;p"/>
               </Properties>
@@ -192,15 +192,15 @@
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; &#x110;i&#x1ec3;m"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnqd">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemNhapDiem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nh&#x1ead;p &#x110;i&#x1ec3;m"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnqdActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemNhapDiemActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTraCuu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tra C&#x1ee9;u"/>
               </Properties>
@@ -220,12 +220,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemBaoCaoTongKetMonActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mntkhk">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTKHK">
               <Properties>
                 <Property name="text" type="java.lang.String" value="T&#x1ed5;ng k&#x1ebf;t h&#x1ecd;c k&#x1ef3;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mntkhkActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTKHKActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -253,17 +253,17 @@
             <Property name="text" type="java.lang.String" value="About"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mntt">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTTNPT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin nh&#xf3;m ph&#xe1;t tri&#x1ec3;n"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnttActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTTNPTActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu10">
+        <Menu class="javax.swing.JMenu" name="jMenuHelp">
           <Properties>
             <Property name="text" type="java.lang.String" value="Help"/>
           </Properties>
@@ -300,16 +300,16 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnThemHS" min="-2" pref="132" max="-2" attributes="0"/>
-                          <Component id="BtnNhapDiem2" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnNhapDiem1" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="jButtonTiepNhan" min="-2" pref="132" max="-2" attributes="0"/>
+                          <Component id="jButtonNhapDiem" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonQuyDInh" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="BtnNhapDiem" alignment="1" min="-2" pref="132" max="-2" attributes="0"/>
-                          <Component id="BtnNhapDiem3" alignment="1" min="-2" pref="132" max="-2" attributes="0"/>
+                          <Component id="jButtonTongKet" alignment="1" min="-2" pref="132" max="-2" attributes="0"/>
+                          <Component id="jButtonTimKiem" alignment="1" min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -332,15 +332,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jDesktopPane1" min="-2" pref="615" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="btnThemHS" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="jButtonTiepNhan" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BtnNhapDiem3" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="jButtonTimKiem" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="BtnNhapDiem2" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="jButtonNhapDiem" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BtnNhapDiem" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="jButtonTongKet" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BtnNhapDiem1" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="jButtonQuyDInh" min="-2" pref="51" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
@@ -391,9 +391,9 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButtonLogIn" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButtonLogOut" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
@@ -420,8 +420,8 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jButtonLogIn" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jButtonLogOut" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
@@ -449,7 +449,7 @@
                 <Property name="text" type="java.lang.String" value="PassWord"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="jButtonLogIn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="3"/>
@@ -457,15 +457,15 @@
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLogInActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="jButtonLogOut">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Logout"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLogOutActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="jPasswordField2">
@@ -618,7 +618,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnThemHS">
+    <Component class="javax.swing.JButton" name="jButtonTiepNhan">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -635,10 +635,10 @@
         <Property name="text" type="java.lang.String" value="TI&#x1ebe;P NH&#x1eac;N "/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemHSActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTiepNhanActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BtnNhapDiem3">
+    <Component class="javax.swing.JButton" name="jButtonTimKiem">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -655,10 +655,10 @@
         <Property name="text" type="java.lang.String" value="T&#xcc;M KI&#x1ebe;M"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNhapDiem3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTimKiemActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BtnNhapDiem2">
+    <Component class="javax.swing.JButton" name="jButtonNhapDiem">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -675,10 +675,10 @@
         <Property name="text" type="java.lang.String" value="NH&#x1eac;P &#x110;I&#x1ec2;M"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNhapDiem2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNhapDiemActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BtnNhapDiem">
+    <Component class="javax.swing.JButton" name="jButtonTongKet">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -695,10 +695,10 @@
         <Property name="text" type="java.lang.String" value="T&#x1ed4;NG K&#x1ebe;T"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNhapDiemActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTongKetActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BtnNhapDiem1">
+    <Component class="javax.swing.JButton" name="jButtonQuyDInh">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="cc" type="rgb"/>

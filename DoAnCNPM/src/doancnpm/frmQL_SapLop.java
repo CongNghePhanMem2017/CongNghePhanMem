@@ -50,18 +50,18 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtMaHocSinh = new javax.swing.JTextField();
+        jTextFieldMaHocSinh = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        txtMaNamHoc = new javax.swing.JTextField();
-        txtGioiTinh = new javax.swing.JTextField();
+        jTextFieldMaNamHoc = new javax.swing.JTextField();
+        jTextFieldGioiTinh = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtNgaySinh = new javax.swing.JTextField();
+        jTextFieldNgaySinh = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtDiaChi = new javax.swing.JTextField();
-        txtHoTen = new javax.swing.JTextField();
+        jTextFieldDiaChi = new javax.swing.JTextField();
+        jTextFieldHoTen = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -72,9 +72,9 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jComboBoxMaLop = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButtonVaoLop = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonSua = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonThoat = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableBangDiem_HS = new javax.swing.JTable();
@@ -94,31 +94,31 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Mã Học Sinh");
 
-        txtMaHocSinh.setEditable(false);
-        txtMaHocSinh.setText(" ");
+        jTextFieldMaHocSinh.setEditable(false);
+        jTextFieldMaHocSinh.setText(" ");
 
         jLabel15.setText("Năm Học");
 
-        txtMaNamHoc.setText(" ");
+        jTextFieldMaNamHoc.setText(" ");
 
-        txtGioiTinh.setText(" ");
+        jTextFieldGioiTinh.setText(" ");
 
         jLabel11.setText("Giới Tính");
 
-        txtNgaySinh.setText(" ");
+        jTextFieldNgaySinh.setText(" ");
 
         jLabel14.setText("Ngày Sinh");
 
-        txtDiaChi.setText(" ");
+        jTextFieldDiaChi.setText(" ");
 
-        txtHoTen.setText(" ");
+        jTextFieldHoTen.setText(" ");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Họ Và Tên ");
 
         jLabel13.setText("Email");
 
-        txtEmail.setText(" ");
+        jTextFieldEmail.setText(" ");
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel12.setText("Địa Chỉ");
@@ -137,24 +137,24 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtDiaChi)
-                    .addComponent(txtEmail)
-                    .addComponent(txtHoTen)
-                    .addComponent(txtMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDiaChi)
+                    .addComponent(jTextFieldEmail)
+                    .addComponent(jTextFieldHoTen)
+                    .addComponent(jTextFieldMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(jLabel11))
                         .addGap(64, 64, 64)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMaNamHoc)
-                            .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldMaNamHoc)
+                            .addComponent(jTextFieldGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(372, 372, 372))
         );
         jPanel2Layout.setVerticalGroup(
@@ -163,27 +163,27 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel15)
-                            .addComponent(txtMaNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldMaNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)
-                        .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
-                        .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel14))
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -246,12 +246,12 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        jButton2.setText("SỬA");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSua.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
+        jButtonSua.setText("SỬA");
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonSuaActionPerformed(evt);
             }
         });
 
@@ -264,12 +264,12 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
-        jButton3.setText("THOÁT");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThoat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButtonThoat.setText("THOÁT");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonThoatActionPerformed(evt);
             }
         });
 
@@ -281,9 +281,9 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonVaoLop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jButtonThoat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                     .addComponent(jButtonDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonSua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -292,11 +292,11 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jButtonVaoLop, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -382,13 +382,11 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Lọc DS Hoc Sinh"));
@@ -669,13 +667,13 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(insert);
-            DB.ps.setString(1, txtMaHocSinh.getText());
-            DB.ps.setString(2, txtMaNamHoc.getText());
-            DB.ps.setString(3, txtHoTen.getText());
-            DB.ps.setString(4, txtGioiTinh.getText());
-            DB.ps.setString(5, txtNgaySinh.getText());
-            DB.ps.setString(6, txtDiaChi.getText());
-            DB.ps.setString(7, txtEmail.getText());
+            DB.ps.setString(1, jTextFieldMaHocSinh.getText());
+            DB.ps.setString(2, jTextFieldMaNamHoc.getText());
+            DB.ps.setString(3, jTextFieldHoTen.getText());
+            DB.ps.setString(4, jTextFieldGioiTinh.getText());
+            DB.ps.setString(5, jTextFieldNgaySinh.getText());
+            DB.ps.setString(6, jTextFieldDiaChi.getText());
+            DB.ps.setString(7, jTextFieldEmail.getText());
             //DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
             // DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
      
@@ -714,7 +712,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(insert);
              
-            DB.ps.setString(1,txtMaHocSinh.getText());
+            DB.ps.setString(1,jTextFieldMaHocSinh.getText());
             DB.ps.setString(2, jComboBoxMaLop.getSelectedItem().toString());
             DB.ps.executeUpdate();
            // if (ret != -1) {
@@ -794,13 +792,13 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jButtonVaoLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaoLopActionPerformed
         InsertFromDANHSACH_HOCSINH();
@@ -855,15 +853,15 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
     private void jTableDSHSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDSHSMouseClicked
         // Click chuộc vào
         DefaultTableModel model = (DefaultTableModel) jTableDSHS.getModel();
-        txtMaHocSinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 0).toString());
+        jTextFieldMaHocSinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 0).toString());
         // jComboBoxKhoi.setSelectedItem(model.getValueAt(jTableDSHS.getSelectedRow(),1).toString());
-        txtMaNamHoc.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 1).toString());
+        jTextFieldMaNamHoc.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 1).toString());
         jComboBoxKhoi.setSelectedItem(model.getValueAt(jTableDSHS.getSelectedRow(),2).toString());
-        txtHoTen.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 3).toString());
-        txtGioiTinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 4).toString());
-        txtNgaySinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 5).toString());
-        txtDiaChi.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 6).toString());
-        txtEmail.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 7).toString());
+        jTextFieldHoTen.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 3).toString());
+        jTextFieldGioiTinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 4).toString());
+        jTextFieldNgaySinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 5).toString());
+        jTextFieldDiaChi.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 6).toString());
+        jTextFieldEmail.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 7).toString());
     
     }//GEN-LAST:event_jTableDSHSMouseClicked
     // HÀM TÍNH TOÁN
@@ -911,9 +909,9 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
    // LOAD TOÀN BỘ DANH SÁCH HỌC SINH
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonSua;
+    private javax.swing.JButton jButtonThoat;
     private javax.swing.JButton jButtonVaoLop;
     private javax.swing.JComboBox<String> jComboBoxKhoi;
     private javax.swing.JComboBox<String> jComboBoxMaLop;
@@ -937,13 +935,13 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableBangDiem_HS;
     private javax.swing.JTable jTableDSHS;
-    private javax.swing.JTextField txtDiaChi;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtGioiTinh;
-    private javax.swing.JTextField txtHoTen;
-    private javax.swing.JTextField txtMaHocSinh;
-    private javax.swing.JTextField txtMaNamHoc;
-    private javax.swing.JTextField txtNgaySinh;
+    private javax.swing.JTextField jTextFieldDiaChi;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldGioiTinh;
+    private javax.swing.JTextField jTextFieldHoTen;
+    private javax.swing.JTextField jTextFieldMaHocSinh;
+    private javax.swing.JTextField jTextFieldMaNamHoc;
+    private javax.swing.JTextField jTextFieldNgaySinh;
     private javax.swing.JLabel txtSoLuong;
     // End of variables declaration//GEN-END:variables
 

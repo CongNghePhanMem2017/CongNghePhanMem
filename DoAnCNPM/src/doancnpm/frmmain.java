@@ -67,8 +67,8 @@ public class frmmain extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonLogIn = new javax.swing.JButton();
+        jButtonLogOut = new javax.swing.JButton();
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -81,39 +81,39 @@ public class frmmain extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         Jbt_TinhDiem = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnThemHS = new javax.swing.JButton();
-        BtnNhapDiem3 = new javax.swing.JButton();
-        BtnNhapDiem2 = new javax.swing.JButton();
-        BtnNhapDiem = new javax.swing.JButton();
-        BtnNhapDiem1 = new javax.swing.JButton();
+        jButtonTiepNhan = new javax.swing.JButton();
+        jButtonTimKiem = new javax.swing.JButton();
+        jButtonNhapDiem = new javax.swing.JButton();
+        jButtonTongKet = new javax.swing.JButton();
+        jButtonQuyDInh = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemAdmin = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemQl_MonHoc = new javax.swing.JMenuItem();
-        QL_LopHoc = new javax.swing.JMenuItem();
+        jMenuItemQl_LopHoc = new javax.swing.JMenuItem();
         jMenuItemQL_HocKy = new javax.swing.JMenuItem();
-        mnlds = new javax.swing.JMenuItem();
-        QL_NamHoc = new javax.swing.JMenuItem();
-        jMenuItem5QL_LoaiKT = new javax.swing.JMenuItem();
+        jMenuItemQl_Khoi = new javax.swing.JMenuItem();
+        jMenuItemQL_NamHoc = new javax.swing.JMenuItem();
+        jMenuItemQL_LoaiKT = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
-        mnths = new javax.swing.JMenuItem();
-        mntc = new javax.swing.JMenuItem();
+        jMenuItemTNHS = new javax.swing.JMenuItem();
+        jMenuItemTCHS = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
         jMenuItemSapXepLop = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItemLenLop = new javax.swing.JMenuItem();
+        jMenuItemChuyenLop = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        mnqd = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemNhapDiem = new javax.swing.JMenuItem();
+        jMenuItemTraCuu = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemBaoCaoTongKetMon = new javax.swing.JMenuItem();
-        mntkhk = new javax.swing.JMenuItem();
+        jMenuItemTKHK = new javax.swing.JMenuItem();
         jMenu13 = new javax.swing.JMenu();
         jMenuItemThayDoiQuyDinh = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        mntt = new javax.swing.JMenuItem();
-        jMenu10 = new javax.swing.JMenu();
+        jMenuItemTTNPT = new javax.swing.JMenuItem();
+        jMenuHelp = new javax.swing.JMenu();
 
         jMenu6.setText("File");
         jMenuBar2.add(jMenu6);
@@ -146,18 +146,18 @@ public class frmmain extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("PassWord");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLogIn.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        jButtonLogIn.setText("Login");
+        jButtonLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonLogInActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Logout");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLogOut.setText("Logout");
+        jButtonLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonLogOutActionPerformed(evt);
             }
         });
 
@@ -183,9 +183,9 @@ public class frmmain extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(jButtonLogIn)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton2)))
+                                        .addComponent(jButtonLogOut)))
                                 .addGap(0, 23, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -202,8 +202,8 @@ public class frmmain extends javax.swing.JFrame {
                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -268,55 +268,55 @@ public class frmmain extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/a_181.jpg"))); // NOI18N
 
-        btnThemHS.setBackground(new java.awt.Color(204, 204, 255));
-        btnThemHS.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnThemHS.setForeground(new java.awt.Color(0, 153, 153));
-        btnThemHS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
-        btnThemHS.setText("TIẾP NHẬN ");
-        btnThemHS.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTiepNhan.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonTiepNhan.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonTiepNhan.setForeground(new java.awt.Color(0, 153, 153));
+        jButtonTiepNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
+        jButtonTiepNhan.setText("TIẾP NHẬN ");
+        jButtonTiepNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemHSActionPerformed(evt);
+                jButtonTiepNhanActionPerformed(evt);
             }
         });
 
-        BtnNhapDiem3.setBackground(new java.awt.Color(204, 204, 255));
-        BtnNhapDiem3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        BtnNhapDiem3.setForeground(new java.awt.Color(0, 153, 153));
-        BtnNhapDiem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
-        BtnNhapDiem3.setText("TÌM KIẾM");
-        BtnNhapDiem3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTimKiem.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonTimKiem.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonTimKiem.setForeground(new java.awt.Color(0, 153, 153));
+        jButtonTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/View.png"))); // NOI18N
+        jButtonTimKiem.setText("TÌM KIẾM");
+        jButtonTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnNhapDiem3ActionPerformed(evt);
+                jButtonTimKiemActionPerformed(evt);
             }
         });
 
-        BtnNhapDiem2.setBackground(new java.awt.Color(204, 204, 255));
-        BtnNhapDiem2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        BtnNhapDiem2.setForeground(new java.awt.Color(0, 153, 153));
-        BtnNhapDiem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Create.png"))); // NOI18N
-        BtnNhapDiem2.setText("NHẬP ĐIỂM");
-        BtnNhapDiem2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNhapDiem.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonNhapDiem.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonNhapDiem.setForeground(new java.awt.Color(0, 153, 153));
+        jButtonNhapDiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Create.png"))); // NOI18N
+        jButtonNhapDiem.setText("NHẬP ĐIỂM");
+        jButtonNhapDiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnNhapDiem2ActionPerformed(evt);
+                jButtonNhapDiemActionPerformed(evt);
             }
         });
 
-        BtnNhapDiem.setBackground(new java.awt.Color(204, 204, 255));
-        BtnNhapDiem.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        BtnNhapDiem.setForeground(new java.awt.Color(0, 153, 153));
-        BtnNhapDiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Hourglass.png"))); // NOI18N
-        BtnNhapDiem.setText("TỔNG KẾT");
-        BtnNhapDiem.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTongKet.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonTongKet.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonTongKet.setForeground(new java.awt.Color(0, 153, 153));
+        jButtonTongKet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Hourglass.png"))); // NOI18N
+        jButtonTongKet.setText("TỔNG KẾT");
+        jButtonTongKet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnNhapDiemActionPerformed(evt);
+                jButtonTongKetActionPerformed(evt);
             }
         });
 
-        BtnNhapDiem1.setBackground(new java.awt.Color(204, 204, 255));
-        BtnNhapDiem1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        BtnNhapDiem1.setForeground(new java.awt.Color(0, 153, 153));
-        BtnNhapDiem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Danger.png"))); // NOI18N
-        BtnNhapDiem1.setText("QUY ĐỊNH");
+        jButtonQuyDInh.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonQuyDInh.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonQuyDInh.setForeground(new java.awt.Color(0, 153, 153));
+        jButtonQuyDInh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Danger.png"))); // NOI18N
+        jButtonQuyDInh.setText("QUY ĐỊNH");
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/User group.png"))); // NOI18N
         jMenu4.setText("Quản Trị Viên");
@@ -326,8 +326,8 @@ public class frmmain extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Admin");
-        jMenu4.add(jMenuItem1);
+        jMenuItemAdmin.setText("Admin");
+        jMenu4.add(jMenuItemAdmin);
 
         jMenuBar1.add(jMenu4);
 
@@ -343,13 +343,13 @@ public class frmmain extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemQl_MonHoc);
 
-        QL_LopHoc.setText("QL_Lớp");
-        QL_LopHoc.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemQl_LopHoc.setText("QL_Lớp");
+        jMenuItemQl_LopHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QL_LopHocActionPerformed(evt);
+                jMenuItemQl_LopHocActionPerformed(evt);
             }
         });
-        jMenu3.add(QL_LopHoc);
+        jMenu3.add(jMenuItemQl_LopHoc);
 
         jMenuItemQL_HocKy.setText("QL_Học Kỳ");
         jMenuItemQL_HocKy.addActionListener(new java.awt.event.ActionListener() {
@@ -359,49 +359,49 @@ public class frmmain extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemQL_HocKy);
 
-        mnlds.setText("QL_ Khối ");
-        mnlds.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemQl_Khoi.setText("QL_ Khối ");
+        jMenuItemQl_Khoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnldsActionPerformed(evt);
+                jMenuItemQl_KhoiActionPerformed(evt);
             }
         });
-        jMenu3.add(mnlds);
+        jMenu3.add(jMenuItemQl_Khoi);
 
-        QL_NamHoc.setText("QL_Năm Học");
-        QL_NamHoc.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemQL_NamHoc.setText("QL_Năm Học");
+        jMenuItemQL_NamHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QL_NamHocActionPerformed(evt);
+                jMenuItemQL_NamHocActionPerformed(evt);
             }
         });
-        jMenu3.add(QL_NamHoc);
+        jMenu3.add(jMenuItemQL_NamHoc);
 
-        jMenuItem5QL_LoaiKT.setText("QL_Kiểm Tra");
-        jMenuItem5QL_LoaiKT.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemQL_LoaiKT.setText("QL_Kiểm Tra");
+        jMenuItemQL_LoaiKT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5QL_LoaiKTActionPerformed(evt);
+                jMenuItemQL_LoaiKTActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5QL_LoaiKT);
+        jMenu3.add(jMenuItemQL_LoaiKT);
 
         jMenuBar1.add(jMenu3);
 
         jMenu12.setText("Quản Lý Học Sinh");
 
-        mnths.setText("Tiếp Nhận Học Sinh");
-        mnths.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTNHS.setText("Tiếp Nhận Học Sinh");
+        jMenuItemTNHS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnthsActionPerformed(evt);
+                jMenuItemTNHSActionPerformed(evt);
             }
         });
-        jMenu12.add(mnths);
+        jMenu12.add(jMenuItemTNHS);
 
-        mntc.setText("Tra Cứu Hồ Sơ HS ");
-        mntc.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTCHS.setText("Tra Cứu Hồ Sơ HS ");
+        jMenuItemTCHS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mntcActionPerformed(evt);
+                jMenuItemTCHSActionPerformed(evt);
             }
         });
-        jMenu12.add(mntc);
+        jMenu12.add(jMenuItemTCHS);
 
         jMenuBar1.add(jMenu12);
 
@@ -415,26 +415,26 @@ public class frmmain extends javax.swing.JFrame {
         });
         jMenu11.add(jMenuItemSapXepLop);
 
-        jMenuItem9.setText("Lên Lớp");
-        jMenu11.add(jMenuItem9);
+        jMenuItemLenLop.setText("Lên Lớp");
+        jMenu11.add(jMenuItemLenLop);
 
-        jMenuItem11.setText("Chuyển Lớp");
-        jMenu11.add(jMenuItem11);
+        jMenuItemChuyenLop.setText("Chuyển Lớp");
+        jMenu11.add(jMenuItemChuyenLop);
 
         jMenuBar1.add(jMenu11);
 
         jMenu5.setText("Quản Lý Điểm");
 
-        mnqd.setText("Nhập Điểm");
-        mnqd.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemNhapDiem.setText("Nhập Điểm");
+        jMenuItemNhapDiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnqdActionPerformed(evt);
+                jMenuItemNhapDiemActionPerformed(evt);
             }
         });
-        jMenu5.add(mnqd);
+        jMenu5.add(jMenuItemNhapDiem);
 
-        jMenuItem2.setText("Tra Cứu");
-        jMenu5.add(jMenuItem2);
+        jMenuItemTraCuu.setText("Tra Cứu");
+        jMenu5.add(jMenuItemTraCuu);
 
         jMenuBar1.add(jMenu5);
 
@@ -448,13 +448,13 @@ public class frmmain extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemBaoCaoTongKetMon);
 
-        mntkhk.setText("Tổng kết học kỳ");
-        mntkhk.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTKHK.setText("Tổng kết học kỳ");
+        jMenuItemTKHK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mntkhkActionPerformed(evt);
+                jMenuItemTKHKActionPerformed(evt);
             }
         });
-        jMenu1.add(mntkhk);
+        jMenu1.add(jMenuItemTKHK);
 
         jMenuBar1.add(jMenu1);
 
@@ -473,18 +473,18 @@ public class frmmain extends javax.swing.JFrame {
 
         jMenu2.setText("About");
 
-        mntt.setText("Thông tin nhóm phát triển");
-        mntt.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTTNPT.setText("Thông tin nhóm phát triển");
+        jMenuItemTTNPT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnttActionPerformed(evt);
+                jMenuItemTTNPTActionPerformed(evt);
             }
         });
-        jMenu2.add(mntt);
+        jMenu2.add(jMenuItemTTNPT);
 
         jMenuBar1.add(jMenu2);
 
-        jMenu10.setText("Help");
-        jMenuBar1.add(jMenu10);
+        jMenuHelp.setText("Help");
+        jMenuBar1.add(jMenuHelp);
 
         setJMenuBar(jMenuBar1);
 
@@ -497,14 +497,14 @@ public class frmmain extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnThemHS, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnNhapDiem2)
-                            .addComponent(BtnNhapDiem1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButtonTiepNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonNhapDiem)
+                            .addComponent(jButtonQuyDInh, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BtnNhapDiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnNhapDiem3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButtonTongKet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -521,46 +521,46 @@ public class frmmain extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnThemHS, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonTiepNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnNhapDiem3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
-                        .addComponent(BtnNhapDiem2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonNhapDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnNhapDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonTongKet, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnNhapDiem1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonQuyDInh, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnthsActionPerformed
+    private void jMenuItemTNHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTNHSActionPerformed
         // TODO add your handling code here:
         frmTiepNhanHS ths = new frmTiepNhanHS();
         jDesktopPane1.add(ths);
         ths.setVisible(true);
-    }//GEN-LAST:event_mnthsActionPerformed
+    }//GEN-LAST:event_jMenuItemTNHSActionPerformed
 
-    private void mntcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mntcActionPerformed
+    private void jMenuItemTCHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTCHSActionPerformed
         // TODO add your handling code here:
      
-    }//GEN-LAST:event_mntcActionPerformed
+    }//GEN-LAST:event_jMenuItemTCHSActionPerformed
 
-    private void QL_LopHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QL_LopHocActionPerformed
+    private void jMenuItemQl_LopHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQl_LopHocActionPerformed
         // TODO add your handling code here:
        frmQL_Lop lop = new frmQL_Lop();
         jDesktopPane1.add(lop);
         lop.setVisible(true);
-    }//GEN-LAST:event_QL_LopHocActionPerformed
+    }//GEN-LAST:event_jMenuItemQl_LopHocActionPerformed
 
-    private void mnldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnldsActionPerformed
+    private void jMenuItemQl_KhoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQl_KhoiActionPerformed
         // TODO add your handling code here:
         frmQL_Khoi khoi= new frmQL_Khoi();
         jDesktopPane1.add(khoi);
         khoi.setVisible(true);
-    }//GEN-LAST:event_mnldsActionPerformed
+    }//GEN-LAST:event_jMenuItemQl_KhoiActionPerformed
 
     private void jMenuItemBaoCaoTongKetMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBaoCaoTongKetMonActionPerformed
         // TODO add your handling code here:
@@ -569,37 +569,37 @@ public class frmmain extends javax.swing.JFrame {
         bcm.setVisible(true);
     }//GEN-LAST:event_jMenuItemBaoCaoTongKetMonActionPerformed
 
-    private void mntkhkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mntkhkActionPerformed
+    private void jMenuItemTKHKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTKHKActionPerformed
         // TODO add your handling code here:
         BaoCao_TongKet_HocKy bchk = new BaoCao_TongKet_HocKy();
         jDesktopPane1.add(bchk);
         bchk.setVisible(true);
-    }//GEN-LAST:event_mntkhkActionPerformed
+    }//GEN-LAST:event_jMenuItemTKHKActionPerformed
 
-    private void mnqdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnqdActionPerformed
+    private void jMenuItemNhapDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNhapDiemActionPerformed
         // TODO add your handling code here:
         TacVu_NhapDiem nhapdiem= new TacVu_NhapDiem();
         jDesktopPane1.add(nhapdiem);
         nhapdiem.setVisible(true);
-    }//GEN-LAST:event_mnqdActionPerformed
+    }//GEN-LAST:event_jMenuItemNhapDiemActionPerformed
 
-    private void mnttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnttActionPerformed
+    private void jMenuItemTTNPTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTTNPTActionPerformed
         // TODO add your handling code here:
         frmAbout ab = new frmAbout();
         jDesktopPane1.add(ab);
         ab.setVisible(true);
-    }//GEN-LAST:event_mnttActionPerformed
+    }//GEN-LAST:event_jMenuItemTTNPTActionPerformed
 
-    private void BtnNhapDiem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNhapDiem3ActionPerformed
+    private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnNhapDiem3ActionPerformed
+    }//GEN-LAST:event_jButtonTimKiemActionPerformed
 
-    private void btnThemHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemHSActionPerformed
+    private void jButtonTiepNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTiepNhanActionPerformed
         // TODO add your handling code here:
         frmTiepNhanHS ths = new frmTiepNhanHS();
         jDesktopPane1.add(ths);
         ths.setVisible(true);
-    }//GEN-LAST:event_btnThemHSActionPerformed
+    }//GEN-LAST:event_jButtonTiepNhanActionPerformed
 
     private void jMenuItemThayDoiQuyDinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemThayDoiQuyDinhActionPerformed
         // TODO add your handling code here:
@@ -608,7 +608,7 @@ public class frmmain extends javax.swing.JFrame {
         quydinh.setVisible(true);
     }//GEN-LAST:event_jMenuItemThayDoiQuyDinhActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
         // TODO add your handling code here:
          
          if (jTextField1.getText().equals("") || (jPasswordField2.getPassword()).equals("")) {
@@ -634,11 +634,11 @@ public class frmmain extends javax.swing.JFrame {
                                            jMenu5.setVisible(true);
                                                jMenu1.setVisible(true);
                                            jMenu13.setVisible(true);
-                                           btnThemHS.setVisible(true);
-                                          BtnNhapDiem3.setVisible(true);
-                                              BtnNhapDiem2.setVisible(true);
-                                          BtnNhapDiem.setVisible(true);
-                                          BtnNhapDiem1.setVisible(true);
+                                           jButtonTiepNhan.setVisible(true);
+                                          jButtonTimKiem.setVisible(true);
+                                              jButtonNhapDiem.setVisible(true);
+                                          jButtonTongKet.setVisible(true);
+                                          jButtonQuyDInh.setVisible(true);
                                     }
                                     else
                                     {
@@ -650,11 +650,11 @@ public class frmmain extends javax.swing.JFrame {
                                            jMenu5.setVisible(false);
                                                jMenu1.setVisible(false);
                                            jMenu13.setVisible(false);
-                                           btnThemHS.setVisible(false);
-                                          BtnNhapDiem3.setVisible(false);
-                                              BtnNhapDiem2.setVisible(false);
-                                          BtnNhapDiem.setVisible(false);
-                                          BtnNhapDiem1.setVisible(false);
+                                           jButtonTiepNhan.setVisible(false);
+                                          jButtonTimKiem.setVisible(false);
+                                              jButtonNhapDiem.setVisible(false);
+                                          jButtonTongKet.setVisible(false);
+                                          jButtonQuyDInh.setVisible(false);
                                     }
                                 
                             } else {
@@ -682,14 +682,14 @@ public class frmmain extends javax.swing.JFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonLogInActionPerformed
     }
-    private void QL_NamHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QL_NamHocActionPerformed
+    private void jMenuItemQL_NamHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQL_NamHocActionPerformed
         // TODO add your handling code here:
         frmQL_NamHoc namhoc = new frmQL_NamHoc();
         jDesktopPane1.add(namhoc);
         namhoc.setVisible(true);
-    }//GEN-LAST:event_QL_NamHocActionPerformed
+    }//GEN-LAST:event_jMenuItemQL_NamHocActionPerformed
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
         // TODO add your handling code here:
@@ -703,13 +703,13 @@ public class frmmain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemSapXepLopActionPerformed
 
-    private void BtnNhapDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNhapDiemActionPerformed
+    private void jButtonTongKetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTongKetActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnNhapDiemActionPerformed
+    }//GEN-LAST:event_jButtonTongKetActionPerformed
 
-    private void BtnNhapDiem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNhapDiem2ActionPerformed
+    private void jButtonNhapDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhapDiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnNhapDiem2ActionPerformed
+    }//GEN-LAST:event_jButtonNhapDiemActionPerformed
 
     private void jMenuItemQl_MonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQl_MonHocActionPerformed
         // TODO add your handling code here:
@@ -725,14 +725,14 @@ public class frmmain extends javax.swing.JFrame {
         hocky.setVisible(true);
     }//GEN-LAST:event_jMenuItemQL_HocKyActionPerformed
 
-    private void jMenuItem5QL_LoaiKTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5QL_LoaiKTActionPerformed
+    private void jMenuItemQL_LoaiKTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQL_LoaiKTActionPerformed
         // TODO add your handling code here:
         frmQL_LoaiKT KT  = new frmQL_LoaiKT();
         jDesktopPane1.add(KT);
         KT.setVisible(true);
-    }//GEN-LAST:event_jMenuItem5QL_LoaiKTActionPerformed
+    }//GEN-LAST:event_jMenuItemQL_LoaiKTActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogOutActionPerformed
         // TODO add your handling code here:
         jMenu4.setVisible(false);
         jMenu3.setVisible(false);
@@ -741,13 +741,13 @@ public class frmmain extends javax.swing.JFrame {
         jMenu5.setVisible(false);
         jMenu1.setVisible(false);
         jMenu13.setVisible(false);
-        btnThemHS.setVisible(false);
-        BtnNhapDiem3.setVisible(false);
-        BtnNhapDiem2.setVisible(false);
-        BtnNhapDiem.setVisible(false);
-        BtnNhapDiem1.setVisible(false);
+        jButtonTiepNhan.setVisible(false);
+        jButtonTimKiem.setVisible(false);
+        jButtonNhapDiem.setVisible(false);
+        jButtonTongKet.setVisible(false);
+        jButtonQuyDInh.setVisible(false);
         jLabel12.setText("Status:Log out");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonLogOutActionPerformed
 
     private void Jbt_TinhDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jbt_TinhDiemActionPerformed
         test_Tinh_Diem diem = null;
@@ -797,16 +797,14 @@ public class frmmain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnNhapDiem;
-    private javax.swing.JButton BtnNhapDiem1;
-    private javax.swing.JButton BtnNhapDiem2;
-    private javax.swing.JButton BtnNhapDiem3;
     private javax.swing.JButton Jbt_TinhDiem;
-    private javax.swing.JMenuItem QL_LopHoc;
-    private javax.swing.JMenuItem QL_NamHoc;
-    private javax.swing.JButton btnThemHS;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonLogIn;
+    private javax.swing.JButton jButtonLogOut;
+    private javax.swing.JButton jButtonNhapDiem;
+    private javax.swing.JButton jButtonQuyDInh;
+    private javax.swing.JButton jButtonTiepNhan;
+    private javax.swing.JButton jButtonTimKiem;
+    private javax.swing.JButton jButtonTongKet;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -821,7 +819,6 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu13;
@@ -836,28 +833,31 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5QL_LoaiKT;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemAdmin;
     private javax.swing.JMenuItem jMenuItemBaoCaoTongKetMon;
+    private javax.swing.JMenuItem jMenuItemChuyenLop;
+    private javax.swing.JMenuItem jMenuItemLenLop;
+    private javax.swing.JMenuItem jMenuItemNhapDiem;
     private javax.swing.JMenuItem jMenuItemQL_HocKy;
+    private javax.swing.JMenuItem jMenuItemQL_LoaiKT;
+    private javax.swing.JMenuItem jMenuItemQL_NamHoc;
+    private javax.swing.JMenuItem jMenuItemQl_Khoi;
+    private javax.swing.JMenuItem jMenuItemQl_LopHoc;
     private javax.swing.JMenuItem jMenuItemQl_MonHoc;
     private javax.swing.JMenuItem jMenuItemSapXepLop;
+    private javax.swing.JMenuItem jMenuItemTCHS;
+    private javax.swing.JMenuItem jMenuItemTKHK;
+    private javax.swing.JMenuItem jMenuItemTNHS;
+    private javax.swing.JMenuItem jMenuItemTTNPT;
     private javax.swing.JMenuItem jMenuItemThayDoiQuyDinh;
+    private javax.swing.JMenuItem jMenuItemTraCuu;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JMenuItem mnlds;
-    private javax.swing.JMenuItem mnqd;
-    private javax.swing.JMenuItem mntc;
-    private javax.swing.JMenuItem mnths;
-    private javax.swing.JMenuItem mntkhk;
-    private javax.swing.JMenuItem mntt;
     // End of variables declaration//GEN-END:variables
 }

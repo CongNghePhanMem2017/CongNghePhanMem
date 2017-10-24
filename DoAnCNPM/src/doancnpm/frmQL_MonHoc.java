@@ -59,7 +59,7 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
                 // Thêm một dòng vào table model
                  tblModel.addRow(data);
             }
-            jTable2.setModel(tblModel);
+            jTableMonHoc.setModel(tblModel);
             // Thêm dữ liệu vào table
             
         } catch (Exception e) {
@@ -91,18 +91,18 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldMaMonHoc = new javax.swing.JTextField();
+        jTextFieldTenMonHoc = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButtonThem = new javax.swing.JButton();
         jButtonXoa = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonThoat = new javax.swing.JButton();
+        jButtonSua = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableMonHoc = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -134,8 +134,8 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldMaMonHoc)
+                            .addComponent(jTextFieldTenMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(79, 79, 79))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -145,11 +145,11 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMaMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTenMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(123, 123, 123))
         );
@@ -175,21 +175,21 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
-        jButton5.setText("THOÁT");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThoat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButtonThoat.setText("THOÁT");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonThoatActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        jButton6.setText("SỬA");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSua.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
+        jButtonSua.setText("SỬA");
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonSuaActionPerformed(evt);
             }
         });
 
@@ -200,11 +200,11 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(jButtonThoat)
                 .addGap(0, 23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,13 +214,13 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMonHoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -231,12 +231,12 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableMonHoc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
+                jTableMonHocMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTableMonHoc);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -278,8 +278,8 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
 
     private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
         // TODO add your handling code here:
-           int index = jTable2.getSelectedRow();
-        TableModel model=jTable2.getModel(); 
+           int index = jTableMonHoc.getSelectedRow();
+        TableModel model=jTableMonHoc.getModel(); 
         String key=model.getValueAt(index,0).toString();
         String delete="DELETE FROM MONHOC  WHERE MaMonHoc='"+key+"'";
 
@@ -315,24 +315,24 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
         loadMHFillTB();
     }//GEN-LAST:event_jButtonXoaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
            try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
-            int index=jTable2.getSelectedRow();
-            String value = jTable2.getModel().getValueAt(index, 0).toString();
+            int index=jTableMonHoc.getSelectedRow();
+            String value = jTableMonHoc.getModel().getValueAt(index, 0).toString();
             String update2 = "UPDATE MONHOC SET MaMonHoc=?,TenMonHoc=? where MaMonHoc='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
             
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setString(1,jTextFieldMaMonHoc.getText());
+           DB.ps.setString(2,jTextFieldTenMonHoc.getText());
             
 
             int ret = DB.ps.executeUpdate();
@@ -359,7 +359,7 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
             }
         }
         loadMHFillTB();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
@@ -370,8 +370,8 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setString(1,jTextFieldMaMonHoc.getText());
+           DB.ps.setString(2,jTextFieldTenMonHoc.getText());
          
             
 
@@ -401,22 +401,22 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
         loadMHFillTB();
     }//GEN-LAST:event_jButtonThemActionPerformed
 
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+    private void jTableMonHocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMonHocMouseClicked
         // TODO add your handling code here:
-        int index = jTable2.getSelectedRow();
-        TableModel model=jTable2.getModel();
+        int index = jTableMonHoc.getSelectedRow();
+        TableModel model=jTableMonHoc.getModel();
         
         
-        jTextField1.setText (model.getValueAt(index,0).toString());
-        jTextField2.setText (model.getValueAt(index,1).toString());
+        jTextFieldMaMonHoc.setText (model.getValueAt(index,0).toString());
+        jTextFieldTenMonHoc.setText (model.getValueAt(index,1).toString());
         
-    }//GEN-LAST:event_jTable2MouseClicked
+    }//GEN-LAST:event_jTableMonHocMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonSua;
     private javax.swing.JButton jButtonThem;
+    private javax.swing.JButton jButtonThoat;
     private javax.swing.JButton jButtonXoa;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -425,8 +425,8 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable jTableMonHoc;
+    private javax.swing.JTextField jTextFieldMaMonHoc;
+    private javax.swing.JTextField jTextFieldTenMonHoc;
     // End of variables declaration//GEN-END:variables
 }

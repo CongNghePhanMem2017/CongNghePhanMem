@@ -40,7 +40,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         initComponents();
         loadNamHocAndFillToCBBox();
         loadKhoiAndFillToCBBox();
-        jtbTiepNhanHS.setModel(tblModel);
+        jTableTiepNhanHS.setModel(tblModel);
         loadHSFillTB();
     }
 
@@ -234,15 +234,15 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        txtDiaChi = new javax.swing.JTextField();
+        jTextFieldDiaChi = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jComboBoxNamHoc = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jComboBoxKhoi = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        txtMaHS = new javax.swing.JTextField();
+        jTextFieldMaHS = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        cbbGioiTinh = new javax.swing.JComboBox<>();
+        jComboBoxGioiTinh = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -250,15 +250,15 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jButtonThem = new javax.swing.JButton();
         jButtonXoa = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        Clean = new javax.swing.JButton();
-        txtEmail = new javax.swing.JTextField();
-        txtHoTen = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jButtonThoat = new javax.swing.JButton();
+        jButtonSua = new javax.swing.JButton();
+        jButtonClean = new javax.swing.JButton();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jTextFieldHoTen = new javax.swing.JTextField();
+        jDateChooserNgaySinh = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtbTiepNhanHS = new javax.swing.JTable();
+        jTableTiepNhanHS = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("Quản Lý Học Sinh thpt Giồng Giềng");
@@ -275,18 +275,18 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel2.setText("Họ và tên:");
 
-        txtMaHS.setEditable(false);
-        txtMaHS.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldMaHS.setEditable(false);
+        jTextFieldMaHS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaHSActionPerformed(evt);
+                jTextFieldMaHSActionPerformed(evt);
             }
         });
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel14.setText("Năm Học");
 
-        cbbGioiTinh.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        cbbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Chưa Xác Định" }));
+        jComboBoxGioiTinh.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jComboBoxGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "Chưa Xác Định" }));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Ngày sinh:");
@@ -318,28 +318,28 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
-        jButton3.setText("THOÁT");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThoat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButtonThoat.setText("THOÁT");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonThoatActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        jButton1.setText("SỬA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSua.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
+        jButtonSua.setText("SỬA");
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSuaActionPerformed(evt);
             }
         });
 
-        Clean.setText("Clean");
-        Clean.addActionListener(new java.awt.event.ActionListener() {
+        jButtonClean.setText("Clean");
+        jButtonClean.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CleanActionPerformed(evt);
+                jButtonCleanActionPerformed(evt);
             }
         });
 
@@ -350,13 +350,13 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(jButtonThoat)
                 .addGap(18, 18, 18)
-                .addComponent(Clean, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -365,16 +365,16 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Clean, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jDateChooser1.setDateFormatString("dd/MM/yyyy");
+        jDateChooserNgaySinh.setDateFormatString("dd/MM/yyyy");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -388,7 +388,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(26, 26, 26)
-                                .addComponent(txtMaHS, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldMaHS, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -410,19 +410,19 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextFieldHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jDateChooserNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -430,7 +430,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtMaHS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMaHS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(jComboBoxKhoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -438,23 +438,23 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                 .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooserNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -463,7 +463,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel7.setText("DANH SÁCH HS NHẬP HỌC");
 
-        jtbTiepNhanHS.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTiepNhanHS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -474,12 +474,12 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtbTiepNhanHS.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableTiepNhanHS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtbTiepNhanHSMouseClicked(evt);
+                jTableTiepNhanHSMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jtbTiepNhanHS);
+        jScrollPane2.setViewportView(jTableTiepNhanHS);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -521,12 +521,12 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
-            int index=jtbTiepNhanHS.getSelectedRow();
-            String value = jtbTiepNhanHS.getModel().getValueAt(index, 0).toString();
+            int index=jTableTiepNhanHS.getSelectedRow();
+            String value = jTableTiepNhanHS.getModel().getValueAt(index, 0).toString();
             String update = "UPDATE TIEPNHAN_HS SET MANH=?,MaKhoi=?,HoTen=?,GioiTinh=?,NgaySinh=?,DiaChi=?,Email=? where MaHocSinh='"+value+"'";
             
              DB.ps = DB.conn.prepareStatement(update);
@@ -534,11 +534,11 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            //DB.ps.setString(1,txtMaHS.getText());
            DB.ps.setString(1, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(2, (jComboBoxKhoi.getSelectedItem().toString()));
-           DB.ps.setString(3, txtHoTen.getText());
-           DB.ps.setString(4, (String)cbbGioiTinh.getSelectedItem());
-           DB.ps.setDate(5, convertUtilDateToSqlDate(jDateChooser1.getDate()));
-           DB.ps.setString(6, txtDiaChi.getText());
-           DB.ps.setString(7, txtEmail.getText());
+           DB.ps.setString(3, jTextFieldHoTen.getText());
+           DB.ps.setString(4, (String)jComboBoxGioiTinh.getSelectedItem());
+           DB.ps.setDate(5, convertUtilDateToSqlDate(jDateChooserNgaySinh.getDate()));
+           DB.ps.setString(6, jTextFieldDiaChi.getText());
+           DB.ps.setString(7, jTextFieldEmail.getText());
           // DB.ps.setString(9, txtGhiChu.getText());
             
             
@@ -567,21 +567,21 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             }
         }
         loadHSFillTB();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSuaActionPerformed
 
-    private void txtMaHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHSActionPerformed
+    private void jTextFieldMaHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMaHSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaHSActionPerformed
+    }//GEN-LAST:event_jTextFieldMaHSActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
     private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
         // TODO add your handling code here:
-        int index = jtbTiepNhanHS.getSelectedRow();
-        TableModel model=jtbTiepNhanHS.getModel(); 
+        int index = jTableTiepNhanHS.getSelectedRow();
+        TableModel model=jTableTiepNhanHS.getModel(); 
         String key=model.getValueAt(index,0).toString();
         String delete="DELETE FROM TIEPNHAN_HS WHERE MaHocSinh='"+key+"'";
        try {
@@ -630,11 +630,11 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            DB.ps.setString(1,"");
            DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
-           DB.ps.setString(4, txtHoTen.getText());
-           DB.ps.setString(5, (String)cbbGioiTinh.getSelectedItem());
-           DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooser1.getDate()));
-           DB.ps.setString(7, txtDiaChi.getText());
-           DB.ps.setString(8, txtEmail.getText());
+           DB.ps.setString(4, jTextFieldHoTen.getText());
+           DB.ps.setString(5, (String)jComboBoxGioiTinh.getSelectedItem());
+           DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooserNgaySinh.getDate()));
+           DB.ps.setString(7, jTextFieldDiaChi.getText());
+           DB.ps.setString(8, jTextFieldEmail.getText());
           // DB.ps.setString(9, txtGhiChu.getText());
             
 
@@ -664,47 +664,47 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         loadHSFillTB();
     }//GEN-LAST:event_jButtonThemActionPerformed
 
-    private void jtbTiepNhanHSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbTiepNhanHSMouseClicked
+    private void jTableTiepNhanHSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTiepNhanHSMouseClicked
         // TODO add your handling code here:
-        int index = jtbTiepNhanHS.getSelectedRow();
-        TableModel model=jtbTiepNhanHS.getModel();
+        int index = jTableTiepNhanHS.getSelectedRow();
+        TableModel model=jTableTiepNhanHS.getModel();
         
         
-        txtMaHS.setText (model.getValueAt(index,0).toString());
+        jTextFieldMaHS.setText (model.getValueAt(index,0).toString());
         jComboBoxNamHoc.setSelectedItem(model.getValueAt(index,1).toString());
         jComboBoxKhoi.setSelectedItem(model.getValueAt(index,2).toString());
-        txtHoTen.setText (model.getValueAt(index,3).toString());
-        cbbGioiTinh.setSelectedItem(model.getValueAt(index,4).toString());
+        jTextFieldHoTen.setText (model.getValueAt(index,3).toString());
+        jComboBoxGioiTinh.setSelectedItem(model.getValueAt(index,4).toString());
         try {
             java.util.Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(index,5).toString());
-            jDateChooser1.setDate(date2);
+            jDateChooserNgaySinh.setDate(date2);
         } catch (ParseException ex) {
             Logger.getLogger(frmTiepNhanHS.class.getName()).log(Level.SEVERE, null, ex);
         }
-        txtDiaChi.setText (model.getValueAt(index,6).toString());
-        txtEmail.setText (model.getValueAt(index,7).toString());
+        jTextFieldDiaChi.setText (model.getValueAt(index,6).toString());
+        jTextFieldEmail.setText (model.getValueAt(index,7).toString());
         
-    }//GEN-LAST:event_jtbTiepNhanHSMouseClicked
+    }//GEN-LAST:event_jTableTiepNhanHSMouseClicked
 
-    private void CleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanActionPerformed
+    private void jButtonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleanActionPerformed
         // TODO add your handling code here:
-         txtMaHS.setText("");
-         txtHoTen.setText("");
-         txtDiaChi.setText("");
-         txtEmail.setText("");
-    }//GEN-LAST:event_CleanActionPerformed
+         jTextFieldMaHS.setText("");
+         jTextFieldHoTen.setText("");
+         jTextFieldDiaChi.setText("");
+         jTextFieldEmail.setText("");
+    }//GEN-LAST:event_jButtonCleanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Clean;
-    private javax.swing.JComboBox<String> cbbGioiTinh;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonClean;
+    private javax.swing.JButton jButtonSua;
     private javax.swing.JButton jButtonThem;
+    private javax.swing.JButton jButtonThoat;
     private javax.swing.JButton jButtonXoa;
+    private javax.swing.JComboBox<String> jComboBoxGioiTinh;
     private javax.swing.JComboBox<String> jComboBoxKhoi;
     private javax.swing.JComboBox<String> jComboBoxNamHoc;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooserNgaySinh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -719,10 +719,10 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jtbTiepNhanHS;
-    private javax.swing.JTextField txtDiaChi;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtHoTen;
-    private javax.swing.JTextField txtMaHS;
+    private javax.swing.JTable jTableTiepNhanHS;
+    private javax.swing.JTextField jTextFieldDiaChi;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldHoTen;
+    private javax.swing.JTextField jTextFieldMaHS;
     // End of variables declaration//GEN-END:variables
 }

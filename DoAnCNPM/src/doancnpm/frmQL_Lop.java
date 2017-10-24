@@ -57,7 +57,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 // Thêm một dòng vào table model
                  tblModel.addRow(data);
             }
-            jTable1.setModel(tblModel);
+            jTableLop.setModel(tblModel);
             // Thêm dữ liệu vào table
             
         } catch (Exception e) {
@@ -89,23 +89,23 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLop = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldMaLop = new javax.swing.JTextField();
+        jTextFieldTenLop = new javax.swing.JTextField();
+        jTextFieldSiSo = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        jButtonThem2 = new javax.swing.JButton();
-        jButtonSua2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonThem = new javax.swing.JButton();
+        jButtonXoa = new javax.swing.JButton();
+        jButtonThoat = new javax.swing.JButton();
+        jButtonSua = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldMaKhoi = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -114,7 +114,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("QUẢN LÝ DANH SÁCH LỚP");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLop.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -125,12 +125,12 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableLop.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTableLopMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableLop);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
         jLabel1.setText("DANH SÁCH LỚP HỌC");
@@ -168,42 +168,42 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Si Số");
 
-        jTextField3.setEditable(false);
-        jTextField3.setText(" ");
+        jTextFieldSiSo.setEditable(false);
+        jTextFieldSiSo.setText(" ");
 
-        jButtonThem2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonThem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
-        jButtonThem2.setText("THÊM");
-        jButtonThem2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThem.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
+        jButtonThem.setText("THÊM");
+        jButtonThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonThem2ActionPerformed(evt);
+                jButtonThemActionPerformed(evt);
             }
         });
 
-        jButtonSua2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonSua2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
-        jButtonSua2.setText("XÓA");
-        jButtonSua2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonXoa.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
+        jButtonXoa.setText("XÓA");
+        jButtonXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSua2ActionPerformed(evt);
+                jButtonXoaActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
-        jButton3.setText("THOÁT");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThoat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButtonThoat.setText("THOÁT");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonThoatActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        jButton1.setText("SỬA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSua.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
+        jButtonSua.setText("SỬA");
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSuaActionPerformed(evt);
             }
         });
 
@@ -212,13 +212,13 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jButtonThem2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jButtonSua2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(jButtonThoat)
                 .addGap(0, 11, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -227,11 +227,11 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonThem2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonSua2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -258,10 +258,10 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel6))
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField4))))
+                                    .addComponent(jTextFieldSiSo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldMaLop, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldTenLop)
+                                    .addComponent(jTextFieldMaKhoi))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -273,19 +273,19 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMaLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTenLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMaKhoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldSiSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -324,10 +324,10 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSua2ActionPerformed
+    private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
         // TODO add your handling code here:
-               int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel(); 
+               int index = jTableLop.getSelectedRow();
+        TableModel model=jTableLop.getModel(); 
         String key=model.getValueAt(index,0).toString();
         String delete="DELETE FROM LOP  WHERE MaLop='"+key+"'";
 
@@ -361,27 +361,27 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             }
         }
         loadLopFillTB();
-    }//GEN-LAST:event_jButtonSua2ActionPerformed
+    }//GEN-LAST:event_jButtonXoaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
          try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
-            int index=jTable1.getSelectedRow();
-            String value = jTable1.getModel().getValueAt(index, 0).toString();
+            int index=jTableLop.getSelectedRow();
+            String value = jTableLop.getModel().getValueAt(index, 0).toString();
             String update2 = "UPDATE LOP SET MaLop=?,TenLop=?,MaKhoi=? where MaLop='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
             
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
-           DB.ps.setString(3,jTextField4.getText());
+           DB.ps.setString(1,jTextFieldMaLop.getText());
+           DB.ps.setString(2,jTextFieldTenLop.getText());
+           DB.ps.setString(3,jTextFieldMaKhoi.getText());
 
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {
@@ -407,9 +407,9 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             }
         }
         loadLopFillTB();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSuaActionPerformed
 
-    private void jButtonThem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThem2ActionPerformed
+    private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
           loadLopFillTB();
         String insert = "INSERT INTO LOP (MaLop,MaKhoi,TenLop) VALUES(?,?,?)";//fix
@@ -418,9 +418,9 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           DB.ps.setString(1,jTextField1.getText());
-            DB.ps.setString(2,jTextField4.getText());
-           DB.ps.setString(3,jTextField2.getText());
+           DB.ps.setString(1,jTextFieldMaLop.getText());
+            DB.ps.setString(2,jTextFieldMaKhoi.getText());
+           DB.ps.setString(3,jTextFieldTenLop.getText());
           
          
             
@@ -449,25 +449,25 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             }
         }
        loadLopFillTB();
-    }//GEN-LAST:event_jButtonThem2ActionPerformed
+    }//GEN-LAST:event_jButtonThemActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTableLopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLopMouseClicked
         // TODO add your handling code here:
-        int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel();
+        int index = jTableLop.getSelectedRow();
+        TableModel model=jTableLop.getModel();
         
         
-        jTextField1.setText (model.getValueAt(index,0).toString());
-        jTextField2.setText (model.getValueAt(index,1).toString());
-        jTextField4.setText (model.getValueAt(index,2).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+        jTextFieldMaLop.setText (model.getValueAt(index,0).toString());
+        jTextFieldTenLop.setText (model.getValueAt(index,1).toString());
+        jTextFieldMaKhoi.setText (model.getValueAt(index,2).toString());
+    }//GEN-LAST:event_jTableLopMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButtonSua2;
-    private javax.swing.JButton jButtonThem2;
+    private javax.swing.JButton jButtonSua;
+    private javax.swing.JButton jButtonThem;
+    private javax.swing.JButton jButtonThoat;
+    private javax.swing.JButton jButtonXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -479,10 +479,10 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable jTableLop;
+    private javax.swing.JTextField jTextFieldMaKhoi;
+    private javax.swing.JTextField jTextFieldMaLop;
+    private javax.swing.JTextField jTextFieldSiSo;
+    private javax.swing.JTextField jTextFieldTenLop;
     // End of variables declaration//GEN-END:variables
 }

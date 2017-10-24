@@ -55,7 +55,7 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
                 // Thêm một dòng vào table model
                  tblModel.addRow(data);
             }
-            jTable1.setModel(tblModel);
+            jTableNamHoc.setModel(tblModel);
             // Thêm dữ liệu vào table
             
         } catch (Exception e) {
@@ -87,20 +87,20 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableNamHoc = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldMaNamHoc = new javax.swing.JTextField();
+        jTextFieldTenNamHoc = new javax.swing.JTextField();
+        jTextFieldYNghia = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jButtonThem = new javax.swing.JButton();
+        jButtonXoa = new javax.swing.JButton();
+        jButtonThoat = new javax.swing.JButton();
         jButtonSua = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -110,7 +110,7 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Quản Lý Năm Học");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNamHoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -121,12 +121,12 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableNamHoc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTableNamHocMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableNamHoc);
 
         jLabel2.setText("Thay Đổi");
 
@@ -136,11 +136,11 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Ý Nghĩa");
 
-        jTextField1.setText(" ");
+        jTextFieldMaNamHoc.setText(" ");
 
-        jTextField2.setText(" ");
+        jTextFieldTenNamHoc.setText(" ");
 
-        jTextField3.setText(" ");
+        jTextFieldYNghia.setText(" ");
 
         jButtonThem.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
@@ -151,30 +151,30 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonXoa.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
+        jButtonXoa.setText("XÓA");
+        jButtonXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXoaActionPerformed(evt);
+            }
+        });
+
+        jButtonThoat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButtonThoat.setText("THOÁT");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThoatActionPerformed(evt);
+            }
+        });
+
         jButtonSua.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
-        jButtonSua.setText("XÓA");
+        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
+        jButtonSua.setText("SỬA");
         jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSuaActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
-        jButton3.setText("THOÁT");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        jButton1.setText("SỬA");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -185,11 +185,11 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(jButtonThoat)
                 .addGap(0, 11, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -199,10 +199,10 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -223,9 +223,9 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5))))
                         .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)))
+                            .addComponent(jTextFieldMaNamHoc, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(jTextFieldTenNamHoc)
+                            .addComponent(jTextFieldYNghia)))
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -238,14 +238,14 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldMaNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTenNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldYNghia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -308,10 +308,10 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
+    private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
         // TODO add your handling code here:
-           int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel(); 
+           int index = jTableNamHoc.getSelectedRow();
+        TableModel model=jTableNamHoc.getModel(); 
         String key=model.getValueAt(index,0).toString();
         String delete="DELETE FROM NAMHOC  WHERE MANH='"+key+"'";
 
@@ -345,27 +345,27 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
             }
         }
         loadNHFillTB();
-    }//GEN-LAST:event_jButtonSuaActionPerformed
+    }//GEN-LAST:event_jButtonXoaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
          try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
-            int index=jTable1.getSelectedRow();
-            String value = jTable1.getModel().getValueAt(index, 0).toString();
+            int index=jTableNamHoc.getSelectedRow();
+            String value = jTableNamHoc.getModel().getValueAt(index, 0).toString();
             String update2 = "UPDATE NAMHOC SET MANH=?,TENNH=?,YNGHIA=? where MANH='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
             
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
-           DB.ps.setString(3,jTextField3.getText());
+           DB.ps.setString(1,jTextFieldMaNamHoc.getText());
+           DB.ps.setString(2,jTextFieldTenNamHoc.getText());
+           DB.ps.setString(3,jTextFieldYNghia.getText());
             
 
             int ret = DB.ps.executeUpdate();
@@ -392,7 +392,7 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
             }
         }
         loadNHFillTB();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
@@ -403,9 +403,9 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
-           DB.ps.setString(3,jTextField3.getText());
+           DB.ps.setString(1,jTextFieldMaNamHoc.getText());
+           DB.ps.setString(2,jTextFieldTenNamHoc.getText());
+           DB.ps.setString(3,jTextFieldYNghia.getText());
          
             
 
@@ -435,23 +435,23 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
         loadNHFillTB();
     }//GEN-LAST:event_jButtonThemActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTableNamHocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNamHocMouseClicked
         // TODO add your handling code here:
-        int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel();
+        int index = jTableNamHoc.getSelectedRow();
+        TableModel model=jTableNamHoc.getModel();
         
         
-        jTextField1.setText (model.getValueAt(index,0).toString());
-        jTextField2.setText (model.getValueAt(index,1).toString());
-        jTextField3.setText (model.getValueAt(index,2).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+        jTextFieldMaNamHoc.setText (model.getValueAt(index,0).toString());
+        jTextFieldTenNamHoc.setText (model.getValueAt(index,1).toString());
+        jTextFieldYNghia.setText (model.getValueAt(index,2).toString());
+    }//GEN-LAST:event_jTableNamHocMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonSua;
     private javax.swing.JButton jButtonThem;
+    private javax.swing.JButton jButtonThoat;
+    private javax.swing.JButton jButtonXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -462,9 +462,9 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable jTableNamHoc;
+    private javax.swing.JTextField jTextFieldMaNamHoc;
+    private javax.swing.JTextField jTextFieldTenNamHoc;
+    private javax.swing.JTextField jTextFieldYNghia;
     // End of variables declaration//GEN-END:variables
 }

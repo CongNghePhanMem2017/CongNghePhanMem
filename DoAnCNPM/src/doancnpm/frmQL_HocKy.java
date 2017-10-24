@@ -58,15 +58,15 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtMaHocKy = new javax.swing.JTextField();
-        txtTenHocKy = new javax.swing.JTextField();
+        jTextFieldMaHocKy = new javax.swing.JTextField();
+        jTextFieldTenHocKy = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jButtonThem = new javax.swing.JButton();
         jButtonXoa = new javax.swing.JButton();
         jButtonClean = new javax.swing.JButton();
         jButtonSua = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButtonThoat1 = new javax.swing.JButton();
+        jButtonThoat = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -110,9 +110,9 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("Tên Học Kỳ");
 
-        txtMaHocKy.setText(" ");
+        jTextFieldMaHocKy.setText(" ");
 
-        txtTenHocKy.setText(" ");
+        jTextFieldTenHocKy.setText(" ");
 
         jButtonThem.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
@@ -152,12 +152,12 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
 
         jLabel1.setText(" ");
 
-        jButtonThoat1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonThoat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
-        jButtonThoat1.setText("THOÁT");
-        jButtonThoat1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThoat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButtonThoat.setText("THOÁT");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonThoat1ActionPerformed(evt);
+                jButtonThoatActionPerformed(evt);
             }
         });
 
@@ -172,7 +172,7 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonThoat1)
+                .addComponent(jButtonThoat)
                 .addGap(13, 13, 13)
                 .addComponent(jButtonClean)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -190,7 +190,7 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1)
-                        .addComponent(jButtonThoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -211,8 +211,8 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4))
                         .addGap(65, 65, 65)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtMaHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTenHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldMaHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldTenHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -223,11 +223,11 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtMaHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMaHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtTenHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTenHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -316,8 +316,8 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonXoaActionPerformed
 
     private void jButtonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleanActionPerformed
-        txtMaHocKy.setText("");
-        txtTenHocKy.setText("");
+        jTextFieldMaHocKy.setText("");
+        jTextFieldTenHocKy.setText("");
     }//GEN-LAST:event_jButtonCleanActionPerformed
 
     // Lam lai
@@ -329,8 +329,8 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
             String Update = "UPDATE HOCKY set  TenHocKy = ? where MaHocKy =? "  ;
           
             DB.ps = DB.conn.prepareStatement(Update);
-            DB.ps.setString(1, txtTenHocKy.getText());
-            DB.ps.setString(2, txtMaHocKy.getText());
+            DB.ps.setString(1, jTextFieldTenHocKy.getText());
+            DB.ps.setString(2, jTextFieldMaHocKy.getText());
             
            
            // DB.ps.executeUpdate();
@@ -415,10 +415,10 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
       // Chức năng thêm một hs mới vào  
         DefaultTableModel model = (DefaultTableModel) jTableDSHOCKY.getModel();      
-        if (!txtMaHocKy.getText().trim().equals("")) {       //Kiểm tra điều kiện Mã Học Kỳ không được bỏ trống
+        if (!jTextFieldMaHocKy.getText().trim().equals("")) {       //Kiểm tra điều kiện Mã Học Kỳ không được bỏ trống
             model.addRow(new Object[]{
-                txtMaHocKy.getText(),
-                txtTenHocKy.getText(),});
+                jTextFieldMaHocKy.getText(),
+                jTextFieldTenHocKy.getText(),});
         } else {
             JOptionPane.showMessageDialog(this, "Mã Số Học Kỳ Không được bỏ trống");
             return;
@@ -429,8 +429,8 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(insert);
             
-            DB.ps.setString(1, txtMaHocKy.getText());
-            DB.ps.setString(2, txtTenHocKy.getText());
+            DB.ps.setString(1, jTextFieldMaHocKy.getText());
+            DB.ps.setString(2, jTextFieldTenHocKy.getText());
             int ret = DB.ps.executeUpdate();
             
             if (ret != -1) {
@@ -464,8 +464,8 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
         // Khi click vào dòng nào thì nội dung của dòng  đó sẽ được đổ vào các text 
         int index = jTableDSHOCKY.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTableDSHOCKY.getModel();
-        txtMaHocKy.setText(model.getValueAt(jTableDSHOCKY.getSelectedRow(), 0).toString());
-        txtTenHocKy.setText(model.getValueAt(jTableDSHOCKY.getSelectedRow(), 1).toString());
+        jTextFieldMaHocKy.setText(model.getValueAt(jTableDSHOCKY.getSelectedRow(), 0).toString());
+        jTextFieldTenHocKy.setText(model.getValueAt(jTableDSHOCKY.getSelectedRow(), 1).toString());
     }//GEN-LAST:event_jTableDSHOCKYMouseClicked
 
     
@@ -473,19 +473,19 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
          
     }//GEN-LAST:event_jTableDSHOCKYAncestorAdded
 
-    private void jButtonThoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoat1ActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
           // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, "Có Muốn Thoát Hong !");
         System.exit(0);
 
-    }//GEN-LAST:event_jButtonThoat1ActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClean;
     private javax.swing.JButton jButtonSua;
     private javax.swing.JButton jButtonThem;
-    private javax.swing.JButton jButtonThoat1;
+    private javax.swing.JButton jButtonThoat;
     private javax.swing.JButton jButtonXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -496,8 +496,8 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDSHOCKY;
-    private javax.swing.JTextField txtMaHocKy;
-    private javax.swing.JTextField txtTenHocKy;
+    private javax.swing.JTextField jTextFieldMaHocKy;
+    private javax.swing.JTextField jTextFieldTenHocKy;
     // End of variables declaration//GEN-END:variables
 
      

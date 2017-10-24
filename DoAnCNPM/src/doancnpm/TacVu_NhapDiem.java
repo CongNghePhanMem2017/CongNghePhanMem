@@ -482,10 +482,10 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtMaHocSinh = new javax.swing.JTextField();
-        txtTenHocSinh = new javax.swing.JTextField();
+        jTextFieldMaHocSinh = new javax.swing.JTextField();
+        jTextFieldTenHocSinh = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtMaBangDiem = new javax.swing.JTextField();
+        jTextFieldMaBangDiem = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -493,15 +493,15 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jLabel19 = new javax.swing.JLabel();
         jComboBoxHocKy = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        txtDiem = new javax.swing.JTextField();
+        jTextFieldDiem = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        txtLop = new javax.swing.JTextField();
+        jButtonThoat = new javax.swing.JButton();
+        jButtonNhap = new javax.swing.JButton();
+        jButtonSua = new javax.swing.JButton();
+        jTextFieldLop = new javax.swing.JTextField();
         jComboBoxMonHoc = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -656,14 +656,14 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        txtMaHocSinh.setEditable(false);
+        jTextFieldMaHocSinh.setEditable(false);
 
-        txtTenHocSinh.setEditable(false);
+        jTextFieldTenHocSinh.setEditable(false);
 
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel14.setText("Mã Học Sinh ");
 
-        txtMaBangDiem.setEditable(false);
+        jTextFieldMaBangDiem.setEditable(false);
 
         jTextField7.setText("jTextField7");
 
@@ -685,24 +685,24 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel21.setText("Mã Môn Học");
 
-        jButton5.setText("THOÁT");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThoat.setText("THOÁT");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonThoatActionPerformed(evt);
             }
         });
 
-        jButton6.setText("NHẬP ");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNhap.setText("NHẬP ");
+        jButtonNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonNhapActionPerformed(evt);
             }
         });
 
-        jButton7.setText("SỬA");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSua.setText("SỬA");
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButtonSuaActionPerformed(evt);
             }
         });
 
@@ -712,11 +712,11 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jButton6)
+                .addComponent(jButtonNhap)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7)
+                .addComponent(jButtonSua)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(jButtonThoat)
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -724,13 +724,13 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        txtLop.setEditable(false);
+        jTextFieldLop.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -755,7 +755,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jComboBoxLoaiKiemTra, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jTextFieldDiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(27, 27, 27))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                         .addComponent(jComboBoxMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -767,15 +767,15 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jComboBoxHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(182, 182, 182))))
-                            .addComponent(txtMaBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldMaBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTenHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMaHocSinh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldTenHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldMaHocSinh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(50, 50, 50)
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
-                                .addComponent(txtLop, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldLop, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(91, 91, 91)
@@ -794,10 +794,10 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMaBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMaBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -809,9 +809,9 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel17)
-                                .addComponent(txtLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFieldLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtTenHocSinh, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldTenHocSinh, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -838,7 +838,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jComboBoxLoaiKiemTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBoxMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -975,10 +975,10 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         TableModel model=jTableDSHS.getModel();
         
         
-        txtMaBangDiem.setText (model.getValueAt(index,4).toString());
-        txtMaHocSinh.setText(model.getValueAt(index,0).toString());
-        txtTenHocSinh.setText(model.getValueAt(index,2).toString());
-        txtLop.setText (model.getValueAt(index,5).toString());
+        jTextFieldMaBangDiem.setText (model.getValueAt(index,4).toString());
+        jTextFieldMaHocSinh.setText(model.getValueAt(index,0).toString());
+        jTextFieldTenHocSinh.setText(model.getValueAt(index,2).toString());
+        jTextFieldLop.setText (model.getValueAt(index,5).toString());
         
     }//GEN-LAST:event_jTableDSHSMouseClicked
 
@@ -1037,13 +1037,13 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             }
         }
         
-        txtMaHocSinh.setText(MaHS);
+        jTextFieldMaHocSinh.setText(MaHS);
        // jComboBoxNamHoc.setSelectedItem(model.getValueAt(index,2).toString());
-        txtTenHocSinh.setText(Ten);
-        txtMaBangDiem.setText (model.getValueAt(index,0).toString());
+        jTextFieldTenHocSinh.setText(Ten);
+        jTextFieldMaBangDiem.setText (model.getValueAt(index,0).toString());
         jComboBoxLoaiKiemTra.setSelectedItem(model.getValueAt(index,3).toString());
-        txtDiem.setText(model.getValueAt(index,4).toString());
-        txtLop.setText (Lop);
+        jTextFieldDiem.setText(model.getValueAt(index,4).toString());
+        jTextFieldLop.setText (Lop);
         jComboBoxMonHoc.setSelectedItem(model.getValueAt(index,1).toString());
         jComboBoxHocKy.setSelectedItem(model.getValueAt(index,2).toString());
 
@@ -1051,7 +1051,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTableNhapDiemMouseClicked
 
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhapActionPerformed
         // TODO add your handling code here:
         
         String insert = "INSERT INTO CT_BANGDIEM (MaBangDiem,MaMonHoc,MaHocKy,MaLoaiKiemTra,Diem) VALUES(?,?,?,?,?)";    
@@ -1060,11 +1060,11 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           DB.ps.setString(1, txtMaBangDiem.getText());
+           DB.ps.setString(1, jTextFieldMaBangDiem.getText());
            DB.ps.setString(2, (jComboBoxMonHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxHocKy.getSelectedItem().toString()));
            DB.ps.setString(4,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
-           DB.ps.setFloat(5, Float.parseFloat(txtDiem.getText()));
+           DB.ps.setFloat(5, Float.parseFloat(jTextFieldDiem.getText()));
             
 
             int ret = DB.ps.executeUpdate();
@@ -1091,14 +1091,14 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             }
         }
         loadBD();
-        txtMaBangDiem.setText("");
-        txtLop.setText("");
-        txtDiem.setText("");
-        txtMaHocSinh.setText("");
-        txtTenHocSinh.setText("");
-    }//GEN-LAST:event_jButton6ActionPerformed
+        jTextFieldMaBangDiem.setText("");
+        jTextFieldLop.setText("");
+        jTextFieldDiem.setText("");
+        jTextFieldMaHocSinh.setText("");
+        jTextFieldTenHocSinh.setText("");
+    }//GEN-LAST:event_jButtonNhapActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
         String update = "update CT_BANGDIEM set MaMonHoc=?,MaHocKy=?,MaLoaiKiemTra=?,Diem=? where MaCT_BANGDIEM=?";//fix        
          int index = jTableNhapDiem.getSelectedRow();
@@ -1112,7 +1112,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
           // DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(2, (jComboBoxHocKy.getSelectedItem().toString()));
            DB.ps.setString(3,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
-           DB.ps.setFloat(4, Integer.parseInt(txtDiem.getText()));
+           DB.ps.setFloat(4, Integer.parseInt(jTextFieldDiem.getText()));
            DB.ps.setString(5,model.getValueAt(index,5).toString());
             
 
@@ -1140,20 +1140,20 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             }
         }
         loadBD();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jButtonSuaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonNhap;
+    private javax.swing.JButton jButtonSua;
+    private javax.swing.JButton jButtonThoat;
     private javax.swing.JComboBox<String> jComboBoxHocKy;
     private javax.swing.JComboBox<String> jComboBoxKhoi;
     private javax.swing.JComboBox<String> jComboBoxLoaiKiemTra;
@@ -1192,10 +1192,10 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField txtDiem;
-    private javax.swing.JTextField txtLop;
-    private javax.swing.JTextField txtMaBangDiem;
-    private javax.swing.JTextField txtMaHocSinh;
-    private javax.swing.JTextField txtTenHocSinh;
+    private javax.swing.JTextField jTextFieldDiem;
+    private javax.swing.JTextField jTextFieldLop;
+    private javax.swing.JTextField jTextFieldMaBangDiem;
+    private javax.swing.JTextField jTextFieldMaHocSinh;
+    private javax.swing.JTextField jTextFieldTenHocSinh;
     // End of variables declaration//GEN-END:variables
 }

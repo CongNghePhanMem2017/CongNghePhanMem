@@ -56,7 +56,7 @@ ConnectDB DB=new ConnectDB();
                 // Thêm một dòng vào table model
                  tblModel.addRow(data);
             }
-            jTable1.setModel(tblModel);
+            jTableKiemTra.setModel(tblModel);
             // Thêm dữ liệu vào table
             
         } catch (Exception e) {
@@ -90,14 +90,14 @@ ConnectDB DB=new ConnectDB();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldMaLoaiKT = new javax.swing.JTextField();
+        jTextFieldTenLoaiKT = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jTableKiemTra = new javax.swing.JTable();
+        jButtonThem = new javax.swing.JButton();
+        jButtonSua = new javax.swing.JButton();
+        jButtonXoa = new javax.swing.JButton();
+        jButtonThoat = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -117,8 +117,8 @@ ConnectDB DB=new ConnectDB();
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Thông tin loại kiểm tra");
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableKiemTra.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jTableKiemTra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -129,46 +129,46 @@ ConnectDB DB=new ConnectDB();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableKiemTra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTableKiemTraMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableKiemTra);
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
-        jButton1.setText("Thêm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThem.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButtonThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Shield 16x16.png"))); // NOI18N
+        jButtonThem.setText("Thêm");
+        jButtonThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        jButton2.setText("Sửa");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonThemActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Cancel.png"))); // NOI18N
-        jButton3.setText("Xóa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSua.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
+        jButtonSua.setText("Sửa");
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonSuaActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
-        jButton4.setText("Thoát");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonXoa.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButtonXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Cancel.png"))); // NOI18N
+        jButtonXoa.setText("Xóa");
+        jButtonXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonXoaActionPerformed(evt);
+            }
+        });
+
+        jButtonThoat.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButtonThoat.setText("Thoát");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThoatActionPerformed(evt);
             }
         });
 
@@ -187,19 +187,19 @@ ConnectDB DB=new ConnectDB();
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jButtonThem)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                        .addComponent(jTextField2))
+                        .addComponent(jTextFieldMaLoaiKT, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                        .addComponent(jTextFieldTenLoaiKT))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -216,17 +216,17 @@ ConnectDB DB=new ConnectDB();
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldMaLoaiKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldTenLoaiKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -237,16 +237,16 @@ ConnectDB DB=new ConnectDB();
     }// </editor-fold>//GEN-END:initComponents
 
      
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
         // TODO add your handling code here:
           dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
         // TODO add your handling code here: private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-           int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel(); 
+           int index = jTableKiemTra.getSelectedRow();
+        TableModel model=jTableKiemTra.getModel(); 
         String key=model.getValueAt(index,0).toString();
         String delete="DELETE FROM LOAIKIEMTRA  WHERE MaLoaiKiemTra='"+key+"'";
 
@@ -281,9 +281,9 @@ ConnectDB DB=new ConnectDB();
         }
         loadLKTFillTB();                                
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonXoaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
          loadLKTFillTB();
         String insert = "INSERT INTO LOAIKIEMTRA (MaLoaiKiemTra,TenLoaiKiemTra) VALUES(?,?)";//fix
@@ -292,8 +292,8 @@ ConnectDB DB=new ConnectDB();
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setString(1,jTextFieldMaLoaiKT.getText());
+           DB.ps.setString(2,jTextFieldTenLoaiKT.getText());
          
             
 
@@ -321,21 +321,21 @@ ConnectDB DB=new ConnectDB();
             }
         }
         loadLKTFillTB();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonThemActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
-            int index=jTable1.getSelectedRow();
-            String value = jTable1.getModel().getValueAt(index, 0).toString();
+            int index=jTableKiemTra.getSelectedRow();
+            String value = jTableKiemTra.getModel().getValueAt(index, 0).toString();
             String update2 = "UPDATE LOAIKIEMTRA SET MaLoaiKiemTra=?,TenLoaiKiemTra=? where MaLoaiKiemTra='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
             
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
+           DB.ps.setString(1,jTextFieldMaLoaiKT.getText());
+           DB.ps.setString(2,jTextFieldTenLoaiKT.getText());
             
 
             int ret = DB.ps.executeUpdate();
@@ -362,30 +362,30 @@ ConnectDB DB=new ConnectDB();
             }
         }
         loadLKTFillTB();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonSuaActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTableKiemTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKiemTraMouseClicked
         // TODO add your handling code here:
-        int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel();
+        int index = jTableKiemTra.getSelectedRow();
+        TableModel model=jTableKiemTra.getModel();
         
         
-        jTextField1.setText (model.getValueAt(index,0).toString());
-        jTextField2.setText (model.getValueAt(index,1).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+        jTextFieldMaLoaiKT.setText (model.getValueAt(index,0).toString());
+        jTextFieldTenLoaiKT.setText (model.getValueAt(index,1).toString());
+    }//GEN-LAST:event_jTableKiemTraMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonSua;
+    private javax.swing.JButton jButtonThem;
+    private javax.swing.JButton jButtonThoat;
+    private javax.swing.JButton jButtonXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable jTableKiemTra;
+    private javax.swing.JTextField jTextFieldMaLoaiKT;
+    private javax.swing.JTextField jTextFieldTenLoaiKT;
     // End of variables declaration//GEN-END:variables
 }

@@ -60,7 +60,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
 
             // Thêm dữ liệu vào table
-            jTable1.setModel(tblModel);
+            jTableThayDoiQD.setModel(tblModel);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,20 +96,20 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldMaNamHoc = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldTieuChi = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldThongSo = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jThem = new javax.swing.JButton();
-        jXoa = new javax.swing.JButton();
-        jSua = new javax.swing.JButton();
-        jthoat = new javax.swing.JButton();
+        jButtonThem = new javax.swing.JButton();
+        jButtonXoa = new javax.swing.JButton();
+        jButtonSua = new javax.swing.JButton();
+        jButtonThoat = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableThayDoiQD = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("Thay Đổi Quy Đinh");
@@ -140,11 +140,11 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Tên Tiêu Chí");
 
-        jTextField2.setText(" ");
+        jTextFieldTieuChi.setText(" ");
 
         jLabel7.setText("Thông Số");
 
-        jTextField3.setText(" ");
+        jTextFieldThongSo.setText(" ");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -158,9 +158,9 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                    .addComponent(jTextFieldMaNamHoc)
+                    .addComponent(jTextFieldTieuChi)
+                    .addComponent(jTextFieldThongSo, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -168,44 +168,44 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMaNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTieuChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldThongSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jThem.setText("Thêm");
-        jThem.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThem.setText("Thêm");
+        jButtonThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jThemActionPerformed(evt);
+                jButtonThemActionPerformed(evt);
             }
         });
 
-        jXoa.setText("Xóa");
-        jXoa.addActionListener(new java.awt.event.ActionListener() {
+        jButtonXoa.setText("Xóa");
+        jButtonXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXoaActionPerformed(evt);
+                jButtonXoaActionPerformed(evt);
             }
         });
 
-        jSua.setText("Sửa");
-        jSua.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSua.setText("Sửa");
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSuaActionPerformed(evt);
+                jButtonSuaActionPerformed(evt);
             }
         });
 
-        jthoat.setText("Thoát");
-        jthoat.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThoat.setText("Thoát");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jthoatActionPerformed(evt);
+                jButtonThoatActionPerformed(evt);
             }
         });
 
@@ -216,23 +216,23 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jthoat, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                    .addComponent(jSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                    .addComponent(jButtonSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jthoat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -270,7 +270,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(255, 0, 51));
         jLabel3.setText("DANH SÁCH QUY ĐỊNH");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableThayDoiQD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -280,12 +280,12 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                 "Mã Năm Học", "Tên Tiêu Chí", "Thông Số"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableThayDoiQD.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTableThayDoiQDMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableThayDoiQD);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -346,7 +346,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jThemActionPerformed
+    private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
           loadQDFillTB();
         String insert = "INSERT INTO QUYDINH (MaQuyDinh,TenQuyDinh,ThongSo) VALUES(?,?,?)";//fix
@@ -354,9 +354,9 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
-           DB.ps.setInt(3,Integer.parseInt(jTextField3.getText()));
+           DB.ps.setString(1,jTextFieldMaNamHoc.getText());
+           DB.ps.setString(2,jTextFieldTieuChi.getText());
+           DB.ps.setInt(3,Integer.parseInt(jTextFieldThongSo.getText()));
             
 
             int ret = DB.ps.executeUpdate();
@@ -383,22 +383,22 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         }
         loadQDFillTB();
-    }//GEN-LAST:event_jThemActionPerformed
+    }//GEN-LAST:event_jButtonThemActionPerformed
 
-    private void jSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSuaActionPerformed
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
             try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
-            int index=jTable1.getSelectedRow();
-            String value = jTable1.getModel().getValueAt(index, 0).toString();
+            int index=jTableThayDoiQD.getSelectedRow();
+            String value = jTableThayDoiQD.getModel().getValueAt(index, 0).toString();
             String update2 = "UPDATE QUYDINH SET MaQuyDinh=?,TenQuyDinh=?,ThongSo=? where MaQuyDinh='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
             
-           DB.ps.setString(1,jTextField1.getText());
-           DB.ps.setString(2,jTextField2.getText());
-           DB.ps.setInt(3,Integer.parseInt(jTextField3.getText()));
+           DB.ps.setString(1,jTextFieldMaNamHoc.getText());
+           DB.ps.setString(2,jTextFieldTieuChi.getText());
+           DB.ps.setInt(3,Integer.parseInt(jTextFieldThongSo.getText()));
 
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {
@@ -424,13 +424,13 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         }
         loadQDFillTB();
-    }//GEN-LAST:event_jSuaActionPerformed
+    }//GEN-LAST:event_jButtonSuaActionPerformed
 
-    private void jXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXoaActionPerformed
+    private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
 
       // TODO add your handling code here:
-            int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel(); 
+            int index = jTableThayDoiQD.getSelectedRow();
+        TableModel model=jTableThayDoiQD.getModel(); 
         String key=model.getValueAt(index,0).toString();
         String delete="DELETE FROM QUYDINH  WHERE MaQuyDinh='"+key+"'";
 
@@ -464,26 +464,30 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         }
         loadQDFillTB();
-    }//GEN-LAST:event_jXoaActionPerformed
+    }//GEN-LAST:event_jButtonXoaActionPerformed
 
-    private void jthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jthoatActionPerformed
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
         // TODO add your handling code here:
           dispose();
-    }//GEN-LAST:event_jthoatActionPerformed
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void jTableThayDoiQDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableThayDoiQDMouseClicked
         // TODO add your handling code here:
-        int index = jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel();
+        int index = jTableThayDoiQD.getSelectedRow();
+        TableModel model=jTableThayDoiQD.getModel();
         
         
-        jTextField1.setText (model.getValueAt(index,0).toString());
-        jTextField2.setText (model.getValueAt(index,1).toString());
-        jTextField3.setText (model.getValueAt(index,2).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+        jTextFieldMaNamHoc.setText (model.getValueAt(index,0).toString());
+        jTextFieldTieuChi.setText (model.getValueAt(index,1).toString());
+        jTextFieldThongSo.setText (model.getValueAt(index,2).toString());
+    }//GEN-LAST:event_jTableThayDoiQDMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonSua;
+    private javax.swing.JButton jButtonThem;
+    private javax.swing.JButton jButtonThoat;
+    private javax.swing.JButton jButtonXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -497,13 +501,9 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jSua;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JButton jThem;
-    private javax.swing.JButton jXoa;
-    private javax.swing.JButton jthoat;
+    private javax.swing.JTable jTableThayDoiQD;
+    private javax.swing.JTextField jTextFieldMaNamHoc;
+    private javax.swing.JTextField jTextFieldThongSo;
+    private javax.swing.JTextField jTextFieldTieuChi;
     // End of variables declaration//GEN-END:variables
 }
