@@ -14,8 +14,11 @@ import java.util.Vector;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -30,8 +33,11 @@ import javax.swing.table.TableModel;
  */
 public class frmTiepNhanHS extends javax.swing.JInternalFrame {
 
+    CatchExceptions CE = new CatchExceptions();
     ConnectDB DB=new ConnectDB();
     private String header[] = {"MHS","Năm Học","Khối", "Họ Tên","GT", "Ngày Sinh", "Địa Chỉ", "Email"};
+    char NumArray[]={'0','1','2','3','4','5','6','7','8','9'};
+    char SpecSign[]={'`','~','!','@','#','$','%','^','&','*','(',')','-','_','+','=','{','[','}',']','\\','|',';',':','\'','"','<',',','>','.','?','/'};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
     /**
      * Creates new form frmThemHS
@@ -630,7 +636,29 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            DB.ps.setString(1,"");
            DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
-           DB.ps.setString(4, jTextFieldHoTen.getText());
+          String str=jTextFieldHoTen.getText();
+          str=str.trim();
+            int lenght=str.length();
+            for (int i=0;i<10;i++)
+                for (int j=0;j<lenght;j++)
+                    if(NumArray[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa số");
+                        return;
+                    }
+            if (CE.count(str)<2)
+              {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép có 1 chữ");
+                        return;
+               } 
+            for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<lenght;j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
+           DB.ps.setString(4, str);
            DB.ps.setString(5, (String)jComboBoxGioiTinh.getSelectedItem());
            DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooserNgaySinh.getDate()));
            DB.ps.setString(7, jTextFieldDiaChi.getText());
