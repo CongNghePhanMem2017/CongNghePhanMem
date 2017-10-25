@@ -7,6 +7,9 @@ package doancnpm;
 
 import java.sql.DriverManager;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -16,7 +19,7 @@ import javax.swing.table.TableModel;
  * @author Elitebook
  */
 public class frmQL_Lop extends javax.swing.JInternalFrame {
-
+    CatchExceptions CE=new CatchExceptions();
     ConnectDB DB=new ConnectDB();
     private String header[] = {"MaLop","TenLop","MaKhoi"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
@@ -26,6 +29,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
     public frmQL_Lop() {
         initComponents();
         loadLopFillTB();
+        LoadKhoiAndFillToCBBox();
     }
 
     private void loadLopFillTB(){
@@ -54,7 +58,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                
                 data.add(DB.rs.getString("TenLop"));
                 data.add(DB.rs.getString("MaKhoi"));
-                // Thêm một dòng vào table model
+                data.add(DB.rs.getInt("SiSo"));
                  tblModel.addRow(data);
             }
             jTableLop.setModel(tblModel);
@@ -77,6 +81,49 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 ex.printStackTrace();
             }
         }
+    }
+     private void LoadKhoiAndFillToCBBox() {
+     
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            // câu lệnh xem dữ liệu 
+            String sql = "select * from KHOI";
+            //Tạo đối tượng thực thi câu lệnh
+            DB.st = DB.conn.createStatement();
+            // thực thi
+            DB.rs = DB.st.executeQuery(sql);
+            Vector data = null;
+            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
+            // Nếu dan hsach1 không tồn tại 
+            if (DB.rs.isBeforeFirst() == false) {
+                JOptionPane.showMessageDialog(this, " The Khoi is not available ! ");
+                return;
+            }
+            // trong khi chư hết dữ  liệu
+            while (DB.rs.next()) {
+                data = new Vector();
+                data.add(DB.rs.getString("MaKhoi"));
+                cmbModel.addElement(data);
+            }
+            jComboBoxMaKhoi.setModel(cmbModel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,7 +152,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
         jButtonThoat = new javax.swing.JButton();
         jButtonSua = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldMaKhoi = new javax.swing.JTextField();
+        jComboBoxMaKhoi = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -168,7 +215,6 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Si Số");
 
-        jTextFieldSiSo.setEditable(false);
         jTextFieldSiSo.setText(" ");
 
         jButtonThem.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -261,7 +307,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                                     .addComponent(jTextFieldSiSo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldMaLop, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                                     .addComponent(jTextFieldTenLop)
-                                    .addComponent(jTextFieldMaKhoi))))
+                                    .addComponent(jComboBoxMaKhoi, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -281,8 +327,8 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextFieldMaKhoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(jComboBoxMaKhoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldSiSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -318,7 +364,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -361,6 +407,10 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             }
         }
         loadLopFillTB();
+        jTextFieldMaLop.setText("");
+        jTextFieldSiSo.setText("");
+        jTextFieldTenLop.setText("");
+        jTextFieldSiSo.setText("");
     }//GEN-LAST:event_jButtonXoaActionPerformed
 
     private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
@@ -370,18 +420,33 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
 
     private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         // TODO add your handling code here:
+
          try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index=jTableLop.getSelectedRow();
             String value = jTableLop.getModel().getValueAt(index, 0).toString();
-            String update2 = "UPDATE LOP SET MaLop=?,TenLop=?,MaKhoi=? where MaLop='"+value+"'";
+            String update2 = "UPDATE LOP SET MaLop=?,TenLop=?,MaKhoi=?,SiSo=? where MaLop='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
-            
-           DB.ps.setString(1,jTextFieldMaLop.getText());
+           String str=jTextFieldMaLop.getText().trim();
+           str=str.toUpperCase();
+           Pattern regex = Pattern.compile("\\w{2}[a]\\w{2}");
+           Matcher matcher = regex .matcher(str);
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Mã lớp không hợp lệ");
+               return;
+           }
+           DB.ps.setString(1,str);
            DB.ps.setString(2,jTextFieldTenLop.getText());
-           DB.ps.setString(3,jTextFieldMaKhoi.getText());
+           DB.ps.setString(3,jComboBoxMaKhoi.getSelectedItem().toString());
+           int check2=CE.CheckSiSo(value,Integer.parseInt(jTextFieldSiSo.getText()));
+           if(check2==0)
+           {
+               JOptionPane.showMessageDialog(rootPane, "sỉ số phải nhỏ hơn quy định");
+           }
+           DB.ps.setInt(4, Integer.parseInt(jTextFieldSiSo.getText()));
 
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {
@@ -407,20 +472,39 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             }
         }
         loadLopFillTB();
+        jTextFieldMaLop.setText("");
+        jTextFieldSiSo.setText("");
+        jTextFieldTenLop.setText("");
+        jTextFieldSiSo.setText("");
     }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
           loadLopFillTB();
-        String insert = "INSERT INTO LOP (MaLop,MaKhoi,TenLop) VALUES(?,?,?)";//fix
+        String insert = "INSERT INTO LOP (MaLop,MaKhoi,TenLop,SiSo) VALUES(?,?,?,?)";//fix
 
         try {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
-
-           DB.ps.setString(1,jTextFieldMaLop.getText());
-            DB.ps.setString(2,jTextFieldMaKhoi.getText());
+           
+           String str=jTextFieldMaLop.getText().trim();
+           str=str.toUpperCase();
+           Pattern regex = Pattern.compile("\\w{2}[a]\\w{2}");
+           Matcher matcher = regex .matcher(str);
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Mã lớp không hợp lệ");
+               return;
+           }
+           DB.ps.setString(1,str);
+            DB.ps.setString(2,jComboBoxMaKhoi.getSelectedItem().toString());
            DB.ps.setString(3,jTextFieldTenLop.getText());
+           int check2=CE.CheckSiSo(str,Integer.parseInt(jTextFieldSiSo.getText()));
+           if(check2==0)
+           {
+               JOptionPane.showMessageDialog(rootPane, "sỉ số phải nhỏ hơn quy định");
+           }
+           DB.ps.setInt(4,Integer.parseInt(jTextFieldSiSo.getText()));
           
          
             
@@ -449,6 +533,10 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
             }
         }
        loadLopFillTB();
+       jTextFieldMaLop.setText("");
+        jTextFieldSiSo.setText("");
+        jTextFieldTenLop.setText("");
+        jTextFieldSiSo.setText("");
     }//GEN-LAST:event_jButtonThemActionPerformed
 
     private void jTableLopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLopMouseClicked
@@ -459,7 +547,8 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
         
         jTextFieldMaLop.setText (model.getValueAt(index,0).toString());
         jTextFieldTenLop.setText (model.getValueAt(index,1).toString());
-        jTextFieldMaKhoi.setText (model.getValueAt(index,2).toString());
+        jComboBoxMaKhoi.setSelectedItem(model.getValueAt(index,2).toString());
+        jTextFieldSiSo.setText(model.getValueAt(index,3).toString());
     }//GEN-LAST:event_jTableLopMouseClicked
 
 
@@ -468,6 +557,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonThem;
     private javax.swing.JButton jButtonThoat;
     private javax.swing.JButton jButtonXoa;
+    private javax.swing.JComboBox<String> jComboBoxMaKhoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -480,7 +570,6 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLop;
-    private javax.swing.JTextField jTextFieldMaKhoi;
     private javax.swing.JTextField jTextFieldMaLop;
     private javax.swing.JTextField jTextFieldSiSo;
     private javax.swing.JTextField jTextFieldTenLop;

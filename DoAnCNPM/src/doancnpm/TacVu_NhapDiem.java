@@ -1064,6 +1064,11 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
            DB.ps.setString(2, (jComboBoxMonHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxHocKy.getSelectedItem().toString()));
            DB.ps.setString(4,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
+           if(Float.parseFloat(jTextFieldDiem.getText())<0 ||Float.parseFloat(jTextFieldDiem.getText())>10 )
+           {
+               JOptionPane.showMessageDialog(rootPane, "Điểm phải từ 0 đến 10");
+               return;
+           }
            DB.ps.setFloat(5, Float.parseFloat(jTextFieldDiem.getText()));
             
 

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -213,7 +214,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             }
         }
     }
-   
+    
       public static java.sql.Date convertUtilDateToSqlDate(java.util.Date date){
         if(date != null) {
             java.sql.Date sqlDate = new java.sql.Date(date.getTime());
@@ -258,10 +259,10 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         jButtonXoa = new javax.swing.JButton();
         jButtonThoat = new javax.swing.JButton();
         jButtonSua = new javax.swing.JButton();
-        jButtonClean = new javax.swing.JButton();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldHoTen = new javax.swing.JTextField();
         jDateChooserNgaySinh = new com.toedter.calendar.JDateChooser();
+        jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableTiepNhanHS = new javax.swing.JTable();
@@ -342,13 +343,6 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonClean.setText("Clean");
-        jButtonClean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCleanActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -361,9 +355,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                 .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonThoat)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 101, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,12 +367,13 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                         .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButtonClean, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jDateChooserNgaySinh.setDateFormatString("dd/MM/yyyy");
+
+        jLabel10.setText("VD a@email.com");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -427,7 +420,10 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10))
                             .addComponent(jTextFieldDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -460,7 +456,8 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -540,10 +537,53 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            //DB.ps.setString(1,txtMaHS.getText());
            DB.ps.setString(1, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(2, (jComboBoxKhoi.getSelectedItem().toString()));
-           DB.ps.setString(3, jTextFieldHoTen.getText());
+           String str=jTextFieldHoTen.getText();
+          str=str.trim();
+            int lenght=str.length();
+            for (int i=0;i<10;i++)
+                for (int j=0;j<lenght;j++)
+                    if(NumArray[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa số");
+                        return;
+                    }
+            if (CE.count(str)<2)
+              {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép có 1 chữ");
+                        return;
+               } 
+            for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<lenght;j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
+           DB.ps.setString(3, str);
            DB.ps.setString(4, (String)jComboBoxGioiTinh.getSelectedItem());
+           Date today=new Date(System.currentTimeMillis()); 
+           SimpleDateFormat timeFormat= new SimpleDateFormat("yyyy"); 
+           int s=Integer.parseInt(timeFormat.format(jDateChooserNgaySinh.getDate())); 
+           int n=Integer.parseInt(timeFormat.format(today.getTime()));
+           int check=CE.CheckAge(n,s);
+           if(check==0)
+           {
+               JOptionPane.showMessageDialog(null, "Tuổi phải từ 15 đến 18");
+               return;
+           }
+           if(check==-1)
+           {
+               return;
+           }
            DB.ps.setDate(5, convertUtilDateToSqlDate(jDateChooserNgaySinh.getDate()));
            DB.ps.setString(6, jTextFieldDiaChi.getText());
+           Pattern regex = Pattern.compile("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b");
+           Matcher matcher = regex .matcher(jTextFieldEmail.getText());
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Email không hợp lệ");
+               return;
+           }
            DB.ps.setString(7, jTextFieldEmail.getText());
           // DB.ps.setString(9, txtGhiChu.getText());
             
@@ -573,6 +613,10 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             }
         }
         loadHSFillTB();
+         jTextFieldMaHS.setText("");
+         jTextFieldHoTen.setText("");
+         jTextFieldDiaChi.setText("");
+         jTextFieldEmail.setText("");
     }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jTextFieldMaHSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMaHSActionPerformed
@@ -618,7 +662,10 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             }
         }
         loadHSFillTB();
-        
+         jTextFieldMaHS.setText("");
+         jTextFieldHoTen.setText("");
+         jTextFieldDiaChi.setText("");
+         jTextFieldEmail.setText("");
     }//GEN-LAST:event_jButtonXoaActionPerformed
 
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
@@ -660,8 +707,29 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                     }
            DB.ps.setString(4, str);
            DB.ps.setString(5, (String)jComboBoxGioiTinh.getSelectedItem());
+           Date today=new Date(System.currentTimeMillis()); 
+           SimpleDateFormat timeFormat= new SimpleDateFormat("yyyy"); 
+           int s=Integer.parseInt(timeFormat.format(jDateChooserNgaySinh.getDate())); 
+           int n=Integer.parseInt(timeFormat.format(today.getTime()));
+           int check=CE.CheckAge(n,s);
+           if(check==0)
+           {
+               JOptionPane.showMessageDialog(null, "Tuổi phải từ 15 đến 18");
+               return;
+           }
+           if(check==-1)
+           {
+               return;
+           }
            DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooserNgaySinh.getDate()));
            DB.ps.setString(7, jTextFieldDiaChi.getText());
+           Pattern regex = Pattern.compile("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b");
+           Matcher matcher = regex .matcher(jTextFieldEmail.getText());
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Email không hợp lệ");
+               return;
+           }
            DB.ps.setString(8, jTextFieldEmail.getText());
           // DB.ps.setString(9, txtGhiChu.getText());
             
@@ -690,6 +758,10 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
             }
         }
         loadHSFillTB();
+        jTextFieldMaHS.setText("");
+        jTextFieldHoTen.setText("");
+        jTextFieldDiaChi.setText("");
+        jTextFieldEmail.setText("");
     }//GEN-LAST:event_jButtonThemActionPerformed
 
     private void jTableTiepNhanHSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTiepNhanHSMouseClicked
@@ -714,17 +786,8 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jTableTiepNhanHSMouseClicked
 
-    private void jButtonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleanActionPerformed
-        // TODO add your handling code here:
-         jTextFieldMaHS.setText("");
-         jTextFieldHoTen.setText("");
-         jTextFieldDiaChi.setText("");
-         jTextFieldEmail.setText("");
-    }//GEN-LAST:event_jButtonCleanActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonClean;
     private javax.swing.JButton jButtonSua;
     private javax.swing.JButton jButtonThem;
     private javax.swing.JButton jButtonThoat;
@@ -734,6 +797,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jComboBoxNamHoc;
     private com.toedter.calendar.JDateChooser jDateChooserNgaySinh;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;

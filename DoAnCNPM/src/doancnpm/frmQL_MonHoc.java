@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -80,6 +82,7 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
             }
         }
     }
+     
     /**
      * This method is called from within the constructor to initialise the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -313,6 +316,8 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
             }
         }
         loadMHFillTB();
+         jTextFieldMaMonHoc.setText("");
+         jTextFieldTenMonHoc.setText("");
     }//GEN-LAST:event_jButtonXoaActionPerformed
 
     private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
@@ -330,8 +335,16 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
 
   
              DB.ps = DB.conn.prepareStatement(update2);
-            
-           DB.ps.setString(1,jTextFieldMaMonHoc.getText());
+           String str=jTextFieldMaMonHoc.getText().trim();
+           str=str.toUpperCase();
+           Pattern regex = Pattern.compile("[A-Z]{2}");
+           Matcher matcher = regex .matcher(str);
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Mã môn học không hợp lệ");
+               return;
+           }
+           DB.ps.setString(1,str);
            DB.ps.setString(2,jTextFieldTenMonHoc.getText());
             
 
@@ -359,6 +372,8 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
             }
         }
         loadMHFillTB();
+        jTextFieldMaMonHoc.setText("");
+         jTextFieldTenMonHoc.setText("");
     }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
@@ -369,7 +384,15 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
         try {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
-
+           String str=jTextFieldMaMonHoc.getText().trim();
+           str=str.toUpperCase();
+           Pattern regex = Pattern.compile("[A-Z]{2}");
+           Matcher matcher = regex .matcher(str);
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Mã môn học không hợp lệ");
+               return;
+           }
            DB.ps.setString(1,jTextFieldMaMonHoc.getText());
            DB.ps.setString(2,jTextFieldTenMonHoc.getText());
          
@@ -399,6 +422,9 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
             }
         }
         loadMHFillTB();
+         jTextFieldMaMonHoc.setText("");
+         jTextFieldTenMonHoc.setText("");
+
     }//GEN-LAST:event_jButtonThemActionPerformed
 
     private void jTableMonHocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMonHocMouseClicked

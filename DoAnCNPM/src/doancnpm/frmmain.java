@@ -23,18 +23,18 @@ public class frmmain extends javax.swing.JFrame {
      */
     public frmmain() {
         initComponents();
-//       jMenu4.setVisible(false);
+//        jMenu4.setVisible(false);
 //        jMenu3.setVisible(false);
 //        jMenu12.setVisible(false);
 //        jMenu11.setVisible(false);
 //        jMenu5.setVisible(false);
 //        jMenu1.setVisible(false);
 //        jMenu13.setVisible(false);
-//        btnThemHS.setVisible(false);
-//        BtnNhapDiem3.setVisible(false);
-//        BtnNhapDiem2.setVisible(false);
-//        BtnNhapDiem.setVisible(false);
-//        BtnNhapDiem1.setVisible(false);
+//        jButtonTiepNhan.setVisible(false);
+//        jButtonTimKiem.setVisible(false);
+//        jButtonNhapDiem.setVisible(false);
+//        jButtonTongKet.setVisible(false);
+//        jButtonQuyDInh.setVisible(false);
     }
 
     /**
@@ -56,6 +56,7 @@ public class frmmain extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jLabel5 = new javax.swing.JLabel();
         ImageIcon icon = new ImageIcon(getClass().getResource("../image/nen.jpg"));
         Image image = icon.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
@@ -72,7 +73,6 @@ public class frmmain extends javax.swing.JFrame {
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -134,6 +134,10 @@ public class frmmain extends javax.swing.JFrame {
         jMenuItem7.setText("jMenuItem7");
 
         jMenuItem10.setText("jMenuItem10");
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel5.setText("PHẦM MỀM QUẢN LÝ HỌC SINH ");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản lý học sinh");
@@ -217,12 +221,6 @@ public class frmmain extends javax.swing.JFrame {
         jLabel2.setText("ĐĂNG NHẬP");
         jDesktopPane1.add(jLabel2);
         jLabel2.setBounds(890, 0, 121, 24);
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel5.setText("PHẦM MỀM QUẢN LÝ HỌC SINH ");
-        jDesktopPane1.add(jLabel5);
-        jLabel5.setBounds(200, 60, 400, 40);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
@@ -615,7 +613,6 @@ public class frmmain extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Username and password must not empty.", "Invalid", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-         System.out.println(jPasswordField2.getPassword());
           try{
               DB.conn = DriverManager.getConnection(DB.dbURL);
               String sql = "select * from AccountManage where username='"+jTextField1.getText()+"'";
@@ -626,35 +623,39 @@ public class frmmain extends javax.swing.JFrame {
                             if (DB.rs.getString("Password").equals(new String(jPasswordField2.getPassword()))) {
                                 JOptionPane.showMessageDialog(this, "You has been login successful.", "login successfuly", JOptionPane.INFORMATION_MESSAGE);
                                     if(DB.rs.getString("privilege").equals("admin")){
-                                         jLabel12.setText("Status: Log in as admin");
+                                        jLabel12.setText("Status: Log in as admin");
                                         jMenu4.setVisible(true);
-                                           jMenu3.setVisible(true);
-                                            jMenu12.setVisible(true);
-                                            jMenu11.setVisible(true);
-                                           jMenu5.setVisible(true);
-                                               jMenu1.setVisible(true);
-                                           jMenu13.setVisible(true);
-                                           jButtonTiepNhan.setVisible(true);
-                                          jButtonTimKiem.setVisible(true);
-                                              jButtonNhapDiem.setVisible(true);
-                                          jButtonTongKet.setVisible(true);
-                                          jButtonQuyDInh.setVisible(true);
+                                        jMenu3.setVisible(true);
+                                        jMenu12.setVisible(true);
+                                        jMenu11.setVisible(true);
+                                        jMenu5.setVisible(true);
+                                        jMenu1.setVisible(true);
+                                        jMenu13.setVisible(true);
+                                        jButtonTiepNhan.setVisible(true);
+                                        jButtonTimKiem.setVisible(true);
+                                        jButtonNhapDiem.setVisible(true);
+                                        jButtonTongKet.setVisible(true);
+                                        jButtonQuyDInh.setVisible(true);
                                     }
                                     else
                                     {
                                         jLabel12.setText("Status: Log in as user");
-                                        jMenu4.setVisible(true);
-                                           jMenu3.setVisible(true);
-                                            jMenu12.setVisible(true);
-                                            jMenu11.setVisible(true);
-                                           jMenu5.setVisible(false);
-                                               jMenu1.setVisible(false);
-                                           jMenu13.setVisible(false);
-                                           jButtonTiepNhan.setVisible(false);
-                                          jButtonTimKiem.setVisible(false);
-                                              jButtonNhapDiem.setVisible(false);
-                                          jButtonTongKet.setVisible(false);
-                                          jButtonQuyDInh.setVisible(false);
+                                        jMenu4.setVisible(false);
+                                        jMenu3.setVisible(false);
+                                        jMenu12.setVisible(true);
+                                            jMenuItemTNHS.setVisible(false);
+                                            jMenuItemTCHS.setVisible(true);
+                                        jMenu11.setVisible(false);
+                                        jMenu5.setVisible(true);
+                                            jMenuItemNhapDiem.setVisible(false);
+                                            jMenuItemTraCuu.setVisible(true);               
+                                        jMenu1.setVisible(false);
+                                        jMenu13.setVisible(false);
+                                        jButtonTiepNhan.setVisible(false);
+                                        jButtonTimKiem.setVisible(false);
+                                        jButtonNhapDiem.setVisible(false);
+                                        jButtonTongKet.setVisible(false);
+                                        jButtonQuyDInh.setVisible(false);
                                     }
                                 
                             } else {

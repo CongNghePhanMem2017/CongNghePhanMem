@@ -8,9 +8,12 @@ package doancnpm;
 import static doancnpm.frmTiepNhanHS.convertUtilDateToSqlDate;
 import java.sql.DriverManager;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import static jdk.nashorn.internal.objects.NativeString.trim;
 
 /**
  *
@@ -18,6 +21,7 @@ import javax.swing.table.TableModel;
  */
 public class frmQL_NamHoc extends javax.swing.JInternalFrame {
     ConnectDB DB=new ConnectDB();
+    char NumArray[]={'0','1','2','3','4','5','6','7','8','9'};
     private String header[] = {"MaNH","TenNH","YNGHIA"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
     /**
@@ -345,6 +349,9 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
             }
         }
         loadNHFillTB();
+        jTextFieldMaNamHoc.setText("");
+        jTextFieldTenNamHoc.setText("");
+        jTextFieldYNghia.setText("");
     }//GEN-LAST:event_jButtonXoaActionPerformed
 
     private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
@@ -362,8 +369,16 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
 
   
              DB.ps = DB.conn.prepareStatement(update2);
-            
-           DB.ps.setString(1,jTextFieldMaNamHoc.getText());
+           String str=jTextFieldMaNamHoc.getText().trim();
+           str=str.toUpperCase();
+           Pattern regex = Pattern.compile("[K]\\w{2}");
+           Matcher matcher = regex .matcher(str);
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Mã năm học không hợp lệ");
+               return;
+           }
+           DB.ps.setString(1,str);
            DB.ps.setString(2,jTextFieldTenNamHoc.getText());
            DB.ps.setString(3,jTextFieldYNghia.getText());
             
@@ -392,6 +407,9 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
             }
         }
         loadNHFillTB();
+        jTextFieldMaNamHoc.setText("");
+        jTextFieldTenNamHoc.setText("");
+        jTextFieldYNghia.setText("");
     }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
@@ -402,8 +420,16 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
         try {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
-
-           DB.ps.setString(1,jTextFieldMaNamHoc.getText());
+           String str=jTextFieldMaNamHoc.getText().trim();
+           str=str.toUpperCase();
+           Pattern regex = Pattern.compile("[K]\\w{2}");
+           Matcher matcher = regex .matcher(str);
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Mã năm học không hợp lệ");
+               return;
+           }
+           DB.ps.setString(1,str);
            DB.ps.setString(2,jTextFieldTenNamHoc.getText());
            DB.ps.setString(3,jTextFieldYNghia.getText());
          
@@ -433,6 +459,9 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
             }
         }
         loadNHFillTB();
+        jTextFieldMaNamHoc.setText("");
+        jTextFieldTenNamHoc.setText("");
+        jTextFieldYNghia.setText("");
     }//GEN-LAST:event_jButtonThemActionPerformed
 
     private void jTableNamHocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNamHocMouseClicked

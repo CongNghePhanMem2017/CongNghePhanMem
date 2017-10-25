@@ -8,6 +8,9 @@ package doancnpm;
 import static doancnpm.frmTiepNhanHS.convertUtilDateToSqlDate;
 import java.sql.DriverManager;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -27,6 +30,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
     public ThayDoiQuyDinh() {
         initComponents();
         loadQDFillTB();
+        loadNamHocAndFillToCBBox();
     }
   private void loadQDFillTB(){
 
@@ -80,6 +84,58 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         }
     }
+  private void loadNamHocAndFillToCBBox(){
+
+        try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+
+            // Câu lệnh xem dữ liệu
+            String sql = "select * from NAMHOC ";
+
+            // Tạo đối tượng thực thi câu lệnh Select
+            DB.st = DB.conn.createStatement();
+
+            // Thực thi 
+            DB.rs = DB.st.executeQuery(sql);
+            Vector data = null;
+            DefaultComboBoxModel cmbModel = new DefaultComboBoxModel();
+
+            // Nếu sách không tồn tại
+            if (DB.rs.isBeforeFirst() == false) {
+                JOptionPane.showMessageDialog(this, "Nam hoc not available!");
+                return;
+            }
+
+            // Trong khi chưa hết dữ liệu
+            while (DB.rs.next()) {
+//                data = new Vector();
+//                data.add(DB.rs.getString("MANH"));
+//                cmbModel.addElement(data);
+                    String namhoc=DB.rs.getString("MANH");
+                    jComboBoxMaNamHoc.addItem(namhoc);
+            }
+
+           //  jComboBoxNamHoc.setModel(cmbModel);
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,11 +152,11 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldMaNamHoc = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextFieldTieuChi = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldThongSo = new javax.swing.JTextField();
+        jComboBoxMaNamHoc = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jButtonThem = new javax.swing.JButton();
         jButtonXoa = new javax.swing.JButton();
@@ -146,6 +202,8 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
 
         jTextFieldThongSo.setText(" ");
 
+        jComboBoxMaNamHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -158,19 +216,19 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldMaNamHoc)
                     .addComponent(jTextFieldTieuChi)
-                    .addComponent(jTextFieldThongSo, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                    .addComponent(jTextFieldThongSo, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                    .addComponent(jComboBoxMaNamHoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldMaNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(23, 23, 23)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBoxMaNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextFieldTieuChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,7 +236,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextFieldThongSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         jButtonThem.setText("Thêm");
@@ -260,7 +318,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 16, Short.MAX_VALUE)))
+                        .addGap(0, 19, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -340,7 +398,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -354,9 +412,17 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
 
-           DB.ps.setString(1,jTextFieldMaNamHoc.getText());
+           DB.ps.setString(1,jComboBoxMaNamHoc.getSelectedItem().toString());
            DB.ps.setString(2,jTextFieldTieuChi.getText());
-           DB.ps.setInt(3,Integer.parseInt(jTextFieldThongSo.getText()));
+           String str=(jTextFieldThongSo.getText()).trim();
+           Pattern regex = Pattern.compile("\\w+");
+           Matcher matcher = regex .matcher(str);
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Thông số không hợp lệ");
+               return;
+           }
+           DB.ps.setInt(3,Integer.parseInt(str));
             
 
             int ret = DB.ps.executeUpdate();
@@ -383,6 +449,8 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         }
         loadQDFillTB();
+        jTextFieldThongSo.setText("");
+        jTextFieldTieuChi.setText("");
     }//GEN-LAST:event_jButtonThemActionPerformed
 
     private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
@@ -396,9 +464,17 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
   
              DB.ps = DB.conn.prepareStatement(update2);
             
-           DB.ps.setString(1,jTextFieldMaNamHoc.getText());
+           DB.ps.setString(1,jComboBoxMaNamHoc.getSelectedItem().toString());
            DB.ps.setString(2,jTextFieldTieuChi.getText());
-           DB.ps.setInt(3,Integer.parseInt(jTextFieldThongSo.getText()));
+           String str=(jTextFieldThongSo.getText()).trim();
+           Pattern regex = Pattern.compile("\\w+");
+           Matcher matcher = regex .matcher(str);
+           if(matcher.matches()==false)
+           {
+               JOptionPane.showMessageDialog(rootPane, "Thông số không hợp lệ");
+               return;
+           }
+           DB.ps.setInt(3,Integer.parseInt(str));
 
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {
@@ -424,6 +500,8 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         }
         loadQDFillTB();
+        jTextFieldThongSo.setText("");
+        jTextFieldTieuChi.setText("");
     }//GEN-LAST:event_jButtonSuaActionPerformed
 
     private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
@@ -464,6 +542,8 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         }
         loadQDFillTB();
+        jTextFieldThongSo.setText("");
+        jTextFieldTieuChi.setText("");
     }//GEN-LAST:event_jButtonXoaActionPerformed
 
     private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
@@ -477,7 +557,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
         TableModel model=jTableThayDoiQD.getModel();
         
         
-        jTextFieldMaNamHoc.setText (model.getValueAt(index,0).toString());
+        jComboBoxMaNamHoc.setSelectedItem(model.getValueAt(index,0).toString());
         jTextFieldTieuChi.setText (model.getValueAt(index,1).toString());
         jTextFieldThongSo.setText (model.getValueAt(index,2).toString());
     }//GEN-LAST:event_jTableThayDoiQDMouseClicked
@@ -488,6 +568,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonThem;
     private javax.swing.JButton jButtonThoat;
     private javax.swing.JButton jButtonXoa;
+    private javax.swing.JComboBox<String> jComboBoxMaNamHoc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -502,7 +583,6 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableThayDoiQD;
-    private javax.swing.JTextField jTextFieldMaNamHoc;
     private javax.swing.JTextField jTextFieldThongSo;
     private javax.swing.JTextField jTextFieldTieuChi;
     // End of variables declaration//GEN-END:variables
