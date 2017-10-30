@@ -79,7 +79,6 @@ public class frmmain extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        Jbt_TinhDiem = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButtonTiepNhan = new javax.swing.JButton();
         jButtonTimKiem = new javax.swing.JButton();
@@ -101,7 +100,6 @@ public class frmmain extends javax.swing.JFrame {
         jMenuItemTCHS = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
         jMenuItemSapXepLop = new javax.swing.JMenuItem();
-        jMenuItemLenLop = new javax.swing.JMenuItem();
         jMenuItemChuyenLop = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItemNhapDiem = new javax.swing.JMenuItem();
@@ -252,15 +250,6 @@ public class frmmain extends javax.swing.JFrame {
         jLabel11.setText("-Trương Thành Phát");
         jDesktopPane1.add(jLabel11);
         jLabel11.setBounds(290, 240, 162, 22);
-
-        Jbt_TinhDiem.setText("Tinh Điểm");
-        Jbt_TinhDiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Jbt_TinhDiemActionPerformed(evt);
-            }
-        });
-        jDesktopPane1.add(Jbt_TinhDiem);
-        Jbt_TinhDiem.setBounds(320, 300, 110, 50);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
@@ -413,10 +402,12 @@ public class frmmain extends javax.swing.JFrame {
         });
         jMenu11.add(jMenuItemSapXepLop);
 
-        jMenuItemLenLop.setText("Lên Lớp");
-        jMenu11.add(jMenuItemLenLop);
-
         jMenuItemChuyenLop.setText("Chuyển Lớp");
+        jMenuItemChuyenLop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemChuyenLopActionPerformed(evt);
+            }
+        });
         jMenu11.add(jMenuItemChuyenLop);
 
         jMenuBar1.add(jMenu11);
@@ -432,6 +423,11 @@ public class frmmain extends javax.swing.JFrame {
         jMenu5.add(jMenuItemNhapDiem);
 
         jMenuItemTraCuu.setText("Tra Cứu");
+        jMenuItemTraCuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTraCuuActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItemTraCuu);
 
         jMenuBar1.add(jMenu5);
@@ -750,16 +746,19 @@ public class frmmain extends javax.swing.JFrame {
         jLabel12.setText("Status:Log out");
     }//GEN-LAST:event_jButtonLogOutActionPerformed
 
-    private void Jbt_TinhDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jbt_TinhDiemActionPerformed
-        test_Tinh_Diem diem = null;
-        try {
-            diem = new test_Tinh_Diem();
-        } catch (Exception ex) {
-            Logger.getLogger(frmmain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jDesktopPane1.add(diem);
-        diem.setVisible(true);
-    }//GEN-LAST:event_Jbt_TinhDiemActionPerformed
+    private void jMenuItemTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTraCuuActionPerformed
+        // TODO add your handling code here:
+        TraCua_KetQua_HocTap TC  = new TraCua_KetQua_HocTap();
+        jDesktopPane1.add(TC);
+        TC.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTraCuuActionPerformed
+
+    private void jMenuItemChuyenLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChuyenLopActionPerformed
+        // TODO add your handling code here:
+        frmQL_ChuyenLop CL  = new frmQL_ChuyenLop();
+        jDesktopPane1.add(CL);
+        CL.setVisible(true);
+    }//GEN-LAST:event_jMenuItemChuyenLopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -798,7 +797,6 @@ public class frmmain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Jbt_TinhDiem;
     private javax.swing.JButton jButtonLogIn;
     private javax.swing.JButton jButtonLogOut;
     private javax.swing.JButton jButtonNhapDiem;
@@ -842,7 +840,6 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAdmin;
     private javax.swing.JMenuItem jMenuItemBaoCaoTongKetMon;
     private javax.swing.JMenuItem jMenuItemChuyenLop;
-    private javax.swing.JMenuItem jMenuItemLenLop;
     private javax.swing.JMenuItem jMenuItemNhapDiem;
     private javax.swing.JMenuItem jMenuItemQL_HocKy;
     private javax.swing.JMenuItem jMenuItemQL_LoaiKT;

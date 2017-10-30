@@ -5,17 +5,25 @@
  */
 package doancnpm;
 
+import java.sql.DriverManager;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author manng
  */
 public class BaoCao_TongKet_HocKy extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form frmBaoCaoHK
-     */
+       
+    private String header_BAOCAO_HK [] = {"Tên Lớp", "Sỉ Số", "Số Lượng Đạt","Tỉ Lê(%)"};
+           private DefaultTableModel tblMode_BaoCao = new DefaultTableModel(header_BAOCAO_HK, 0);
+    ConnectDB DB = new ConnectDB ();
     public BaoCao_TongKet_HocKy() {
+        
         initComponents();
+        
+        // BÁP CAO HOC KY
     }
 
     /**
@@ -28,21 +36,21 @@ public class BaoCao_TongKet_HocKy extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox_NamHoc = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jComboBox_HocKy = new javax.swing.JComboBox<>();
+        jButton_LapBaoCao = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable_BaoCaoHocKy = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("BÁO CÁO TỔNG KẾT HỌC KỲ");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lọc Dữ Liệu "));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_NamHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "K17", "K18", "K19" }));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Năm Học");
@@ -50,10 +58,15 @@ public class BaoCao_TongKet_HocKy extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("Học Kỳ");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_HocKy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HK1", "HK2" }));
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setText("Lập Báo Cáo");
+        jButton_LapBaoCao.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton_LapBaoCao.setText("Lập Báo Cáo");
+        jButton_LapBaoCao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_LapBaoCaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -63,33 +76,31 @@ public class BaoCao_TongKet_HocKy extends javax.swing.JInternalFrame {
                 .addGap(62, 62, 62)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox_NamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(285, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(140, 140, 140))
+                .addComponent(jComboBox_HocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(jButton_LapBaoCao)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox_NamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox_HocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_LapBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Báo Cáo  Tổng Kết Học Kỳ"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_BaoCaoHocKy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -100,7 +111,7 @@ public class BaoCao_TongKet_HocKy extends javax.swing.JInternalFrame {
                 "Tên Lớp", "Sỉ Số", "Số Lượng Đạt", "Tỉ Lệ"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable_BaoCaoHocKy);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,14 +119,14 @@ public class BaoCao_TongKet_HocKy extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -135,24 +146,70 @@ public class BaoCao_TongKet_HocKy extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_LapBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LapBaoCaoActionPerformed
+        String namhoc = "";
+        namhoc = jComboBox_NamHoc.getSelectedItem().toString();
+     
+        String hocky = "";
+        hocky = jComboBox_HocKy.getSelectedItem().toString();
+         try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            // câu lệnh xem dư liệu
+            String DiemTongKetNamHoc = "exec BAOCAO_HK '"+hocky+"', '"+namhoc+"'";
+            // tạo đối tượng thực thi câu lênh select
+            DB.st = DB.conn.createStatement();
+            // Thực thi
+            DB.rs = DB.st.executeQuery(DiemTongKetNamHoc);  
+            Vector data = null;
+            tblMode_BaoCao.setRowCount(0); 
+            while (DB.rs.next()) {
+                data = new Vector();
+                data.add(DB.rs.getString("TenLop"));
+                data.add(DB.rs.getString("SiSo"));
+                data.add(DB.rs.getString("sldat"));
+                data.add(DB.rs.getString("tile")); 
+                // Thêm một dòng vào table model
+                tblMode_BaoCao.addRow(data);
+            }
+            jTable_BaoCaoHocKy.setModel(tblMode_BaoCao); // thêm dữ liệu vào table 
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Không có dự liệu");
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jButton_LapBaoCaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JButton jButton_LapBaoCao;
+    private javax.swing.JComboBox<String> jComboBox_HocKy;
+    private javax.swing.JComboBox<String> jComboBox_NamHoc;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable_BaoCaoHocKy;
     // End of variables declaration//GEN-END:variables
 }
