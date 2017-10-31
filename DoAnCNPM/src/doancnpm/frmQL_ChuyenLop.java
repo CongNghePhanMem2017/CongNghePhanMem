@@ -235,6 +235,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
        Load_TiemKiem_ChuyenLop();
        Load_DS_Lop_Con_Trong();
        Load_ComboBox_Lop_Trong();
+       Load_TiemKiem_ChuyenLop();
        
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
 

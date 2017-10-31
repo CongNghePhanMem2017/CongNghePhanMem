@@ -683,8 +683,17 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            DB.ps.setString(1,"");
            DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
-          String str=jTextFieldHoTen.getText();
-          str=str.trim();
+           String str=jTextFieldHoTen.getText();
+           str=str.toLowerCase();
+           String[] tokens = str.split("\\s");
+           str = "";
+
+           for(int i = 0; i < tokens.length; i++){
+                char capLetter = Character.toUpperCase(tokens[i].charAt(0));
+                str +=  " " + capLetter + tokens[i].substring(1);
+            }
+            str = str.trim();
+            str=str.trim();
             int lenght=str.length();
             for (int i=0;i<10;i++)
                 for (int j=0;j<lenght;j++)

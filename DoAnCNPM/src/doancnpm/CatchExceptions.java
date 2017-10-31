@@ -17,6 +17,7 @@ public class CatchExceptions {
     ConnectDB DB=new ConnectDB();
     public static int count(String s)
     {
+        
         int i = 0, count = 1;
         char[] s1 = s.toCharArray(); 
         while(s1[i] == ' ')
@@ -39,22 +40,27 @@ public class CatchExceptions {
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
 
-            String sql = "select * from QUYDINH where TenQuyDinh=N'Tuổi' ";//fix
+            String sql = "select * from QUYDINH where TenQuyDinh like N'Tuổi%' ";//fix
             DB.st = DB.conn.createStatement();
             DB.rs = DB.st.executeQuery(sql);
-            Vector data = null;
-            
 
-            // Nếu sách không tồn tại
             if (DB.rs.isBeforeFirst() == false) {
-                JOptionPane.showMessageDialog(null, "Now Quy dinh is not available!");//fix
+                JOptionPane.showMessageDialog(null, "Quy dinh is not available!");//fix
                 return -1;
             }
             while (DB.rs.next()) {
                     QD[i]=DB.rs.getInt("ThongSo");
                        i++;
             }
+            if(QD[0]<QD[1])
+            {
               if(n-s<QD[0] || n-s>QD[1])
+              {
+                  return 0;
+              }
+            }
+            else
+               if(n-s<QD[1] || n-s>QD[0])
               {
                   return 0;
               }

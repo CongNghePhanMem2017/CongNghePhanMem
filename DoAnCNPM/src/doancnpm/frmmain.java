@@ -694,7 +694,7 @@ public class frmmain extends javax.swing.JFrame {
 
     private void jMenuItemSapXepLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSapXepLopActionPerformed
         // TODO add your handling code here:
-        frmQL_SapLop saplop = new frmQL_SapLop();
+        frmQL_SapLop1 saplop = new frmQL_SapLop1();
         jDesktopPane1.add(saplop);
         saplop.setVisible(true);
         

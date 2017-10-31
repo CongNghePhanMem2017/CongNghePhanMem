@@ -24,17 +24,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel3" min="-2" pref="587" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel4" min="-2" pref="660" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanel4" min="-2" pref="660" max="-2" attributes="0"/>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel3" min="-2" pref="587" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,19 +42,16 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel3" min="-2" pref="60" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -343,7 +340,7 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jComboBoxLoaiKiemTra" min="-2" pref="85" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldDiem" alignment="1" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <Component id="txtDiem" alignment="1" min="-2" pref="85" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       </Group>
@@ -362,16 +359,16 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="jTextFieldMaBangDiem" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="txtMaBangDiem" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextFieldTenHocSinh" min="-2" pref="172" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldMaHocSinh" alignment="1" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <Component id="txtTenHocSinh" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <Component id="txtMaHocSinh" alignment="1" min="-2" pref="172" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Component id="jLabel17" min="-2" pref="65" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldLop" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="txtLop" min="-2" pref="97" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -399,11 +396,11 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel16" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jTextFieldMaBangDiem" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="txtMaBangDiem" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextFieldMaHocSinh" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMaHocSinh" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -417,10 +414,10 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                   <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldLop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtLop" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jTextFieldTenHocSinh" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtTenHocSinh" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -457,7 +454,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jComboBoxLoaiKiemTra" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldDiem" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtDiem" min="-2" pref="30" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jComboBoxMonHoc" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -485,15 +482,9 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldMaHocSinh">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="txtMaHocSinh">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldTenHocSinh">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="txtTenHocSinh">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
@@ -503,10 +494,7 @@
             <Property name="text" type="java.lang.String" value="M&#xe3; H&#x1ecd;c Sinh "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldMaBangDiem">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="txtMaBangDiem">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField7">
           <Properties>
@@ -565,7 +553,7 @@
             <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldDiem">
+        <Component class="javax.swing.JTextField" name="txtDiem">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
@@ -592,12 +580,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jButtonNhap" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_NhapDiemChoHS" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButtonSua" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButtonXoaVaClean" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButtonThoat" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="82" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -606,8 +596,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonXoaVaClean" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="jButtonThoat" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="jButtonNhap" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jButton_NhapDiemChoHS" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="jButtonSua" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -616,6 +607,14 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JButton" name="jButtonXoaVaClean">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="X&#xf3;a &amp; Clean"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonXoaVaCleanActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="jButtonThoat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="THO&#xc1;T"/>
@@ -624,12 +623,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonThoatActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonNhap">
+            <Component class="javax.swing.JButton" name="jButton_NhapDiemChoHS">
               <Properties>
                 <Property name="text" type="java.lang.String" value="NH&#x1eac;P "/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNhapActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_NhapDiemChoHSActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSua">
@@ -642,10 +641,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="jTextFieldLop">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="txtLop">
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxMonHoc">
           <Properties>

@@ -9,8 +9,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import static javax.swing.UIManager.getString;
@@ -21,21 +24,20 @@ import javax.swing.table.TableModel;
  *
  * @author Elitebook
  */
-public class frmQL_SapLop extends javax.swing.JInternalFrame {
+public class frmQL_SapLop1 extends javax.swing.JInternalFrame {
+
     ConnectDB DB = new ConnectDB();
-    private String header[] = {"Mã Học Sinh","Mã Năm Học","Mã Khối","Họ Tên", "Giới Tính ", "Ngày Sinh" ,"Địa Chỉ","Email"};
+    private String header[] = {"Mã Học Sinh", "Mã Năm Học", "Mã Khối", "Họ Tên", "Giới Tính ", "Ngày Sinh", "Địa Chỉ", "Email"};
     private DefaultTableModel tbModel = new DefaultTableModel(header, 0);
-    private String header_BangDiem[] = {"Mã Học Sinh", "Mã Lớp","Mã Bảng Điểm"};
-    private DefaultTableModel tbModel_BangDiem = new DefaultTableModel(header_BangDiem,0);
-    
-   
-       
-    public frmQL_SapLop() {
+    private String header_BangDiem[] = {"Mã Học Sinh", "Mã Lớp", "Mã Bảng Điểm"};
+    private DefaultTableModel tbModel_BangDiem = new DefaultTableModel(header_BangDiem, 0);
+
+    public frmQL_SapLop1() {
         initComponents();
         LoadKhoiAndFillToCBBox();
-        LoadBangDiem_hs();
+       /// LoadBangDiem_hs();
         DemSoLuongHS();
-        
+
     }
 
     /**
@@ -50,18 +52,18 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldMaHocSinh = new javax.swing.JTextField();
+        txtMaHocSinh = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextFieldMaNamHoc = new javax.swing.JTextField();
-        jTextFieldGioiTinh = new javax.swing.JTextField();
+        txtMaNamHoc = new javax.swing.JTextField();
+        txtGioiTinh = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextFieldNgaySinh = new javax.swing.JTextField();
+        txtNgaySinh = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextFieldDiaChi = new javax.swing.JTextField();
-        jTextFieldHoTen = new javax.swing.JTextField();
+        txtDiaChi = new javax.swing.JTextField();
+        txtHoTen = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextFieldEmail = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -72,9 +74,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jComboBoxMaLop = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButtonVaoLop = new javax.swing.JButton();
-        jButtonSua = new javax.swing.JButton();
-        jButtonDelete = new javax.swing.JButton();
-        jButtonThoat = new javax.swing.JButton();
+        jButton_Thoat = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableBangDiem_HS = new javax.swing.JTable();
@@ -94,31 +94,31 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Mã Học Sinh");
 
-        jTextFieldMaHocSinh.setEditable(false);
-        jTextFieldMaHocSinh.setText(" ");
+        txtMaHocSinh.setEditable(false);
+        txtMaHocSinh.setText(" ");
 
         jLabel15.setText("Năm Học");
 
-        jTextFieldMaNamHoc.setText(" ");
+        txtMaNamHoc.setText(" ");
 
-        jTextFieldGioiTinh.setText(" ");
+        txtGioiTinh.setText(" ");
 
         jLabel11.setText("Giới Tính");
 
-        jTextFieldNgaySinh.setText(" ");
+        txtNgaySinh.setText(" ");
 
         jLabel14.setText("Ngày Sinh");
 
-        jTextFieldDiaChi.setText(" ");
+        txtDiaChi.setText(" ");
 
-        jTextFieldHoTen.setText(" ");
+        txtHoTen.setText(" ");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Họ Và Tên ");
 
         jLabel13.setText("Email");
 
-        jTextFieldEmail.setText(" ");
+        txtEmail.setText(" ");
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel12.setText("Địa Chỉ");
@@ -137,24 +137,24 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldDiaChi)
-                    .addComponent(jTextFieldEmail)
-                    .addComponent(jTextFieldHoTen)
-                    .addComponent(jTextFieldMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDiaChi)
+                    .addComponent(txtEmail)
+                    .addComponent(txtHoTen)
+                    .addComponent(txtMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(jLabel11))
                         .addGap(64, 64, 64)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldMaNamHoc)
-                            .addComponent(jTextFieldGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtMaNamHoc)
+                            .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(372, 372, 372))
         );
         jPanel2Layout.setVerticalGroup(
@@ -163,28 +163,28 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaHocSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel15)
-                            .addComponent(jTextFieldMaNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtMaNamHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)
-                        .addComponent(jTextFieldGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
-                        .addComponent(jTextFieldDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel14))
-                    .addComponent(jTextFieldNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 31, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Danh Sách Học Sinh Chưa Có Lớp"));
@@ -214,28 +214,34 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(191, 191, 191)
-                .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Lớp Còn Trống"));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Mã Lớp");
+
+        jComboBoxMaLop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMaLopActionPerformed(evt);
+            }
+        });
 
         jButtonVaoLop.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonVaoLop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Forward.png"))); // NOI18N
@@ -246,30 +252,12 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonSua.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        jButtonSua.setText("SỬA");
-        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Thoat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton_Thoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButton_Thoat.setText("THOÁT");
+        jButton_Thoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSuaActionPerformed(evt);
-            }
-        });
-
-        jButtonDelete.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
-        jButtonDelete.setText("XÓA");
-        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteActionPerformed(evt);
-            }
-        });
-
-        jButtonThoat.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
-        jButtonThoat.setText("THOÁT");
-        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonThoatActionPerformed(evt);
+                jButton_ThoatActionPerformed(evt);
             }
         });
 
@@ -281,9 +269,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonVaoLop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonThoat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addComponent(jButtonDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonSua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton_Thoat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -292,11 +278,7 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jButtonVaoLop, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -306,14 +288,15 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(2, 2, 2)
                         .addComponent(jComboBoxMaLop, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,8 +337,8 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -369,10 +352,11 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 11, Short.MAX_VALUE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 925, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,13 +364,15 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Lọc DS Hoc Sinh"));
@@ -426,30 +412,29 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(212, 212, 212))
+                .addGap(233, 233, 233))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     // _____________Load KHỐI dữ liệu  từ table ___________________//
     private void LoadKhoiAndFillToCBBox() {
-     
+
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dữ liệu 
@@ -489,23 +474,22 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 ex.printStackTrace();
             }
         }
-        
+
     }
-    
-    
-     // ***********_______Load lỚP dữ liệu  từ table LỚP _______*********____________//
-    private void LoadMaLop(){
-         int index = jComboBoxKhoi.getSelectedIndex();
+
+    // ***********_______Load lỚP dữ liệu  từ table LỚP _______*********____________//
+    private void LoadMaLop() {
+        int index = jComboBoxKhoi.getSelectedIndex();
         if (index < 0) {
             return;
         }
-         Vector item = (Vector) jComboBoxKhoi.getSelectedItem();
-         int MaKhoi = Integer.parseInt(item.get(0).toString());
+        Vector item = (Vector) jComboBoxKhoi.getSelectedItem();
+        int MaKhoi = Integer.parseInt(item.get(0).toString());
         int k = 0;
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dữ liệu 
-            String sql = "select * from LOP where MaKhoi="+MaKhoi;
+            String sql = "select * from LOP where MaKhoi= '"+MaKhoi+"'";
             //Tạo đối tượng thực thi câu lệnh
             DB.st = DB.conn.createStatement();
             // thực thi
@@ -519,14 +503,14 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             }
             // trong khi chư hết dữ  liệu
             while (DB.rs.next()) {
-               // data = new Vector();
+                // data = new Vector();
                 //data.add(DB.rs.getString("MaLop"));
                 //cmbModel.addElement(data);
                 String MaLop = DB.rs.getString("MaLop");
                 jComboBoxMaLop.addItem(MaLop);
             }
-            
-           // jComboBoxMaLop.setModel(cmbModel);
+
+            // jComboBoxMaLop.setModel(cmbModel);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -544,43 +528,39 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 ex.printStackTrace();
             }
         }
-        
+
     }
-    
+
     // ***********_______lọc ds học sinh tư table TIẾP NHẬN HS theo khối _______*********____________//
     private void loadHVbyKhoi() {
         int index = jComboBoxKhoi.getSelectedIndex();
         if (index < 0) {
             return;
         }
-         Vector item = (Vector) jComboBoxKhoi.getSelectedItem();
-         int MaKhoi = Integer.parseInt(item.get(0).toString());
-        /* System.err.println(MaKhoi);
-         Vector item2 = (Vector) jComboBox.getSelectedItem();
-         int MATHANG = Integer.parseInt(item2.get(0).toString());
-             System.err.println(MATHANG);
- */
+        Vector item = (Vector) jComboBoxKhoi.getSelectedItem();
+        int MaKhoi = Integer.parseInt(item.get(0).toString());
+     
         int k = 0;
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dư liệu
-            String sql = "select MaHocSinh , MANH,MaKhoi ,HoTen , GioiTinh, NgaySinh ,DiaChi , Email from TIEPNHAN_HS where MaKhoi="+MaKhoi;
+            String sql = "select MaHocSinh , MANH,MaKhoi ,HoTen , GioiTinh, NgaySinh ,DiaChi , Email from TIEPNHAN_HS where MaKhoi=" + MaKhoi;
             // tạo đối tượng thực thi câu lênh select
-           DB.st = DB.conn.createStatement();
+            DB.st = DB.conn.createStatement();
             // Thực thi
             DB.rs = DB.st.executeQuery(sql);
             Vector data = null;
             tbModel.setRowCount(0);
-            
-             // Nếu sách không tồn tại
+
+            // Nếu sách không tồn tại
             if (DB.rs.isBeforeFirst() == false) {
                 JOptionPane.showMessageDialog(this, "The SinhVien is not available!");
                 return;
             }
             //Trong khi chưa hết dữ liệu
-            while(DB.rs.next()){
+            while (DB.rs.next()) {
                 data = new Vector();
-             
+
                 data.add(DB.rs.getString("MaHocSinh"));
                 data.add(DB.rs.getString("MANH"));
                 data.add(DB.rs.getString("MaKhoi"));
@@ -589,13 +569,12 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 data.add(DB.rs.getString("NgaySinh"));
                 data.add(DB.rs.getString("DiaChi"));
                 data.add(DB.rs.getString("Email"));
-               
                 tbModel.addRow(data);
             }
             jTableDSHS.setModel(tbModel); // thêm dữ liệu vào table
-             
+
         } catch (Exception e) {
-             e.printStackTrace();
+            e.printStackTrace();
         } finally {
             try {
                 if (DB.conn != null) {
@@ -613,75 +592,30 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         }
 
     }
-    // Insert dữ liệu vào database
-   /* private void InsertDBAddDS_HS(){
-        DefaultTableModel model = (DefaultTableModel) jTableDSLOP.getModel();   
-        Connection conn = null;
-        Statement st = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-         String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=DB_DO_AN_QLHS;user=sa;password=sa";
-        String insert = "INSERT INTO HS_LOP (MaHocKy,TenHocKy) VALUES(?,?)";
-         try {
-            conn = DriverManager.getConnection(dbURL);
-            ps = conn.prepareStatement(insert);
 
-            ps.setString(1, txtMaHocKy.getText());
-            ps.setString(2, txtTenHocKy.getText());
-
-            int ret = ps.executeUpdate();
-            
-            if (ret != -1) {
-                JOptionPane.showMessageDialog(this, "The HỌC KỲ  has been insertet");
-               
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (Exception ex2) {
-                ex2.printStackTrace();
-            }
-        }
-    }
-*/
-    
-    
-     // ***********_______SẮP LỚP CHO 1 HỌC SINH  _______*********____________//
-    private void InsertFromDANHSACH_HOCSINH(){
+    // ***********_______SẮP LỚP CHO 1 HỌC SINH  _______*********____________//
+    private void InsertFromDANHSACH_HOCSINH() {
         String insert = "INSERT INTO DANHSACH_HS (MaHocSinh, MANH,HoTen , GioiTinh, NgaySinh ,DiaChi , Email) VALUES(?,?,?,?,?,?,?)";//fix
-       
-//        Vector item = (Vector)jComboBoxNamHoc.getSelectedItem();
-//        Vector item1 = (Vector)jComboBoxKhoi.getSelectedItem();
+
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(insert);
-            DB.ps.setString(1, jTextFieldMaHocSinh.getText());
-            DB.ps.setString(2, jTextFieldMaNamHoc.getText());
-            DB.ps.setString(3, jTextFieldHoTen.getText());
-            DB.ps.setString(4, jTextFieldGioiTinh.getText());
-            DB.ps.setString(5, jTextFieldNgaySinh.getText());
-            DB.ps.setString(6, jTextFieldDiaChi.getText());
-            DB.ps.setString(7, jTextFieldEmail.getText());
+            DB.ps.setString(1, txtMaHocSinh.getText());
+            DB.ps.setString(2, txtMaNamHoc.getText());
+            DB.ps.setString(3, txtHoTen.getText());
+            DB.ps.setString(4, txtGioiTinh.getText());
+            DB.ps.setString(5, txtNgaySinh.getText());
+            DB.ps.setString(6, txtDiaChi.getText());
+            DB.ps.setString(7, txtEmail.getText());
             //DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
             // DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
-     
+
             // DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooser1.getDate()));
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {
                 JOptionPane.showMessageDialog(null, "Học Sinh Đã Có Lớp ");
             }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Sắp Lớp Thất Bại");
             e.printStackTrace();
@@ -703,25 +637,26 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             }
         }
     }
+
     // Sắp Lớp Cho học sinh
-    private void SapHSVaoLop(){
-        String insert = "INSERT INTO BANG_DIEM_HS (MaHocSinh,MaLop) VALUES(?,?) ";
+    private void SapHSVaoLop() throws SQLException {
+        String insert = "INSERT INTO BANG_DIEM_HS  VALUES(?,?,'') ";
         try {
             //Kết nói
-             
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(insert);
-             
-            DB.ps.setString(1,jTextFieldMaHocSinh.getText());
+
+            DB.ps.setString(1, txtMaHocSinh.getText());
             DB.ps.setString(2, jComboBoxMaLop.getSelectedItem().toString());
-            DB.ps.executeUpdate();
-           // if (ret != -1) {
-          //      JOptionPane.showMessageDialog(this, "The BANG_DIEM_HS    has been insertet"); 
-           // }
-            
+            // DB.ps.executeUpdate();
+            int ret = DB.ps.executeUpdate();
+            if (ret != -1) {
+                JOptionPane.showMessageDialog(this, "The BANG_DIEM_HS  has been insertet");
+            }
+
         } catch (Exception e) {
-                JOptionPane.showMessageDialog(this,"Lỗi Vào Lớp");
-             e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Lỗi Vào Lớp");
+            e.printStackTrace();
         } finally {
             try {
                 if (DB.conn != null) {
@@ -739,39 +674,215 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 ex2.printStackTrace();
             }
         }
-        LoadBangDiem_hs();
+        // Mô tả: tiến hành lấy mã bảng điểm để cặp nhât những môn mà hs đó sẽ học, để lưu điểm vào 
+        //            Chuẩn bị cơ sở vật chất cho việc tính điểm về sau 
+        //              biến lấy mã bảng điểm
+        //  LÀM THÊM CÁI XÓA NGHE
+                    String MaBangDiem = "";
+                    // biến lấy mã học sinh
+                    String MaHocSinh = "";
+                    MaHocSinh = txtMaHocSinh.getText();
+                    // biến lấy mã  LỚP
+                    String MaLop = "";
+                    MaLop = jComboBoxMaLop.getSelectedItem().toString();      
+   
+            try {
+                String laymabangdiem = "select  MaBangDiem from BANG_DIEM_HS bd  WHERE  BD.MaHocSinh =  '" + MaHocSinh + "' AND bd.MaLop like N'" + MaLop + "'GROUP BY  BD.MaBangDiem";
+                DB.conn = DriverManager.getConnection(DB.dbURL);
+                DB.st = DB.conn.createStatement();
+                // Thực thi
+                DB.rs = DB.st.executeQuery(laymabangdiem);
+                while (DB.rs.next()) {
+                    MaBangDiem = DB.rs.getString("MaBangDiem");
+                    String INSERT_DiemTB_Mon = "exec INSERT_DiemTB_Mon '" + MaBangDiem + "'";
+                    DB.conn = DriverManager.getConnection(DB.dbURL);
+                    DB.st = DB.conn.createStatement();
+                    // Thực thi
+                    DB.rs = DB.st.executeQuery(INSERT_DiemTB_Mon);
+
+                    JOptionPane.showMessageDialog(this, "The INSERT_DiemTB_Mon Thanh Cong  ");
+                    // INSERT_B_P_Sinh_KetQuaHocTap
+                    String INSERT_B_P_Sinh_KetQuaHocTap = "exec INSERT_B_P_Sinh_KetQuaHocTap '" + MaBangDiem + "'";
+                    DB.conn = DriverManager.getConnection(DB.dbURL);
+                    DB.st = DB.conn.createStatement();
+                    // Thực thi
+                    DB.rs = DB.st.executeQuery(INSERT_B_P_Sinh_KetQuaHocTap);
+
+                }
+
+            } catch (Exception e) {
+                ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+            }
+ 
+
+        // insert_B_SINH_KET QUA HOC TAP
+        try {
+        
+            MaLop = jComboBoxMaLop.getSelectedItem().toString();
+            try {
+                String laymabangdiem = "select  MaBangDiem from BANG_DIEM_HS bd  WHERE  BD.MaHocSinh =  '" + MaHocSinh + "' AND bd.MaLop like N'" + MaLop + "'GROUP BY  BD.MaBangDiem";
+                DB.conn = DriverManager.getConnection(DB.dbURL);
+                DB.st = DB.conn.createStatement();
+                // Thực thi
+                DB.rs = DB.st.executeQuery(laymabangdiem);
+
+                while (DB.rs.next()) {
+                    MaBangDiem = DB.rs.getString("MaBangDiem");
+                    // INSERT_B_P_Sinh_KetQuaHocTap
+                    String INSERT_B_P_Sinh_KetQuaHocTap = "exec INSERT_B_P_Sinh_KetQuaHocTap '" + MaBangDiem + "'";
+                    DB.conn = DriverManager.getConnection(DB.dbURL);
+                    DB.st = DB.conn.createStatement();
+                    // Thực thi
+                    DB.rs = DB.st.executeQuery(INSERT_B_P_Sinh_KetQuaHocTap);
+
+                }
+
+            } catch (Exception e) {
+                ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+            }
+
+        } catch (Exception e) {
+            ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+        }
+
+        // INSERT_B_P_Sinh_QL_TongKetMon  
+        try {
+            // Mô tả: tiến hành lấy mã bảng điểm để cặp nhât VÀO BẢNG TỔNG KẾT MÔN. LƯU ĐIỂM TB TỪNG MÔN
+//        
+//              biến lấy mã bảng điểm
+//  LÀM THÊM CÁI XÓA NGHE
+           
+            MaLop = jComboBoxMaLop.getSelectedItem().toString();
+            try {
+                String laymabangdiem = "select  MaBangDiem from BANG_DIEM_HS bd  WHERE  BD.MaHocSinh =  '" + MaHocSinh + "' AND bd.MaLop like N'" + MaLop + "'GROUP BY  BD.MaBangDiem";
+                DB.conn = DriverManager.getConnection(DB.dbURL);
+                DB.st = DB.conn.createStatement();
+                // Thực thi
+                DB.rs = DB.st.executeQuery(laymabangdiem);
+
+                while (DB.rs.next()) {
+                    MaBangDiem = DB.rs.getString("MaBangDiem");
+                    // INSERT_B_P_Sinh_KetQuaHocTap
+                    String INSERT_B_P_Sinh_KetQuaHocTap = "exec INSERT_B_P_Sinh_QL_TongKetMon '" + MaBangDiem + "'";
+                    DB.conn = DriverManager.getConnection(DB.dbURL);
+                    DB.st = DB.conn.createStatement();
+                    // Thực thi
+                    DB.rs = DB.st.executeQuery(INSERT_B_P_Sinh_KetQuaHocTap);
+                }
+
+            } catch (Exception e) {
+                ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+            }
+
+        } catch (Exception e) {
+            ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+        }
+        // INSERT Dữ liệu cho table tính điểm tổng kết năm học của hs 
+           try {
+            // Mô tả: tiến hành lấy mã bảng điểm để cặp nhât VÀO BẢNG TỔNG KẾT MÔN. LƯU ĐIỂM TB TỪNG MÔN
+//        
+//              biến lấy mã bảng điểm
+//  LÀM THÊM CÁI XÓA NGHE
+           
+            MaLop = jComboBoxMaLop.getSelectedItem().toString();
+            try {
+                String laymabangdiem = "select  MaBangDiem from BANG_DIEM_HS bd  WHERE  BD.MaHocSinh =  '" + MaHocSinh + "' AND bd.MaLop like N'" + MaLop + "'GROUP BY  BD.MaBangDiem";
+                DB.conn = DriverManager.getConnection(DB.dbURL);
+                DB.st = DB.conn.createStatement();
+                // Thực thi
+                DB.rs = DB.st.executeQuery(laymabangdiem);
+                while (DB.rs.next()) {
+                    MaBangDiem = DB.rs.getString("MaBangDiem");
+                    // INSERT_B_P_Sinh_KetQuaHocTap
+                    String INSERT_B_P_Sinh_KetQuaHocTap = "exec INSERT_B_P_Sinh_KetQuaHocTap '"+MaBangDiem+"'";
+                    DB.conn = DriverManager.getConnection(DB.dbURL);
+                    DB.st = DB.conn.createStatement();
+                    // Thực thi
+                    DB.rs = DB.st.executeQuery(INSERT_B_P_Sinh_KetQuaHocTap);
+                }
+
+            } catch (Exception e) {
+                ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+            }
+
+        } catch (Exception e) {
+            ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+        }
+            // Insert_B_P_Sinh_TB_HK TINH DIEM TB CUA HS TREN TUNG HK
+           try {
+            
+          
+               try {
+                   String laymabangdiem = "select  MaBangDiem from BANG_DIEM_HS bd  WHERE  BD.MaHocSinh =  '" + MaHocSinh + "' AND bd.MaLop like N'" + MaLop + "'GROUP BY  BD.MaBangDiem";
+                   DB.conn = DriverManager.getConnection(DB.dbURL);
+                   DB.st = DB.conn.createStatement();
+                   // Thực thi
+                   DB.rs = DB.st.executeQuery(laymabangdiem);
+                   while (DB.rs.next()) {
+                       MaBangDiem = DB.rs.getString("MaBangDiem");
+                       // INSERT_B_P_Sinh_KetQuaHocTap
+                       String Insert_B_P_Sinh_TB_HK = "exec Insert_B_P_Sinh_TB_HK '" + MaBangDiem + "'";
+                       DB.conn = DriverManager.getConnection(DB.dbURL);
+                       DB.st = DB.conn.createStatement();
+                       // Thực thi
+                       DB.rs = DB.st.executeQuery(Insert_B_P_Sinh_TB_HK);
+                   }
+                   
+               } catch (Exception e) {
+                   ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+               }
+
+        } catch (Exception e) {
+            ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
+        }
+           
+           
+           // update  si so lop
+           try {
+                String updatesiso = "EXEC UPDATELOP";
+                DB.conn = DriverManager.getConnection(DB.dbURL);
+                DB.st = DB.conn.createStatement();
+                // Thực thi
+                DB.rs = DB.st.executeQuery(updatesiso);
+            JOptionPane.showMessageDialog(this," Đã cap nhap si so lop");
+        } catch (Exception e) {
+              //JOptionPane.showMessageDialog(this,"LỖI cap nhap si so lop");
+        }
+
+        //LoadBangDiem_hs();
     }
     
-    private void LoadBangDiem_hs(){
-         try {
+    private void LoadBangDiem_hs() {
+        String MaLop  =  "";              
+          MaLop = jComboBoxMaLop.getSelectedItem().toString();
+        try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dư liệu
-            String sql = "select *from BANG_DIEM_HS ";
+            String sql = "exec Load_DS_HS_LOP '"+MaLop+"' ";
             // tạo đối tượng thực thi câu lênh select
-           DB.st = DB.conn.createStatement();
+            DB.st = DB.conn.createStatement();
             // Thực thi
             DB.rs = DB.st.executeQuery(sql);
             Vector data = null;
             tbModel_BangDiem.setRowCount(0);
-            
-             // Nếu sách không tồn tại
-          /*  if (DB.rs.isBeforeFirst() == false) {
+
+            // Nếu sách không tồn tại
+            /*  if (DB.rs.isBeforeFirst() == false) {
                 JOptionPane.showMessageDialog(this, "The bang diem is not available!");
                 return;
             }*/
             //Trong khi chưa hết dữ liệu
-            while(DB.rs.next()){
+            while (DB.rs.next()) {
                 data = new Vector();
-                data.add(DB.rs.getString("MaHocSinh"));
-               // data.add(rs.getString("MaKhoi"));
+                data.add(DB.rs.getString("MaHocSinh")); 
                 data.add(DB.rs.getString("MaLop"));
                 data.add(DB.rs.getString("MaBangDiem"));
                 tbModel_BangDiem.addRow(data);
             }
             jTableBangDiem_HS.setModel(tbModel_BangDiem); // thêm dữ liệu vào table
-             
+
         } catch (Exception e) {
-             e.printStackTrace();
+            e.printStackTrace();
         } finally {
             try {
                 if (DB.conn != null) {
@@ -788,25 +899,24 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             }
         }
     }
-    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+    private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonDeleteActionPerformed
-
-    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonThoatActionPerformed
-
-    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSuaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton_ThoatActionPerformed
 
     private void jButtonVaoLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaoLopActionPerformed
         InsertFromDANHSACH_HOCSINH();
-        SapHSVaoLop();
-        LoadBangDiem_hs();
+        try {
+            SapHSVaoLop();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmQL_SapLop1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      //  LoadBangDiem_hs();
         DELETE_TABLE_TIEPNHAN_HS();
         loadHVbyKhoi();
-        
+        DemSoLuongHS();
+        LoadBangDiem_hs();
+
     }//GEN-LAST:event_jButtonVaoLopActionPerformed
 
     private void jComboBoxKhoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxKhoiActionPerformed
@@ -814,21 +924,23 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
         jComboBoxMaLop.removeAllItems();
         loadHVbyKhoi();
         LoadMaLop();
+        LoadBangDiem_hs();
+     //   LoadBangDiem_hs();
     }//GEN-LAST:event_jComboBoxKhoiActionPerformed
     //Sau khi săp lớp thành công thì sẽ tự động delete dự liệu bên bảng table 
-     private void DELETE_TABLE_TIEPNHAN_HS(){
-      int index = jTableDSHS.getSelectedRow();
-      TableModel model = jTableDSHS.getModel();
+    private void DELETE_TABLE_TIEPNHAN_HS() {
+        int index = jTableDSHS.getSelectedRow();
+        TableModel model = jTableDSHS.getModel();
         String key = model.getValueAt(index, 0).toString();
-        String deletesql = "DELETE FROM TIEPNHAN_HS WHERE MaHocSinh = '"+key+"'";
-         try {
+        String deletesql = "DELETE FROM TIEPNHAN_HS WHERE MaHocSinh = '" + key + "'";
+        try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(deletesql);
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {
                 JOptionPane.showMessageDialog(this, "This TIEPNHAN_HS has been deleted");
             }
-          } catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Delete thất bại");
         } finally {
@@ -843,51 +955,52 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
                 ex2.printStackTrace();
             }
         }
-    
-    
-     }   
+
+    }
     // ĐẾM SỐ LƯỢNG HỌC SINH CÒN TRONG DANH SÁCH TIẾP NHẬN HỌC SINH
-     
-     
-     
+
+
     private void jTableDSHSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDSHSMouseClicked
         // Click chuộc vào
         DefaultTableModel model = (DefaultTableModel) jTableDSHS.getModel();
-        jTextFieldMaHocSinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 0).toString());
+        txtMaHocSinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 0).toString());
         // jComboBoxKhoi.setSelectedItem(model.getValueAt(jTableDSHS.getSelectedRow(),1).toString());
-        jTextFieldMaNamHoc.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 1).toString());
-        jComboBoxKhoi.setSelectedItem(model.getValueAt(jTableDSHS.getSelectedRow(),2).toString());
-        jTextFieldHoTen.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 3).toString());
-        jTextFieldGioiTinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 4).toString());
-        jTextFieldNgaySinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 5).toString());
-        jTextFieldDiaChi.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 6).toString());
-        jTextFieldEmail.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 7).toString());
-    
+        txtMaNamHoc.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 1).toString());
+        jComboBoxKhoi.setSelectedItem(model.getValueAt(jTableDSHS.getSelectedRow(), 2).toString());
+        txtHoTen.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 3).toString());
+        txtGioiTinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 4).toString());
+        txtNgaySinh.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 5).toString());
+        txtDiaChi.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 6).toString());
+        txtEmail.setText(model.getValueAt(jTableDSHS.getSelectedRow(), 7).toString());
+
     }//GEN-LAST:event_jTableDSHSMouseClicked
+
+    private void jComboBoxMaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMaLopActionPerformed
+      
+      //  LoadBangDiem_hs();
+    }//GEN-LAST:event_jComboBoxMaLopActionPerformed
     // HÀM TÍNH TOÁN
-   private void DemSoLuongHS(){
-         String SoLuong = "";
-        try
-        {
-           // String malop=null;
+    private void DemSoLuongHS() {
+        String SoLuong = "";
+        try {
+            // String malop=null;
             DB.conn = DriverManager.getConnection(DB.dbURL);
-             DB.st = DB.conn.createStatement();
-            String sql="select Count(MaHocSinh) as SOLUONG from TIEPNHAN_HS";
+            DB.st = DB.conn.createStatement();
+            String sql = "select Count(MaHocSinh) as SOLUONG from TIEPNHAN_HS";
             DB.rs = DB.st.executeQuery(sql);
             while (DB.rs.next()) {
-              SoLuong= DB.rs.getString("SOLUONG");
-              txtSoLuong.setText("Còn "+SoLuong+"Học Sinh Chưa Có Lớp ");
-              if(SoLuong==null){
-                  JOptionPane.showMessageDialog(this,"Tất cả Học Sinh Đã Có Lớp");
-              }
-              else{
-                   JOptionPane.showMessageDialog(this,"Còn " + SoLuong+ " Học Sinh chưa có lớp");
-              }
+                SoLuong = DB.rs.getString("SOLUONG");
+                txtSoLuong.setText("Còn " + SoLuong + "Học Sinh Chưa Có Lớp ");
+                if (SoLuong == null) {
+                    JOptionPane.showMessageDialog(this, "Tất cả Học Sinh Đã Có Lớp");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Còn " + SoLuong + " Học Sinh chưa có lớp");
+                }
             }
-  
+
             //int test = 0;
-        } catch (Exception e){
-         
+        } catch (Exception e) {
+
         } finally {
             try {
                 if (DB.conn != null) {
@@ -902,17 +1015,31 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }  
-        
- 
+        }
+
     }
-   // LOAD TOÀN BỘ DANH SÁCH HỌC SINH
+    // Tạo cơ sơ vật chất cho việc nhập điểm
+
+    private void INSERT_DiemTB_Mon() {
+        try {
+            int MaBangDiem = -1;
+
+            String INSERT_DiemTB_Mon = "exec INSERT_DiemTB_Mon '" + MaBangDiem + "'";
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            DB.st = DB.conn.createStatement();
+            // Thực thi
+            DB.rs = DB.st.executeQuery(INSERT_DiemTB_Mon);
+            JOptionPane.showMessageDialog(this, "The INSERT_DiemTB_Mon Thanh Cong  ");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi INSERT_DiemTB_Mon ");
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonDelete;
-    private javax.swing.JButton jButtonSua;
-    private javax.swing.JButton jButtonThoat;
     private javax.swing.JButton jButtonVaoLop;
+    private javax.swing.JButton jButton_Thoat;
     private javax.swing.JComboBox<String> jComboBoxKhoi;
     private javax.swing.JComboBox<String> jComboBoxMaLop;
     private javax.swing.JLabel jLabel11;
@@ -935,16 +1062,14 @@ public class frmQL_SapLop extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableBangDiem_HS;
     private javax.swing.JTable jTableDSHS;
-    private javax.swing.JTextField jTextFieldDiaChi;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldGioiTinh;
-    private javax.swing.JTextField jTextFieldHoTen;
-    private javax.swing.JTextField jTextFieldMaHocSinh;
-    private javax.swing.JTextField jTextFieldMaNamHoc;
-    private javax.swing.JTextField jTextFieldNgaySinh;
+    private javax.swing.JTextField txtDiaChi;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtGioiTinh;
+    private javax.swing.JTextField txtHoTen;
+    private javax.swing.JTextField txtMaHocSinh;
+    private javax.swing.JTextField txtMaNamHoc;
+    private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JLabel txtSoLuong;
     // End of variables declaration//GEN-END:variables
 
-    
-   
 }
