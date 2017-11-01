@@ -140,6 +140,7 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Ý Nghĩa");
 
+        jTextFieldMaNamHoc.setEditable(false);
         jTextFieldMaNamHoc.setText(" ");
 
         jTextFieldTenNamHoc.setText(" ");
@@ -297,7 +298,7 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(248, 248, 248)
                         .addComponent(jLabel1)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +307,7 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -365,22 +366,12 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index=jTableNamHoc.getSelectedRow();
             String value = jTableNamHoc.getModel().getValueAt(index, 0).toString();
-            String update2 = "UPDATE NAMHOC SET MANH=?,TENNH=?,YNGHIA=? where MANH='"+value+"'";
+            String update2 = "UPDATE NAMHOC SET TENNH=?,YNGHIA=? where MANH='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
-           String str=jTextFieldMaNamHoc.getText().trim();
-           str=str.toUpperCase();
-           Pattern regex = Pattern.compile("[K]\\w{2}");
-           Matcher matcher = regex .matcher(str);
-           if(matcher.matches()==false)
-           {
-               JOptionPane.showMessageDialog(rootPane, "Mã năm học không hợp lệ");
-               return;
-           }
-           DB.ps.setString(1,str);
-           DB.ps.setString(2,jTextFieldTenNamHoc.getText());
-           DB.ps.setString(3,jTextFieldYNghia.getText());
+           DB.ps.setString(1,jTextFieldTenNamHoc.getText());
+           DB.ps.setString(2,jTextFieldYNghia.getText());
             
 
             int ret = DB.ps.executeUpdate();
@@ -415,23 +406,15 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
     private void jButtonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemActionPerformed
         // TODO add your handling code here:
           loadNHFillTB();
-        String insert = "INSERT INTO NAMHOC (MANH,TENNH,YNGHIA) VALUES(?,?,?)";//fix
+        String insert = "INSERT INTO NAMHOC (MANH,TENNH,YNGHIA) VALUES('',?,?)";//fix
 
         try {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
-           String str=jTextFieldMaNamHoc.getText().trim();
-           str=str.toUpperCase();
-           Pattern regex = Pattern.compile("[K]\\w{2}");
-           Matcher matcher = regex .matcher(str);
-           if(matcher.matches()==false)
-           {
-               JOptionPane.showMessageDialog(rootPane, "Mã năm học không hợp lệ");
-               return;
-           }
-           DB.ps.setString(1,str);
-           DB.ps.setString(2,jTextFieldTenNamHoc.getText());
-           DB.ps.setString(3,jTextFieldYNghia.getText());
+           
+
+           DB.ps.setString(1,jTextFieldTenNamHoc.getText());
+           DB.ps.setString(2,jTextFieldYNghia.getText());
          
             
 

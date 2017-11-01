@@ -21,6 +21,7 @@ import javax.swing.table.TableModel;
  */
 public class frmQL_LoaiKT extends javax.swing.JInternalFrame {
 ConnectDB DB=new ConnectDB();
+Extra CE=new Extra();
     private String header[] = {"MaLoaiKT","TenLoaiKT"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
     /**
@@ -229,8 +230,8 @@ ConnectDB DB=new ConnectDB();
                             .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -291,8 +292,18 @@ ConnectDB DB=new ConnectDB();
         try {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
-
-           DB.ps.setString(1,jTextFieldMaLoaiKT.getText());
+           String str=jTextFieldMaLoaiKT.getText().trim();
+           str=str.toLowerCase();
+            char[] s=str.toCharArray();
+            if(s[0]!='k')
+            str='k'+str;
+         
+            if(CE.CheckMaLKT(str)==0)
+            {
+                JOptionPane.showMessageDialog(rootPane, "Mã bị trùng");
+                return;
+            }
+           DB.ps.setString(1,str);
            DB.ps.setString(2,jTextFieldTenLoaiKT.getText());
          
             
@@ -333,7 +344,18 @@ ConnectDB DB=new ConnectDB();
 
   
              DB.ps = DB.conn.prepareStatement(update2);
-            
+            String str=jTextFieldMaLoaiKT.getText().trim();
+           str=str.toLowerCase();
+            char[] s=str.toCharArray();
+            if(s[0]!='k')
+            str='k'+str;
+         
+            if(CE.CheckMaLKT(str)==0)
+            {
+                JOptionPane.showMessageDialog(rootPane, "Mã bị trùng");
+                return;
+            }
+           DB.ps.setString(1,str);
            DB.ps.setString(1,jTextFieldMaLoaiKT.getText());
            DB.ps.setString(2,jTextFieldTenLoaiKT.getText());
             

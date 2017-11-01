@@ -34,7 +34,7 @@ import javax.swing.table.TableModel;
  */
 public class frmTiepNhanHS extends javax.swing.JInternalFrame {
 
-    CatchExceptions CE = new CatchExceptions();
+    Extra CE = new Extra();
     ConnectDB DB=new ConnectDB();
     private String header[] = {"MHS","Năm Học","Khối", "Họ Tên","GT", "Ngày Sinh", "Địa Chỉ", "Email"};
     char NumArray[]={'0','1','2','3','4','5','6','7','8','9'};
@@ -692,7 +692,6 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                 char capLetter = Character.toUpperCase(tokens[i].charAt(0));
                 str +=  " " + capLetter + tokens[i].substring(1);
             }
-            str = str.trim();
             str=str.trim();
             int lenght=str.length();
             for (int i=0;i<10;i++)

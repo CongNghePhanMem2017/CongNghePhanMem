@@ -23,6 +23,7 @@ public class frmmain extends javax.swing.JFrame {
      */
     public frmmain() {
         initComponents();
+        setExtendedState(frmmain.MAXIMIZED_BOTH);
 //        jMenu4.setVisible(false);
 //        jMenu3.setVisible(false);
 //        jMenu12.setVisible(false);
@@ -83,7 +84,6 @@ public class frmmain extends javax.swing.JFrame {
         jButtonTiepNhan = new javax.swing.JButton();
         jButtonTimKiem = new javax.swing.JButton();
         jButtonNhapDiem = new javax.swing.JButton();
-        jButtonTongKet = new javax.swing.JButton();
         jButtonQuyDInh = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
@@ -288,22 +288,16 @@ public class frmmain extends javax.swing.JFrame {
             }
         });
 
-        jButtonTongKet.setBackground(new java.awt.Color(204, 204, 255));
-        jButtonTongKet.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButtonTongKet.setForeground(new java.awt.Color(0, 153, 153));
-        jButtonTongKet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Hourglass.png"))); // NOI18N
-        jButtonTongKet.setText("TỔNG KẾT");
-        jButtonTongKet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTongKetActionPerformed(evt);
-            }
-        });
-
         jButtonQuyDInh.setBackground(new java.awt.Color(204, 204, 255));
         jButtonQuyDInh.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButtonQuyDInh.setForeground(new java.awt.Color(0, 153, 153));
         jButtonQuyDInh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Danger.png"))); // NOI18N
         jButtonQuyDInh.setText("QUY ĐỊNH");
+        jButtonQuyDInh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonQuyDInhActionPerformed(evt);
+            }
+        });
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/User group.png"))); // NOI18N
         jMenu4.setText("Quản Trị Viên");
@@ -487,33 +481,28 @@ public class frmmain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonTiepNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonNhapDiem)
-                            .addComponent(jButtonQuyDInh, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonTongKet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(244, 244, 244)
                 .addComponent(jLabel1)
-                .addGap(148, 148, 148))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButtonTiepNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(jButtonNhapDiem)))
+                    .addComponent(jButtonQuyDInh, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jDesktopPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonTiepNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -521,10 +510,9 @@ public class frmmain extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(jButtonNhapDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonTongKet, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonQuyDInh, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 35, Short.MAX_VALUE))
+                        .addComponent(jButtonQuyDInh, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(393, Short.MAX_VALUE))
+                    .addComponent(jDesktopPane1)))
         );
 
         pack();
@@ -534,6 +522,8 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmTiepNhanHS ths = new frmTiepNhanHS();
         jDesktopPane1.add(ths);
+        jDesktopPane1.moveToFront(ths);
+        ths.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         ths.setVisible(true);
     }//GEN-LAST:event_jMenuItemTNHSActionPerformed
 
@@ -560,6 +550,8 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         BaoCao_TongKet_Mon bcm = new BaoCao_TongKet_Mon();
         jDesktopPane1.add(bcm);
+        jDesktopPane1.moveToFront(bcm);
+        bcm.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         bcm.setVisible(true);
     }//GEN-LAST:event_jMenuItemBaoCaoTongKetMonActionPerformed
 
@@ -567,6 +559,8 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         BaoCao_TongKet_HocKy bchk = new BaoCao_TongKet_HocKy();
         jDesktopPane1.add(bchk);
+        jDesktopPane1.moveToFront(bchk);
+        bchk.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         bchk.setVisible(true);
     }//GEN-LAST:event_jMenuItemTKHKActionPerformed
 
@@ -574,6 +568,8 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         TacVu_NhapDiem nhapdiem= new TacVu_NhapDiem();
         jDesktopPane1.add(nhapdiem);
+        jDesktopPane1.moveToFront(nhapdiem);
+        nhapdiem.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         nhapdiem.setVisible(true);
     }//GEN-LAST:event_jMenuItemNhapDiemActionPerformed
 
@@ -581,6 +577,8 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmAbout ab = new frmAbout();
         jDesktopPane1.add(ab);
+        jDesktopPane1.moveToFront(ab);
+        ab.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         ab.setVisible(true);
     }//GEN-LAST:event_jMenuItemTTNPTActionPerformed
 
@@ -592,6 +590,8 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmTiepNhanHS ths = new frmTiepNhanHS();
         jDesktopPane1.add(ths);
+        jDesktopPane1.moveToFront(ths);
+        ths.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         ths.setVisible(true);
     }//GEN-LAST:event_jButtonTiepNhanActionPerformed
 
@@ -599,6 +599,8 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         ThayDoiQuyDinh quydinh = new ThayDoiQuyDinh();
         jDesktopPane1.add(quydinh);
+        jDesktopPane1.moveToFront(quydinh);
+        quydinh.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         quydinh.setVisible(true);
     }//GEN-LAST:event_jMenuItemThayDoiQuyDinhActionPerformed
 
@@ -630,7 +632,6 @@ public class frmmain extends javax.swing.JFrame {
                                         jButtonTiepNhan.setVisible(true);
                                         jButtonTimKiem.setVisible(true);
                                         jButtonNhapDiem.setVisible(true);
-                                        jButtonTongKet.setVisible(true);
                                         jButtonQuyDInh.setVisible(true);
                                     }
                                     else
@@ -650,7 +651,6 @@ public class frmmain extends javax.swing.JFrame {
                                         jButtonTiepNhan.setVisible(false);
                                         jButtonTimKiem.setVisible(false);
                                         jButtonNhapDiem.setVisible(false);
-                                        jButtonTongKet.setVisible(false);
                                         jButtonQuyDInh.setVisible(false);
                                     }
                                 
@@ -696,16 +696,19 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmQL_SapLop1 saplop = new frmQL_SapLop1();
         jDesktopPane1.add(saplop);
+        jDesktopPane1.moveToFront(saplop);
+        saplop.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         saplop.setVisible(true);
         
     }//GEN-LAST:event_jMenuItemSapXepLopActionPerformed
 
-    private void jButtonTongKetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTongKetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTongKetActionPerformed
-
     private void jButtonNhapDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhapDiemActionPerformed
         // TODO add your handling code here:
+        TacVu_NhapDiem nhapdiem= new TacVu_NhapDiem();
+        jDesktopPane1.add(nhapdiem);
+        jDesktopPane1.moveToFront(nhapdiem);
+        nhapdiem.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
+        nhapdiem.setVisible(true);
     }//GEN-LAST:event_jButtonNhapDiemActionPerformed
 
     private void jMenuItemQl_MonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQl_MonHocActionPerformed
@@ -741,7 +744,6 @@ public class frmmain extends javax.swing.JFrame {
         jButtonTiepNhan.setVisible(false);
         jButtonTimKiem.setVisible(false);
         jButtonNhapDiem.setVisible(false);
-        jButtonTongKet.setVisible(false);
         jButtonQuyDInh.setVisible(false);
         jLabel12.setText("Status:Log out");
     }//GEN-LAST:event_jButtonLogOutActionPerformed
@@ -750,6 +752,8 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         TraCua_KetQua_HocTap TC  = new TraCua_KetQua_HocTap();
         jDesktopPane1.add(TC);
+        jDesktopPane1.moveToFront(TC);
+        TC.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         TC.setVisible(true);
     }//GEN-LAST:event_jMenuItemTraCuuActionPerformed
 
@@ -757,8 +761,19 @@ public class frmmain extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmQL_ChuyenLop CL  = new frmQL_ChuyenLop();
         jDesktopPane1.add(CL);
+        jDesktopPane1.moveToFront(CL);
+        CL.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
         CL.setVisible(true);
     }//GEN-LAST:event_jMenuItemChuyenLopActionPerformed
+
+    private void jButtonQuyDInhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuyDInhActionPerformed
+        // TODO add your handling code here:
+        ThayDoiQuyDinh quydinh = new ThayDoiQuyDinh();
+        jDesktopPane1.add(quydinh);
+        jDesktopPane1.moveToFront(quydinh);
+        quydinh.setSize(jDesktopPane1.getWidth(),jDesktopPane1.getHeight());
+        quydinh.setVisible(true);
+    }//GEN-LAST:event_jButtonQuyDInhActionPerformed
 
     /**
      * @param args the command line arguments
@@ -803,7 +818,6 @@ public class frmmain extends javax.swing.JFrame {
     private javax.swing.JButton jButtonQuyDInh;
     private javax.swing.JButton jButtonTiepNhan;
     private javax.swing.JButton jButtonTimKiem;
-    private javax.swing.JButton jButtonTongKet;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
