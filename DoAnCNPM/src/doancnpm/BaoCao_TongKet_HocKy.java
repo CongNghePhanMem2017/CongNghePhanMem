@@ -223,8 +223,7 @@ public class BaoCao_TongKet_HocKy extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_LapBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LapBaoCaoActionPerformed
-   
-        String namhoc = "";
+           String namhoc = "";
         namhoc = jComboBox_NamHoc.getSelectedItem().toString();    
         String hocky = "";
         hocky = jComboBox_HocKy.getSelectedItem().toString();

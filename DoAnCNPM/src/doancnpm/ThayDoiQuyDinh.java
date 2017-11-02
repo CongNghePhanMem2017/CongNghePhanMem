@@ -41,7 +41,6 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             
             // Câu lệnh xem dữ liệu
             String sql = "select * from QUYDINH ";
-            
 
             // Tạo đối tượng thực thi câu lệnh Select
             DB.st = DB.conn.createStatement();

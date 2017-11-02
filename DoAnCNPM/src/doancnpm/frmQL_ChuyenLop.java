@@ -260,7 +260,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton_ThoatActionPerformed
-    
+  
     // Load  ComboBox_danh sách mã lớp trống
     private  void Load_ComboBox_Lop_Trong(){
      String mabangdiem = "";
@@ -273,7 +273,6 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
             DB.st = DB.conn.createStatement();
             // thực thi
             DB.rs = DB.st.executeQuery(sql);
-         
             // Nếu dan hsach1 không tồn tại 
             if (DB.rs.isBeforeFirst() == false) {
                 JOptionPane.showMessageDialog(this, " The lop  is not available ! ");

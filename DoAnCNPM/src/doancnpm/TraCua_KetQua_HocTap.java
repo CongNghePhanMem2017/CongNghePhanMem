@@ -158,13 +158,14 @@ public class TraCua_KetQua_HocTap extends javax.swing.JInternalFrame {
         } 
         
          String Value = jComboBoxMenu.getSelectedItem().toString();
-         // System.out.println(jComboBoxMenu.getSelectedItem().toString());
+         System.out.println(Value);
        try {
-           DB.conn = DriverManager.getConnection(DB.dbURL);
-            //String sql="exec XuatThongTin '"+jTextFieldThongTin.getText()+ "','"+ma+"'";
+           DB.conn = DriverManager.getConnection(DB.dbURL); 
+           
             if(Value.equals("Mã học sinh"))
             {
-               String sql = "EXEC DBO.TimTheoMa '"+jTextFieldThongTin.getText()+"' ";
+                System.out.println(jTextFieldThongTin.getText());
+               String sql = "EXEC XuatThongTinMHS '"+jTextFieldThongTin.getText()+"' ";
                  DB.st = DB.conn.createStatement();
                 DB.rs = DB.st.executeQuery(sql);
                    Vector data = null;
@@ -195,9 +196,9 @@ public class TraCua_KetQua_HocTap extends javax.swing.JInternalFrame {
             // TÌM THEO TÊN HỌC SINH
            else
             {
-                    String ten = "";
-                    ten = jTextFieldThongTin.getText();
-               String sql = "exec DBO.TimTheoTen   '%" + ten + "%' ";
+                    
+               String  ten = jTextFieldThongTin.getText();
+               String sql = "exec XuatThongTin   N'" + jTextFieldThongTin.getText() + "' ";
                  DB.st = DB.conn.createStatement();
                 DB.rs = DB.st.executeQuery(sql);
                    Vector data = null;

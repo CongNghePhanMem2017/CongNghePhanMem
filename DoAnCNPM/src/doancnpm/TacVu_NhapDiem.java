@@ -96,7 +96,6 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
-
             // Câu lệnh xem dữ liệu
             String sql = "select * from HOCKY ";
 

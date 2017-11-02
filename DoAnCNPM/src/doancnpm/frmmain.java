@@ -24,17 +24,17 @@ public class frmmain extends javax.swing.JFrame {
     public frmmain() {
         initComponents();
         setExtendedState(frmmain.MAXIMIZED_BOTH);
-        jMenu4.setVisible(false);
-        jMenu3.setVisible(false);
-        jMenu12.setVisible(false);
-        jMenu11.setVisible(false);
-        jMenu5.setVisible(false);
-        jMenu1.setVisible(false);
-        jMenu13.setVisible(false);
-        jButtonTiepNhan.setVisible(false);
-        jButtonTimKiem.setVisible(false);
-        jButtonNhapDiem.setVisible(false);
-        jButtonQuyDInh.setVisible(false);
+//        jMenu4.setVisible(false);
+//        jMenu3.setVisible(false);
+//        jMenu12.setVisible(false);
+//        jMenu11.setVisible(false);
+//        jMenu5.setVisible(false);
+//        jMenu1.setVisible(false);
+//        jMenu13.setVisible(false);
+//        jButtonTiepNhan.setVisible(false);
+//        jButtonTimKiem.setVisible(false);
+//        jButtonNhapDiem.setVisible(false);
+//        jButtonQuyDInh.setVisible(false);
     }
 
     /**
