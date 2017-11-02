@@ -34,7 +34,7 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
      ConnectDB DB = new ConnectDB();
      String header[]={"Mã Học Kỳ", "Tên Học Kỳ"};
      DefaultTableModel model = new DefaultTableModel();
-
+     char SpecSign[]={'`','~','!','@','#','$','%','^','&','*','(',')','-','_','+','=','{','[','}',']','\\','|',';',':','\'','"','<',',','>','.','?','/'};
     public frmQL_HocKy() {
         initComponents();
         load();
@@ -250,11 +250,12 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
     
     
     private void jButtonXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXoaActionPerformed
-       int index = jTableDSHOCKY.getSelectedRow();
-       TableModel model = jTableDSHOCKY.getModel();
-       String key = model.getValueAt(index,0).toString();
-       String delete = "DELETE FROM HOCKY WHERE MaHocKy = " +key;
+       
         try {
+            int index = jTableDSHOCKY.getSelectedRow();
+             TableModel model = jTableDSHOCKY.getModel();
+                String key = model.getValueAt(index,0).toString();
+                 String delete = "DELETE FROM HOCKY WHERE MaHocKy =' " +key+"'";
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(delete);
             
@@ -304,34 +305,44 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index = jTableDSHOCKY.getSelectedRow();
-           // String value = jTableDSHOCKY.getModel().getValueAt(index,0).toString();
-            String Update = "UPDATE HOCKY set  TenHocKy = ? where MaHocKy =? "  ;
-          
+            String value = jTableDSHOCKY.getModel().getValueAt(index,0).toString();
+            String Update = "UPDATE HOCKY set mahocky=?, TenHocKy =? where MaHocKy ='"+value+"'"  ;
+
             DB.ps = DB.conn.prepareStatement(Update);
             String str=jTextFieldMaHocKy.getText().trim();
-            if(CE.CheckMaHK(str)==0)
-            {
-                JOptionPane.showMessageDialog(rootPane, "Mã bị trùng");
-                return;
-            }
-            DB.ps.setString(1, str);
-            DB.ps.setString(2, jTextFieldMaHocKy.getText());
             
-           
-           // DB.ps.executeUpdate();
-           //DB.ps.executeLargeUpdate(value)
+           if(jTextFieldMaHocKy.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+           for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<str.length();j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Mã không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
+            
+            DB.ps.setString(1, str);
+             String str1=jTextFieldTenHocKy.getText().trim();
+           if(jTextFieldTenHocKy.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+            DB.ps.setString(2,str1);
 
-           long ret = DB.ps.executeUpdate();
+
+           int ret = DB.ps.executeUpdate();
 
             if (ret != -1 ) {
-               // JOptionPane.showMessageDialog(null, " +ret.toString());
                 JOptionPane.showMessageDialog(null, " UpDate Thanh cong ");
                
             }
         } 
         catch (Exception e) {
-              JOptionPane.showMessageDialog(null, " UpDate That bai ");
-              System.out.println(e.toString());
+              e.printStackTrace();
         } finally {
             try {
                 if (DB.conn != null) {
@@ -416,13 +427,33 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             DB.ps = DB.conn.prepareStatement(insert);
             String str=jTextFieldMaHocKy.getText().trim();
+ 
+           if(jTextFieldMaHocKy.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+           for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<str.length();j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
             if(CE.CheckMaHK(str)==0)
             {
                 JOptionPane.showMessageDialog(rootPane, "Mã bị trùng");
                 return;
             }
             DB.ps.setString(1, str);
-            DB.ps.setString(2, jTextFieldTenHocKy.getText());
+             String str1=jTextFieldTenHocKy.getText().trim();
+ 
+           if(jTextFieldTenHocKy.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+            DB.ps.setString(2,str1 );
             int ret = DB.ps.executeUpdate();
             
             if (ret != -1) {
@@ -457,9 +488,11 @@ public class frmQL_HocKy extends javax.swing.JInternalFrame {
         // code sử lí khi click chuộc vào chọn 1 dòng dữ liệu để chỉnh sửa mội dung
         // Khi click vào dòng nào thì nội dung của dòng  đó sẽ được đổ vào các text 
         int index = jTableDSHOCKY.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) jTableDSHOCKY.getModel();
-        jTextFieldMaHocKy.setText(model.getValueAt(jTableDSHOCKY.getSelectedRow(), 0).toString());
-        jTextFieldTenHocKy.setText(model.getValueAt(jTableDSHOCKY.getSelectedRow(), 1).toString());
+        TableModel model=jTableDSHOCKY.getModel();
+        
+        
+        jTextFieldMaHocKy.setText (model.getValueAt(index,0).toString());
+        jTextFieldTenHocKy.setText (model.getValueAt(index,1).toString());
     }//GEN-LAST:event_jTableDSHOCKYMouseClicked
 
     

@@ -23,6 +23,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
     ConnectDB DB=new ConnectDB();
     private String header[] = {"MaNH","MaLop","TenLop","MaKhoi","Sỉ Số"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
+    char SpecSign[]={'`','~','!','@','#','$','%','^','&','*','(',')','-','_','+','=','{','[','}',']','\\','|',';',':','\'','"','<',',','>','.','?','/'};
     /**
      * Creates new form frmQL_Lop
      */
@@ -440,7 +441,7 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
                int index = jTableLop.getSelectedRow();
         TableModel model=jTableLop.getModel(); 
-        String key=model.getValueAt(index,0).toString();
+        String key=model.getValueAt(index,1).toString();
         String delete="DELETE FROM LOP  WHERE MaLop='"+key+"'";
 
        try {
@@ -490,29 +491,32 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
          try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index=jTableLop.getSelectedRow();
-            String value = jTableLop.getModel().getValueAt(index, 0).toString();
-            String update2 = "UPDATE LOP SET MaLop=?,TenLop=?,MaKhoi=?,SiSo=? where MaLop='"+value+"'";
+            String value = jTableLop.getModel().getValueAt(index, 1).toString();
+            String update2 = "UPDATE LOP SET TenLop=?,SiSo=? where MaLop='"+value+"'";
 
   
              DB.ps = DB.conn.prepareStatement(update2);
-           String str=jTextFieldMaLop.getText().trim();
-           str=str.toUpperCase();
-           Pattern regex = Pattern.compile("\\w{2}[a]\\w{2}");
-           Matcher matcher = regex .matcher(str);
-           if(matcher.matches()==false)
+           
+           String str1=jTextFieldTenLop.getText().trim();
+           if(jTextFieldTenLop.getText().isEmpty())
            {
-               JOptionPane.showMessageDialog(rootPane, "Mã lớp không hợp lệ");
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
                return;
            }
-           DB.ps.setString(1,str);
-           DB.ps.setString(2,jTextFieldTenLop.getText());
-           DB.ps.setString(3,jComboBoxMaKhoi.getSelectedItem().toString());
+           for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<str1.length();j++)
+                    if(SpecSign[i]==str1.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
+           DB.ps.setString(1,str1);
            int check2=CE.CheckSiSo(value,Integer.parseInt(jTextFieldSiSo.getText()));
            if(check2==0)
            {
                JOptionPane.showMessageDialog(rootPane, "sỉ số phải nhỏ hơn quy định");
            }
-           DB.ps.setInt(4, Integer.parseInt(jTextFieldSiSo.getText()));
+           DB.ps.setInt(2, Integer.parseInt(jTextFieldSiSo.getText()));
 
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {
@@ -554,7 +558,20 @@ public class frmQL_Lop extends javax.swing.JInternalFrame {
            DB.ps = DB.conn.prepareStatement(insert);
            DB.ps.setString(1,jComboBoxMaNH.getSelectedItem().toString());
            DB.ps.setString(2,jComboBoxMaKhoi.getSelectedItem().toString());
-           DB.ps.setString(3,jTextFieldTenLop.getText());
+           String str=jTextFieldTenLop.getText().trim();
+           if(jTextFieldTenLop.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+           for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<str.length();j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
+           DB.ps.setString(3,str);
 
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {

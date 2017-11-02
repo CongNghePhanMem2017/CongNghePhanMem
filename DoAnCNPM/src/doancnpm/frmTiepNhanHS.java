@@ -536,6 +536,11 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            //DB.ps.setString(1,txtMaHS.getText());
            DB.ps.setString(1, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(2, (jComboBoxKhoi.getSelectedItem().toString()));
+           if(jTextFieldHoTen.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            String str=jTextFieldHoTen.getText();
           str=str.trim();
             int lenght=str.length();
@@ -575,6 +580,11 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                return;
            }
            DB.ps.setDate(5, convertUtilDateToSqlDate(jDateChooserNgaySinh.getDate()));
+           if(jTextFieldHoTen.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setString(6, jTextFieldDiaChi.getText());
            Pattern regex = Pattern.compile("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b");
            Matcher matcher = regex .matcher(jTextFieldEmail.getText());
@@ -682,6 +692,11 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
            DB.ps.setString(1,"");
            DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxKhoi.getSelectedItem().toString()));
+           if(jTextFieldHoTen.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            String str=jTextFieldHoTen.getText();
            str=str.toLowerCase();
            String[] tokens = str.split("\\s");
@@ -714,6 +729,7 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                     }
            DB.ps.setString(4, str);
            DB.ps.setString(5, (String)jComboBoxGioiTinh.getSelectedItem());
+           
            Date today=new Date(System.currentTimeMillis()); 
            SimpleDateFormat timeFormat= new SimpleDateFormat("yyyy"); 
            int s=Integer.parseInt(timeFormat.format(jDateChooserNgaySinh.getDate())); 
@@ -729,6 +745,11 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                return;
            }
            DB.ps.setDate(6, convertUtilDateToSqlDate(jDateChooserNgaySinh.getDate()));
+           if(jTextFieldDiaChi.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setString(7, jTextFieldDiaChi.getText());
            Pattern regex = Pattern.compile("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b");
            Matcher matcher = regex .matcher(jTextFieldEmail.getText());

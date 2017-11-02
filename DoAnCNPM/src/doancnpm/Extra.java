@@ -89,7 +89,7 @@ public class Extra {
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
 
-            String sql = "select * from QUYDINH where TenQuyDinh=N'SiSo' ";//fix
+            String sql = "select * from QUYDINH where TenQuyDinh=N'Sĩ  Số Lớp' ";//fix
             DB.st = DB.conn.createStatement();
             DB.rs = DB.st.executeQuery(sql);
             Vector data = null;

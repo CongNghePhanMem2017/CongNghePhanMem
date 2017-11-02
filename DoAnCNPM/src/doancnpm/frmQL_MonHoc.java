@@ -27,6 +27,7 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
     Extra CE=new Extra();
     private String header[] = {"MaMH","TenMH"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
+    char SpecSign[]={'`','~','!','@','#','$','%','^','&','*','(',')','-','_','+','=','{','[','}',']','\\','|',';',':','\'','"','<',',','>','.','?','/'};
     /**
      * Creates new form frmQL_MonHoc
      */
@@ -333,12 +334,22 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             int index=jTableMonHoc.getSelectedRow();
             String value = jTableMonHoc.getModel().getValueAt(index, 0).toString();
-            String update2 = "UPDATE MONHOC SET MaMonHoc=?,TenMonHoc=? where MaMonHoc='"+value+"'";
+            String sql="DELETE FROM MONHOC  WHERE MaMonHoc='"+value+"' INSERT INTO MONHOC VALUES(?,?)";
 
-  
-             DB.ps = DB.conn.prepareStatement(update2);
-           String str=jTextFieldMaMonHoc.getText().trim();
-           str=str.toUpperCase();
+             DB.ps = DB.conn.prepareStatement(sql);
+            String str=jTextFieldTenMonHoc.getText().trim();
+           if(jTextFieldTenMonHoc.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+           for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<str.length();j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
            String s=CE.removeAccent(str);
            DB.ps.setString(1,s);
            DB.ps.setString(2,jTextFieldTenMonHoc.getText());
@@ -380,7 +391,19 @@ public class frmQL_MonHoc extends javax.swing.JInternalFrame {
         try {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
-           String str=jTextFieldTenMonHoc.getText().trim();
+            String str=jTextFieldTenMonHoc.getText().trim();
+           if(jTextFieldTenMonHoc.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+           for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<str.length();j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Tên không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
            String s=CE.removeAccent(str).toString();
 
             if(CE.CheckMaMH(s)==0)

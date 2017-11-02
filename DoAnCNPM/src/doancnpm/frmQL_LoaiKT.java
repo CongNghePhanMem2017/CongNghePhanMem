@@ -24,6 +24,7 @@ ConnectDB DB=new ConnectDB();
 Extra CE=new Extra();
     private String header[] = {"MaLoaiKT","TenLoaiKT"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
+    char SpecSign[]={'`','~','!','@','#','$','%','^','&','*','(',')','-','_','+','=','{','[','}',']','\\','|',';',':','\'','"','<',',','>','.','?','/'};
     /**
      * Creates new form frmLoaiKT
      */
@@ -293,6 +294,18 @@ Extra CE=new Extra();
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
            String str=jTextFieldMaLoaiKT.getText().trim();
+           if(jTextFieldMaLoaiKT.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+           for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<str.length();j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Mã không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
            str=str.toLowerCase();
             char[] s=str.toCharArray();
             if(s[0]!='k')
@@ -304,6 +317,11 @@ Extra CE=new Extra();
                 return;
             }
            DB.ps.setString(1,str);
+           if(jTextFieldTenLoaiKT.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setString(2,jTextFieldTenLoaiKT.getText());
          
             
@@ -345,18 +363,26 @@ Extra CE=new Extra();
   
              DB.ps = DB.conn.prepareStatement(update2);
             String str=jTextFieldMaLoaiKT.getText().trim();
-           str=str.toLowerCase();
-            char[] s=str.toCharArray();
-            if(s[0]!='k')
-            str='k'+str;
-         
-            if(CE.CheckMaLKT(str)==0)
-            {
-                JOptionPane.showMessageDialog(rootPane, "Mã bị trùng");
-                return;
-            }
+            if(jTextFieldMaLoaiKT.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+           for (int i=0;i<SpecSign.length;i++)
+                for (int j=0;j<str.length();j++)
+                    if(SpecSign[i]==str.toCharArray()[j])
+                    {
+                        JOptionPane.showMessageDialog(rootPane,"Mã không được phép chứa kí tự đặc biệt");
+                        return;
+                    }
+           
            DB.ps.setString(1,str);
            DB.ps.setString(1,jTextFieldMaLoaiKT.getText());
+           if(jTextFieldTenLoaiKT.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setString(2,jTextFieldTenLoaiKT.getText());
             
 

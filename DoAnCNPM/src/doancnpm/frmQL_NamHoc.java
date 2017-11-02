@@ -24,6 +24,7 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
     char NumArray[]={'0','1','2','3','4','5','6','7','8','9'};
     private String header[] = {"MaNH","TenNH","YNGHIA"};
     private DefaultTableModel tblModel = new DefaultTableModel(header,0);
+    char SpecSign[]={'`','~','!','@','#','$','%','^','&','*','(',')','-','_','+','=','{','[','}',']','\\','|',';',':','\'','"','<',',','>','.','?','/'};
     /**
      * Creates new form frmQL_NamHoc
      */
@@ -370,6 +371,11 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
 
   
              DB.ps = DB.conn.prepareStatement(update2);
+             if(jTextFieldTenNamHoc.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setString(1,jTextFieldTenNamHoc.getText());
            DB.ps.setString(2,jTextFieldYNghia.getText());
             
@@ -412,7 +418,11 @@ public class frmQL_NamHoc extends javax.swing.JInternalFrame {
            DB.conn = DriverManager.getConnection(DB.dbURL);
            DB.ps = DB.conn.prepareStatement(insert);
            
-
+           if(jTextFieldTenNamHoc.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setString(1,jTextFieldTenNamHoc.getText());
            DB.ps.setString(2,jTextFieldYNghia.getText());
          

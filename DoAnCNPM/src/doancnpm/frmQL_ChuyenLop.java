@@ -233,7 +233,12 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
-       Load_TiemKiem_ChuyenLop();
+       if(txtMaBangDiem.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
+        Load_TiemKiem_ChuyenLop();
        Load_DS_Lop_Con_Trong();
        Load_ComboBox_Lop_Trong();
        Load_TiemKiem_ChuyenLop();
@@ -264,6 +269,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
     // Load  ComboBox_danh sách mã lớp trống
     private  void Load_ComboBox_Lop_Trong(){
      String mabangdiem = "";
+     
      mabangdiem = txtMaBangDiem.getText();
     try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
@@ -306,6 +312,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
     // Tim kiếm học sinh muốn chuyển lớp
     private void Load_TiemKiem_ChuyenLop (){
         String mabangdiem = "";
+
         mabangdiem = txtMaBangDiem.getText(); 
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
@@ -358,7 +365,9 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
     // Load danh sách lớp còn trống
     private void Load_DS_Lop_Con_Trong (){
         String mabangdiem = "";
-        mabangdiem = txtMaBangDiem.getText(); 
+
+        mabangdiem = txtMaBangDiem.getText();
+        
         try {
             DB.conn = DriverManager.getConnection(DB.dbURL);
             // câu lệnh xem dư liệu
@@ -407,6 +416,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
     // tiến hàng  chuyển lớp 
     private void ChuyenLop() {
         String mabangdiem = "";
+
         mabangdiem = txtMaBangDiem.getText();                           // lấy mã bảng điểm
         String MaLop = "";
         MaLop = jComboBox_LopTrong.getSelectedItem().toString();      // lấy mã lớp trống 

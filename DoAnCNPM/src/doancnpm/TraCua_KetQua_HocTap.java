@@ -97,7 +97,7 @@ public class TraCua_KetQua_HocTap extends javax.swing.JInternalFrame {
 
     // mô tả nÈ : Hàm này dùng để tính điểm của học sinh ở từng học kỳ
     private void BangDiemHocSinh() {
-       
+
         jTable_BangDiemHocSinh.setModel(tblMode);
         String MaBangDiem = "";                      //Lấy Mã Bảng Điêm
         MaBangDiem = txtMaBangDiem.getText();
@@ -156,16 +156,19 @@ public class TraCua_KetQua_HocTap extends javax.swing.JInternalFrame {
         if (index < 0) {
             return;
         } 
-        
+        if(jTextFieldThongTin.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
          String Value = jComboBoxMenu.getSelectedItem().toString();
-         System.out.println(Value);
        try {
            DB.conn = DriverManager.getConnection(DB.dbURL); 
            
             if(Value.equals("Mã học sinh"))
             {
-                System.out.println(jTextFieldThongTin.getText());
-               String sql = "EXEC XuatThongTinMHS '"+jTextFieldThongTin.getText()+"' ";
+
+               String sql = "EXEC XuatTongTinMHS '"+jTextFieldThongTin.getText()+"' ";
                  DB.st = DB.conn.createStatement();
                 DB.rs = DB.st.executeQuery(sql);
                    Vector data = null;
@@ -196,8 +199,7 @@ public class TraCua_KetQua_HocTap extends javax.swing.JInternalFrame {
             // TÌM THEO TÊN HỌC SINH
            else
             {
-                    
-               String  ten = jTextFieldThongTin.getText();
+                System.out.println(jTextFieldThongTin.getText().toString());
                String sql = "exec XuatThongTin   N'" + jTextFieldThongTin.getText() + "' ";
                  DB.st = DB.conn.createStatement();
                 DB.rs = DB.st.executeQuery(sql);
@@ -547,24 +549,25 @@ public class TraCua_KetQua_HocTap extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox_HoKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_HoKyActionPerformed
-    
-      
-         
-          
+               if(txtMaBangDiem.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
           DefaultTableModel model=(DefaultTableModel) jTable_BangDiemHocSinh.getModel();
          model.setRowCount(0);
           BangDiemHocSinh();
-        
-      
-        
+
     }//GEN-LAST:event_jComboBox_HoKyActionPerformed
 
     private void jButton_XemDiemTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XemDiemTBActionPerformed
-       
+       if(txtMaBangDiem.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
         DiemTongKetNamHoc();
-        
-        
-    
+
     }//GEN-LAST:event_jButton_XemDiemTBActionPerformed
 
     private void jButton_Thoat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Thoat2ActionPerformed

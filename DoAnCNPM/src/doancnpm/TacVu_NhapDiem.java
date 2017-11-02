@@ -1101,7 +1101,13 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
            DB.ps.setString(1, txtMaBangDiem.getText());
            DB.ps.setString(2, (jComboBoxMonHoc.getSelectedItem().toString()));
            DB.ps.setString(3, (jComboBoxHocKy.getSelectedItem().toString()));
+           
            DB.ps.setString(4,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
+           if(txtDiem.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            if (Float.parseFloat(txtDiem.getText())<0 || Float.parseFloat(txtDiem.getText())>10 )
            {
                JOptionPane.showMessageDialog(this,"Điểm phải từ 0  đến 10 ");
@@ -1234,6 +1240,11 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
           // DB.ps.setString(2, (jComboBoxNamHoc.getSelectedItem().toString()));
            DB.ps.setString(2, (jComboBoxHocKy.getSelectedItem().toString()));
            DB.ps.setString(3,(jComboBoxLoaiKiemTra.getSelectedItem().toString()));
+           if(txtDiem.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setFloat(4, Float.parseFloat(txtDiem.getText()));
            DB.ps.setString(5,model.getValueAt(index,5).toString());
             
