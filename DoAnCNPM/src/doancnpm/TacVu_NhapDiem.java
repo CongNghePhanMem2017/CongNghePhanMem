@@ -651,8 +651,14 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
+        txtMaHocSinh.setEditable(false);
+
+        txtTenHocSinh.setEditable(false);
+
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel14.setText("Mã Học Sinh ");
+
+        txtMaBangDiem.setEditable(false);
 
         jTextField7.setText("jTextField7");
 
@@ -732,6 +738,8 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                     .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        txtLop.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -928,7 +936,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 691, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

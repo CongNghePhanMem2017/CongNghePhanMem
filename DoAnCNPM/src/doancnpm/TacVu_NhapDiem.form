@@ -483,8 +483,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMaHocSinh">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTenHocSinh">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
@@ -495,6 +501,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMaBangDiem">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField7">
           <Properties>
@@ -654,6 +663,9 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txtLop">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxMonHoc">
           <Properties>

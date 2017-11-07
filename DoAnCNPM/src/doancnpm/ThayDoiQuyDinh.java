@@ -419,7 +419,17 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
            DB.ps = DB.conn.prepareStatement(insert);
 
            DB.ps.setString(1,jComboBoxMaNamHoc.getSelectedItem().toString());
+            if(jTextFieldTieuChi.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setString(2,jTextFieldTieuChi.getText());
+            if(jTextFieldThongSo.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            String str=(jTextFieldThongSo.getText()).trim();
            Pattern regex = Pattern.compile("\\w+");
            Matcher matcher = regex .matcher(str);
@@ -471,7 +481,17 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
              DB.ps = DB.conn.prepareStatement(update2);
             
            DB.ps.setString(1,jComboBoxMaNamHoc.getSelectedItem().toString());
+            if(jTextFieldTieuChi.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            DB.ps.setString(2,jTextFieldTieuChi.getText());
+           if(jTextFieldThongSo.getText().isEmpty())
+           {
+               JOptionPane.showMessageDialog(rootPane, "Không thể để trống");
+               return;
+           }
            String str=(jTextFieldThongSo.getText()).trim();
            Pattern regex = Pattern.compile("\\w+");
            Matcher matcher = regex .matcher(str);
