@@ -14,11 +14,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author manng
  */
+    // Miêu Tả: chức năng  báo cáo tổng kết môn 
+
 public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
 
     ConnectDB DB = new ConnectDB();
     private String header_BAOCAO [] = {"Tên Lớp", "Sỉ Số", "Số Lượng Đạt","Tỉ Lê(%)"};
     private DefaultTableModel tblMode_BaoCao = new DefaultTableModel(header_BAOCAO, 0);
+    // DS_Học SINH CHƯA ĐẠT
+    private String header_BAOCAO_ChuaĐạt [] = {"Tên Lớp", "Sỉ Số", "SL_Chưa Đạt","Tỉ Lê(%)"};
+    private DefaultTableModel tblMode_BaoCao_ChuaĐat = new DefaultTableModel(header_BAOCAO_ChuaĐạt, 0);
+    
     public BaoCao_TongKet_Mon() {
         initComponents();
         JOptionPane.showMessageDialog(this,"Vui Lòng lọc để lập cáo báo nha");
@@ -32,7 +38,6 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -42,16 +47,19 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jComboBox_HocKy = new javax.swing.JComboBox<>();
         jButton_LapBaoCao = new javax.swing.JButton();
+        jButton_Thoat = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_BaoCao = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable_BaoCao_ChuaDat = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("BÁO CÁO TỔNG KẾT MÔN");
         setToolTipText("");
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lọc Dữ Liệu "));
 
@@ -59,22 +67,46 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
         jLabel8.setText("Môn Học");
 
         jComboBox_NamHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "K17", "K18" }));
+        jComboBox_NamHoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_NamHocActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Năm Học");
 
         jComboBox_MonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TOAN", "LY", "HOA" }));
+        jComboBox_MonHoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_MonHocActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("Học Kỳ");
 
         jComboBox_HocKy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HK1", "HK2" }));
+        jComboBox_HocKy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_HocKyActionPerformed(evt);
+            }
+        });
 
         jButton_LapBaoCao.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton_LapBaoCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Paste.png"))); // NOI18N
         jButton_LapBaoCao.setText("Lập Báo Cáo");
         jButton_LapBaoCao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_LapBaoCaoActionPerformed(evt);
+            }
+        });
+
+        jButton_Thoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Cancel.png"))); // NOI18N
+        jButton_Thoat.setText("Thoát");
+        jButton_Thoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ThoatActionPerformed(evt);
             }
         });
 
@@ -95,9 +127,11 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBox_HocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_LapBaoCao)
-                .addGap(24, 24, 24))
+                .addGap(29, 29, 29)
+                .addComponent(jButton_Thoat, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,19 +144,12 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
                     .addComponent(jComboBox_MonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox_HocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_LapBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_LapBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Thoat, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 35;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 81, 0, 0);
-        getContentPane().add(jPanel1, gridBagConstraints);
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Báo Cáo  Tổng Kết Môn"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("DS_HS_Các Lớp  Đạt"));
 
         jTable_BaoCao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,25 +168,73 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(320, 320, 320))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 936;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 10, 4, 10);
-        getContentPane().add(jPanel2, gridBagConstraints);
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("DS_HS_Các Lớp Chưa Đạt"));
+
+        jTable_BaoCao_ChuaDat.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable_BaoCao_ChuaDat);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,8 +254,14 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
             // tạo đối tượng thực thi câu lênh select
             DB.st = DB.conn.createStatement();
             // Thực thi
-            DB.rs = DB.st.executeQuery(DiemTongKetNamHoc);
-            Vector data = null;
+            DB.rs = DB.st.executeQuery(DiemTongKetNamHoc); 
+             Vector data = null;
+            tblMode_BaoCao.setRowCount(0);
+             // Nếu sách không tồn tại
+            if (DB.rs.isBeforeFirst() == false) {
+               JOptionPane.showMessageDialog(this, "Không có hs ở lớp nào đạt hết!");
+              // return; 
+            }
             tblMode_BaoCao.setRowCount(0); 
             while (DB.rs.next()) {
                 data = new Vector();
@@ -210,11 +291,88 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
                 ex.printStackTrace();
             }
         }
+         // ds học sinh chưa đạt
+         try {
+            DB.conn = DriverManager.getConnection(DB.dbURL);
+            // câu lệnh xem dư liệu
+            String DiemTongKetNamHoc_ChuaDat = " exec BaoCaoTongKetMon_ChuaDat '"+namhoc+"' ,'"+monhoc+"', '"+hocky+"'";
+            // tạo đối tượng thực thi câu lênh select
+            DB.st = DB.conn.createStatement();
+            // Thực thi
+            DB.rs = DB.st.executeQuery(DiemTongKetNamHoc_ChuaDat);
+          
+             Vector data = null;
+            tblMode_BaoCao_ChuaĐat.setRowCount(0);
+             // Nếu sách không tồn tại
+            if (DB.rs.isBeforeFirst() == false) {
+               JOptionPane.showMessageDialog(this, "Tất cả HS Đều Đạt 100%!"); 
+               return ;
+            }
+            tblMode_BaoCao_ChuaĐat.setRowCount(0); 
+            while (DB.rs.next()) {
+                data = new Vector();
+                data.add(DB.rs.getString("TenLop"));
+                data.add(DB.rs.getString("SiSo"));
+                data.add(DB.rs.getString("slchuadat"));
+                data.add(DB.rs.getString("tile")); 
+                // Thêm một dòng vào table model
+                tblMode_BaoCao_ChuaĐat.addRow(data);
+            }
+            jTable_BaoCao_ChuaDat.setModel(tblMode_BaoCao_ChuaĐat); // thêm dữ liệu vào table 
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Lỗi Lập báo cáo");
+        } finally {
+            try {
+                if (DB.conn != null) {
+                    DB.conn.close();
+                }
+                if (DB.st != null) {
+                    DB.st.close();
+                }
+                if (DB.rs != null) {
+                    DB.rs.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+   
     }//GEN-LAST:event_jButton_LapBaoCaoActionPerformed
+    // Xóa dự liệu trong bảng khi muốn làm báo cáo mới
+    private void jComboBox_NamHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_NamHocActionPerformed
+     DefaultTableModel model_Dat=(DefaultTableModel) jTable_BaoCao.getModel();
+     model_Dat.setRowCount(0);
+             
+     DefaultTableModel model_ChuaDat=(DefaultTableModel) jTable_BaoCao_ChuaDat.getModel();
+     model_ChuaDat.setRowCount(0);
+    }//GEN-LAST:event_jComboBox_NamHocActionPerformed
+
+    private void jComboBox_MonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_MonHocActionPerformed
+      DefaultTableModel model_Dat=(DefaultTableModel) jTable_BaoCao.getModel();
+     model_Dat.setRowCount(0);
+             
+     DefaultTableModel model_ChuaDat=(DefaultTableModel) jTable_BaoCao_ChuaDat.getModel();
+     model_ChuaDat.setRowCount(0);
+    }//GEN-LAST:event_jComboBox_MonHocActionPerformed
+
+    private void jComboBox_HocKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_HocKyActionPerformed
+       DefaultTableModel model_Dat=(DefaultTableModel) jTable_BaoCao.getModel();
+     model_Dat.setRowCount(0);
+             
+     DefaultTableModel model_ChuaDat=(DefaultTableModel) jTable_BaoCao_ChuaDat.getModel();
+     model_ChuaDat.setRowCount(0);
+    }//GEN-LAST:event_jComboBox_HocKyActionPerformed
+
+    private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton_ThoatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_LapBaoCao;
+    private javax.swing.JButton jButton_Thoat;
     private javax.swing.JComboBox<String> jComboBox_HocKy;
     private javax.swing.JComboBox<String> jComboBox_MonHoc;
     private javax.swing.JComboBox<String> jComboBox_NamHoc;
@@ -223,7 +381,10 @@ public class BaoCao_TongKet_Mon extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable_BaoCao;
+    private javax.swing.JTable jTable_BaoCao_ChuaDat;
     // End of variables declaration//GEN-END:variables
 }

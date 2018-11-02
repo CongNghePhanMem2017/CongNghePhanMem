@@ -194,7 +194,6 @@ public class frmTiepNhanHS extends javax.swing.JInternalFrame {
                  tblModel.addRow(data);
             }
 
-            // Thêm dữ liệu vào table
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -71,7 +71,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
 
             }
 
-        //     jComboBoxNamHoc.setModel(cmbModel);
+
 
             
         } catch (Exception e) {
@@ -675,6 +675,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel21.setText("Mã Môn Học");
 
+        jButtonXoaVaClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Diagram.png"))); // NOI18N
         jButtonXoaVaClean.setText("Xóa & Clean");
         jButtonXoaVaClean.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -682,6 +683,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
         jButtonThoat.setText("THOÁT");
         jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -689,6 +691,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton_NhapDiemChoHS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Create.png"))); // NOI18N
         jButton_NhapDiemChoHS.setText("NHẬP ");
         jButton_NhapDiemChoHS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -696,6 +699,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Redo.png"))); // NOI18N
         jButtonSua.setText("SỬA");
         jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -708,7 +712,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(jButton_NhapDiemChoHS)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSua)
@@ -762,9 +766,7 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBoxHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(182, 182, 182))))
+                                        .addGap(266, 266, 266))))
                             .addComponent(txtMaBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -772,8 +774,10 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                                     .addComponent(txtMaHocSinh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(50, 50, 50)
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(txtLop, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLop, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(91, 91, 91)
@@ -923,9 +927,9 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1189,6 +1193,28 @@ public class TacVu_NhapDiem extends javax.swing.JInternalFrame {
                       //  JOptionPane.showMessageDialog(this, "Đã  TÍNH Diem tb Năm của 1 hs  thành công !  "); 
             } catch (Exception e) {
                //  JOptionPane.showMessageDialog(this, "Lỗi_DiemTB_Mon !   "); 
+            }   
+            // Tính điểm tổng kết năm học cua 1 hs 
+             try {
+                 String tongketnamhoc = "EXEC DiemTongKetNamHoc  '"+MaBangDiem+"'";
+                        DB.conn = DriverManager.getConnection(DB.dbURL);
+                        DB.st = DB.conn.createStatement();
+                        // Thực thi
+                        DB.rs = DB.st.executeQuery(tongketnamhoc);
+                      //  JOptionPane.showMessageDialog(this, "Đã  TÍNH Diem tb Năm của 1 hs  thành công !  "); 
+            } catch (Exception e) {
+               //  JOptionPane.showMessageDialog(this, "Lỗi_DiemTB_Mon !   "); 
+            }   
+            // update kết qua2 học tập  hk1, hk2 
+            try {
+                 String tongketnamhoc = "EXEC UPDATEDiem_KetQuaHocTap  '"+MaBangDiem+"', '"+MaHocKy+"'";
+                        DB.conn = DriverManager.getConnection(DB.dbURL);
+                        DB.st = DB.conn.createStatement();
+                        // Thực thi
+                        DB.rs = DB.st.executeQuery(tongketnamhoc);
+                       
+            } catch (Exception e) {
+               // JOptionPane.showMessageDialog(this, "Lỗi_DiemTB_HocKy !   "); 
             }   
         } 
 

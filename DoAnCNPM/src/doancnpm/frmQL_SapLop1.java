@@ -688,19 +688,21 @@ public class frmQL_SapLop1 extends javax.swing.JInternalFrame {
    
             try {
                 String laymabangdiem = "select  MaBangDiem from BANG_DIEM_HS bd  WHERE  BD.MaHocSinh =  '" + MaHocSinh + "' AND bd.MaLop like N'" + MaLop + "'GROUP BY  BD.MaBangDiem";
+                
                 DB.conn = DriverManager.getConnection(DB.dbURL);
                 DB.st = DB.conn.createStatement();
                 // Thực thi
                 DB.rs = DB.st.executeQuery(laymabangdiem);
                 while (DB.rs.next()) {
                     MaBangDiem = DB.rs.getString("MaBangDiem");
+                    System.out.print(MaBangDiem);
                     String INSERT_DiemTB_Mon = "exec INSERT_DiemTB_Mon '" + MaBangDiem + "'";
                     DB.conn = DriverManager.getConnection(DB.dbURL);
                     DB.st = DB.conn.createStatement();
                     // Thực thi
                     DB.rs = DB.st.executeQuery(INSERT_DiemTB_Mon);
 
-                    JOptionPane.showMessageDialog(this, "The INSERT_DiemTB_Mon Thanh Cong  ");
+                  //  JOptionPane.showMessageDialog(this, "The INSERT_DiemTB_Mon Thanh Cong  ");
                     // INSERT_B_P_Sinh_KetQuaHocTap
                     String INSERT_B_P_Sinh_KetQuaHocTap = "exec INSERT_B_P_Sinh_KetQuaHocTap '" + MaBangDiem + "'";
                     DB.conn = DriverManager.getConnection(DB.dbURL);
@@ -809,8 +811,6 @@ public class frmQL_SapLop1 extends javax.swing.JInternalFrame {
             ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
         }
             // Insert_B_P_Sinh_TB_HK TINH DIEM TB CUA HS TREN TUNG HK
-           try {
-            
           
                try {
                    String laymabangdiem = "select  MaBangDiem from BANG_DIEM_HS bd  WHERE  BD.MaHocSinh =  '" + MaHocSinh + "' AND bd.MaLop like N'" + MaLop + "'GROUP BY  BD.MaBangDiem";
@@ -832,9 +832,7 @@ public class frmQL_SapLop1 extends javax.swing.JInternalFrame {
                    ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
                }
 
-        } catch (Exception e) {
-            ///JOptionPane.showMessageDialog(this, "Lỗi lấy mã bảng điêm ");
-        }
+        
            
            
            // update  si so lop
@@ -901,7 +899,7 @@ public class frmQL_SapLop1 extends javax.swing.JInternalFrame {
     }
     private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_jButton_ThoatActionPerformed
 
     private void jButtonVaoLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaoLopActionPerformed
@@ -938,7 +936,7 @@ public class frmQL_SapLop1 extends javax.swing.JInternalFrame {
             DB.ps = DB.conn.prepareStatement(deletesql);
             int ret = DB.ps.executeUpdate();
             if (ret != -1) {
-                JOptionPane.showMessageDialog(this, "This TIEPNHAN_HS has been deleted");
+              //  JOptionPane.showMessageDialog(this, "This TIEPNHAN_HS has been deleted");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -1029,7 +1027,7 @@ public class frmQL_SapLop1 extends javax.swing.JInternalFrame {
             DB.st = DB.conn.createStatement();
             // Thực thi
             DB.rs = DB.st.executeQuery(INSERT_DiemTB_Mon);
-            JOptionPane.showMessageDialog(this, "The INSERT_DiemTB_Mon Thanh Cong  ");
+           //JOptionPane.showMessageDialog(this, "The INSERT_DiemTB_Mon Thanh Cong  ");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Lỗi INSERT_DiemTB_Mon ");

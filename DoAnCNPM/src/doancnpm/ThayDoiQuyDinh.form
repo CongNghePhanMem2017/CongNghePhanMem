@@ -169,7 +169,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xea;n Ti&#xea;u Ch&#xed;"/>
+                <Property name="text" type="java.lang.String" value="Quy &#x110;&#x1ecb;nh"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldTieuChi">
@@ -207,7 +207,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButtonThoat" pref="73" max="32767" attributes="0"/>
+                          <Component id="jButtonThoat" pref="93" max="32767" attributes="0"/>
                           <Component id="jButtonSua" max="32767" attributes="0"/>
                           <Component id="jButtonXoa" max="32767" attributes="0"/>
                           <Component id="jButtonThem" alignment="0" max="32767" attributes="0"/>
@@ -235,6 +235,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButtonThem">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Create.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
               <Events>
@@ -243,6 +246,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonXoa">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Erase.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
               <Events>
@@ -251,6 +257,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSua">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Refresh.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
               </Properties>
               <Events>
@@ -259,6 +268,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonThoat">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Exit.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
               </Properties>
               <Events>

@@ -61,6 +61,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("Mã Bảng Điểm");
 
+        jButton_TimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Find.png"))); // NOI18N
         jButton_TimKiem.setText("TÌM KIẾM");
         jButton_TimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,8 +79,8 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtMaBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton_TimKiem)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +89,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_TimKiem)))
+                    .addComponent(jButton_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Kết Qủa Tiềm Kiếm"));
@@ -245,6 +246,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
         try {
             ChuyenLop();
             JOptionPane.showMessageDialog(this,"Chuyển Lớp Thành Công");
+             Load_TiemKiem_ChuyenLop();
             
         } catch (Exception e) {
         }
@@ -256,7 +258,7 @@ public class frmQL_ChuyenLop extends javax.swing.JInternalFrame {
 
     private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_jButton_ThoatActionPerformed
     
     // Load  ComboBox_danh sách mã lớp trống

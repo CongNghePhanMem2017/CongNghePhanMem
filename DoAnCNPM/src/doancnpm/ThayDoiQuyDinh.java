@@ -211,7 +211,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Mã Năm Học");
 
-        jLabel6.setText("Tên Tiêu Chí");
+        jLabel6.setText("Quy Định");
 
         jTextFieldTieuChi.setText(" ");
 
@@ -254,6 +254,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
+        jButtonThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Create.png"))); // NOI18N
         jButtonThem.setText("Thêm");
         jButtonThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,6 +262,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Erase.png"))); // NOI18N
         jButtonXoa.setText("Xóa");
         jButtonXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,6 +270,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
         jButtonSua.setText("Sửa");
         jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,6 +278,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
         jButtonThoat.setText("Thoát");
         jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,7 +293,7 @@ public class ThayDoiQuyDinh extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                    .addComponent(jButtonThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                     .addComponent(jButtonSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

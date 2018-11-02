@@ -152,34 +152,38 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu12">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/Boss.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; H&#x1ecd;c Sinh"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTNHS">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Create.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ti&#x1ebf;p Nh&#x1ead;n H&#x1ecd;c Sinh"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTNHSActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTCHS">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tra C&#x1ee9;u H&#x1ed3; S&#x1a1; HS "/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemTCHSActionPerformed"/>
-              </Events>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu11">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/Briefcase.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Qu&#xe0;n L&#xfd; Nghi&#x1ec7;p V&#x1ee5;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSapXepLop">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Equipment.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eaf;p X&#x1ebf;p L&#x1edb;p"/>
               </Properties>
               <Events>
@@ -188,6 +192,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemChuyenLop">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Refresh.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Chuy&#x1ec3;n L&#x1edb;p"/>
               </Properties>
               <Events>
@@ -198,11 +205,17 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu5">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/Clipboard.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; &#x110;i&#x1ec3;m"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemNhapDiem">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Create.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nh&#x1ead;p &#x110;i&#x1ec3;m"/>
               </Properties>
               <Events>
@@ -211,6 +224,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTraCuu">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Find.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tra C&#x1ee9;u"/>
               </Properties>
               <Events>
@@ -221,11 +237,17 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/3d bar chart.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="L&#x1ead;p B&#xe1;o C&#xe1;o"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBaoCaoTongKetMon">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Address book.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="T&#x1ed5;ng k&#x1ebf;t m&#xf4;n"/>
               </Properties>
               <Events>
@@ -234,6 +256,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTKHK">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Clipboard.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="T&#x1ed5;ng k&#x1ebf;t h&#x1ecd;c k&#x1ef3;"/>
               </Properties>
               <Events>
@@ -245,13 +270,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu13">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/image/Pinion.png"/>
+              <Image iconType="3" name="/image/Sync.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Quy &#x110;&#x1ecb;nh"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemThayDoiQuyDinh">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Application.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Thay &#x110;&#x1ed5;i Quy &#x110;&#x1ecb;nh"/>
               </Properties>
               <Events>
@@ -262,11 +290,17 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/Abort.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="About"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTTNPT">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Hungup.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin nh&#xf3;m ph&#xe1;t tri&#x1ec3;n"/>
               </Properties>
               <Events>
@@ -277,6 +311,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuHelp">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/image/Smile.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Help"/>
           </Properties>
         </Menu>
@@ -371,7 +408,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="820" y="30" width="270" height="160"/>
+              <AbsoluteConstraints x="760" y="30" width="330" height="180"/>
             </Constraint>
           </Constraints>
 
@@ -392,15 +429,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jTextField1" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jButtonLogIn" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jButtonLogOut" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jButtonLogIn" pref="106" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jButtonLogOut" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -429,7 +465,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -439,6 +475,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Boss.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="UserName"/>
               </Properties>
@@ -450,6 +489,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="0"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Lock.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="PassWord"/>
               </Properties>
             </Component>
@@ -457,6 +499,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="3"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Unlock.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
@@ -466,6 +511,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonLogOut">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/image/Forbidden.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Logout"/>
               </Properties>
               <Events>
@@ -627,7 +675,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/image/View.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="T&#xcc;M KI&#x1ebe;M"/>
+        <Property name="text" type="java.lang.String" value="TRA C&#x1ee8;U"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTimKiemActionPerformed"/>
